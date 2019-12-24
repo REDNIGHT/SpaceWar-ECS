@@ -5,7 +5,6 @@
 # 需求
 * unity version:2019.1.7f1
 * Rewired插件.
-* 其他第三方资源.
-* 可以进qq群下载.
+* 其他第三方资源可进qq群下载.
 
 ![](QQGroup.png)
