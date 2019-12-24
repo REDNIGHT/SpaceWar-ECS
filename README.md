@@ -10,4 +10,4 @@
 ![](QQGroup.png)
 
 # 其他
-* com.unity.entities和com.unity.transport经过修改.
+* com.unity.entities和com.unity.transport有少量修改.
