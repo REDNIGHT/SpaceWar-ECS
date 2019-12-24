@@ -8,3 +8,6 @@
 * 其他第三方资源可进qq群下载.
 
 ![](QQGroup.png)
+
+# 其他
+* com.unity.entities和com.unity.transport经过修改.
