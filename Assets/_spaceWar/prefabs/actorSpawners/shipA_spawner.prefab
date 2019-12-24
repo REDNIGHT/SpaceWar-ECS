@@ -1,0 +1,128 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8692217689674757249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3059634888652331981}
+  - component: {fileID: 572826587221713148}
+  m_Layer: 0
+  m_Name: shipA_spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3059634888652331981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8692217689674757249}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &572826587221713148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8692217689674757249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022a1097a8c23394fb5839ef5d666a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabInServer: {fileID: 1608435296032540888, guid: 9eddfdb37c715754c9e65c1e65d7434f,
+    type: 3}
+  prefabInClient: {fileID: 1608435296032540888, guid: 9eddfdb37c715754c9e65c1e65d7434f,
+    type: 3}
+  _actorType: 1
+  HP: 750
+  forwardScale: 1
+  backScale: 0.8
+  leftRightScale: 0.9
+  velocity0:
+    force: 3.5
+    maxVelocity: 4.5
+    torque: 0.6
+    maxTorque: 1
+  velocity1:
+    force: 4
+    maxVelocity: 4.5
+    torque: 0.8
+    maxTorque: 1.2
+  velocity2:
+    force: 4.5
+    maxVelocity: 5
+    torque: 1
+    maxTorque: 1.4
+  velocity3:
+    force: 5
+    maxVelocity: 5.5
+    torque: 1.2
+    maxTorque: 1.6
+  dragByLRBVelocity: 0.15
+  accelerateForwardOnly: 0
+  accelerate0:
+    force: 4
+    maxVelocity: 6
+    consumePower: 10
+  accelerate1:
+    force: 5
+    maxVelocity: 7
+    consumePower: 12
+  accelerate2:
+    force: 6
+    maxVelocity: 8
+    consumePower: 14
+  power0:
+    max: 200
+    regain: 15
+  power1:
+    max: 250
+    regain: 20
+  power2:
+    max: 300
+    regain: 25
+  power3:
+    max: 350
+    regain: 30
+  lostInputTime: 1
+  shield0:
+    hp: 250
+    prepare: 1
+    interval: 8
+    duration: 7
+    consumePower: 50
+    torque: 0.15
+    maxTorque: 1.5
+  shield1:
+    hp: 450
+    prepare: 1
+    interval: 10
+    duration: 8
+    consumePower: 60
+    torque: 0.1
+    maxTorque: 1
+  shield2:
+    hp: 650
+    prepare: 1
+    interval: 12
+    duration: 9
+    consumePower: 70
+    torque: 0.05
+    maxTorque: 0.5
+  mass: 0.75
+  linearDrag: 0.4
+  angularDrag: 0.75

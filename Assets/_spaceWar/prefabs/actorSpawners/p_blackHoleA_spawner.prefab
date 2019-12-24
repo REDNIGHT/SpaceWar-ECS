@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1511339023950803074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7679762376438003003}
+  - component: {fileID: 2060000087112460656}
+  m_Layer: 0
+  m_Name: p_blackHoleA_spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7679762376438003003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511339023950803074}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2060000087112460656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511339023950803074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ec423aa36445b45a0738efdc64cf63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabInServer: {fileID: 3175456126978940257, guid: 1c67a9652694ad54c80977258a4bf4ba,
+    type: 3}
+  prefabInClient: {fileID: 3175456126978940257, guid: 1c67a9652694ad54c80977258a4bf4ba,
+    type: 3}
+  _actorType: 154
+  triggerCount: -1
+  triggerResultStateInclude: 0
+  radius: 12.5
+  force: -2
+  tangentForce: 1
+  torque: -0.5
+  mode: 0
+  drag: 0
+  angularDrag: 0
+  triggerFxResultStateInclude: 0

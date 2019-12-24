@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: c942a6e38359cdb46a0011def80620ad
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - UICamera: {instanceID: 0}
+  - guiSkin: {fileID: 11400000, guid: 8be863b9bac4f3544ba3f809570b8bec, type: 2}
+  - hotField: {instanceID: 0}
+  - messageBoxPrefab: {fileID: 11400004, guid: c9859ba1e31c65d4f9bc24329520b163, type: 2}
+  - message: {fileID: 10200002, guid: a1c64d13388a667498ef2cf6f6297c54, type: 2}
+  executionOrder: -120
+  icon: {instanceID: 0}
+  userData: 

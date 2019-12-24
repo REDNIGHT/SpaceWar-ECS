@@ -1,0 +1,16 @@
+/.gradle
+/.hg
+/.vs
+/bin
+/obj
+/Library
+*.csproj
+*.sln
+/xcode
+/Temp
+/.hgignore
+/*.user
+/Assets/Rewired
+/Assets/ThirdAssets
+/_bk
+/doc
