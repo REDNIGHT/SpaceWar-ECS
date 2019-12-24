@@ -1,5 +1,5 @@
 # SpaceWar
-* 这是一款模仿<starsector>的局域网对战游戏.
+* 这是一款模仿《starsector》的局域网对战游戏.
 * 基于unity3d,使用ECS框架.
 
 # 需求
