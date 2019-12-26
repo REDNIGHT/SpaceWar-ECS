@@ -25,8 +25,8 @@ namespace RN.Network.SpaceWar
         public const float maxTorque = 10f;
 
         public const float mass = 5f;
-        public const float linearDrag = 0.5f;
-        public const float angularDrag = 0.75f;
+        public const float linearDrag = 0.2f;
+        public const float angularDrag = 0.2f;
 
 
         //
@@ -34,7 +34,8 @@ namespace RN.Network.SpaceWar
         public const int OnTrigger_TransformIndex = 1;
         public const int DestroyFx_TransformIndex = 2;
         //public const int DisableInputFx_TransformIndex = ShipSpawner.DisableInputFx_TransformIndex;
-        public const int Model_TransformIndex = 3;
+        public const int Colliders_TransformIndex = 3;
+        public const int Model_TransformIndex = 4;
 
         public override int[] removeTransformIndexInServer => new int[] { DestroyFx_TransformIndex, Model_TransformIndex, };
 
