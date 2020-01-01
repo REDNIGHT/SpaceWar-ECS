@@ -5,55 +5,56 @@ namespace RN.Network.SpaceWar.Fx
 {
     public class AccelerateFx : MonoBehaviour, IAccelerateFx
     {
-        public float rateOverDistance = 25f;
-        //public float radius = 1f;
-
-        public float drag = 0.1f;
-
-        ParticleSystem _particleSystem;
-        float defaultRateOverDistanceMultiplier;
-        //float defaultRadius;
+        public const float drag = 0.01f;
+        public const float defaultLifetime = 0.2f;
+        public const float minRateOverDistance = 5f;
+        public const float maxRateOverDistance = 50f;
+        ParticleSystem[] _particleSystems;
         void Awake()
         {
-            _particleSystem = GetComponent<ParticleSystem>();
-            Debug.Assert(_particleSystem != null, "particleSystem != null", this);
+            _particleSystems = GetComponentsInChildren<ParticleSystem>();
+            Debug.Assert(_particleSystems.Length > 0, "_particleSystems.Length > 0", this);
 
-            var emission = _particleSystem.emission;
-            defaultRateOverDistanceMultiplier = emission.rateOverDistanceMultiplier;
+            foreach (var ps in _particleSystems)
+            {
+                var main = ps.main;
+                main.startLifetimeMultiplier = defaultLifetime;
 
-            //var shape = particleSystem.shape;
-            //defaultRadius = shape.radius;
+                var emission = ps.emission;
+                emission.rateOverDistanceMultiplier = minRateOverDistance;
+            }
         }
 
         public void OnPlayFx()
         {
-            _particleSystem.time = 0f;
+            foreach (var ps in _particleSystems)
+            {
+                var main = ps.main;
+                main.startLifetimeMultiplier = 1f;
 
-            //
-            var shape = _particleSystem.shape;
-            //shape.radius = radius;
-
-            //
-            var emission = _particleSystem.emission;
-
-            //particleSystem.Emit((int)(rateOverDistance - emission.rateOverDistanceMultiplier));
-
-            emission.rateOverDistanceMultiplier = rateOverDistance;
+                var emission = ps.emission;
+                emission.rateOverDistanceMultiplier = maxRateOverDistance;
+            }
         }
 
         void FixedUpdate()
         {
-            var d = 1f - drag * Time.fixedDeltaTime;
-
-            var emission = _particleSystem.emission;
-            if (emission.rateOverDistanceMultiplier > defaultRateOverDistanceMultiplier)
+            var dA = drag * Time.fixedDeltaTime;
+            var dB = dA * 2500f;
+            foreach (var ps in _particleSystems)
             {
-                emission.rateOverDistanceMultiplier *= d;
-                emission.rateOverDistanceMultiplier = Mathf.Max(emission.rateOverDistanceMultiplier, defaultRateOverDistanceMultiplier);
+                var main = ps.main;
+                if (main.startLifetimeMultiplier > defaultLifetime)
+                {
+                    main.startLifetimeMultiplier -= dA;
+                    if (main.startLifetimeMultiplier < defaultLifetime)
+                        main.startLifetimeMultiplier = defaultLifetime;
 
-                //var shape = particleSystem.shape;
-                //shape.radius *= d;
-                //shape.radius = Mathf.Max(shape.radius, defaultRadius);
+                    var emission = ps.emission;
+                    emission.rateOverDistanceMultiplier -= dB;
+                    if (emission.rateOverDistanceMultiplier < minRateOverDistance)
+                        emission.rateOverDistanceMultiplier = minRateOverDistance;
+                }
             }
         }
     }

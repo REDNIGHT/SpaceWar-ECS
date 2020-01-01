@@ -495,7 +495,7 @@ namespace RN.Network.SpaceWar
                                     accelerate = input.GetButton(PlayerInputActions.Accelerate),
                                 }
                             };
-
+                            
                             if (math.distance(s.observerPosition, lastShipMoveInput.observerPosition) > 10f
                             || s.shipMoveInput.moveForward != lastShipMoveInput.shipMoveInput.moveForward
                             || s.shipMoveInput.moveBack != lastShipMoveInput.shipMoveInput.moveBack
