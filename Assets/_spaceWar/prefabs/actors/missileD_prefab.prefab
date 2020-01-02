@@ -163,7 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2467641184364503254}
-  m_Layer: 20
+  m_Layer: 0
   m_Name: raycast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +397,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2842772308337498887}
-  m_Layer: 18
+  m_Layer: 0
   m_Name: _
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +583,7 @@ GameObject:
   - component: {fileID: 2220156424000031999}
   - component: {fileID: 8814683875417134508}
   - component: {fileID: 7259678551584480513}
-  m_Layer: 18
+  m_Layer: 0
   m_Name: fx
   m_TagString: Untagged
   m_Icon: {fileID: 0}

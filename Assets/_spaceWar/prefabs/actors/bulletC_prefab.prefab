@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8696342686335438923}
-  m_Layer: 20
+  m_Layer: 0
   m_Name: raycast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
