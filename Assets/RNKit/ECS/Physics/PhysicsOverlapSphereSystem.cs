@@ -11,6 +11,11 @@ namespace RN.Network
         public int layerMask;
 
         public bool linecastFilter;
+
+        /// <summary>
+        /// 移除多余的Collider 这些Collider都是同一个刚体的
+        /// </summary>
+        public bool distinctDisable;
     }
 
     [DisableAutoCreation]
@@ -57,8 +62,13 @@ namespace RN.Network
                     {
                         var rs = results
                             .Take(numFound)
-                            .Where(x => x.attachedRigidbody != null)
-                            ;//.Distinct();移除不同Collider但是却是同一个刚体的
+                            .Where(x => x.attachedRigidbody != null);
+
+                        if (overlapSphere.distinctDisable == false)
+                        {
+                            rs = rs.Distinct();
+                        }
+
 
                         DynamicBuffer<PhysicsOverlapHitPoints> physicsOverlapHitPoints = default;
                         var hasPhysicsOverlapHitPoints = false;

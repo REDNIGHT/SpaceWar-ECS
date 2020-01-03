@@ -1,4 +1,5 @@
-﻿using Unity.Entities;
+﻿using System.Linq;
+using Unity.Entities;
 using Unity.Jobs;
 using UnityEngine;
 
@@ -10,6 +11,11 @@ namespace RN.Network
         public float radius;
         public float distance;
         public int layerMask;
+
+        /// <summary>
+        /// 移除多余的Collider 这些Collider都是同一个刚体的
+        /// </summary>
+        public bool distinctDisable;
     }
 
     [DisableAutoCreation]
@@ -26,6 +32,7 @@ namespace RN.Network
         }
 
         RaycastHit[] results = new RaycastHit[16];
+        PhysicsRaycastAllSystem.RaycastHitCompareByRigidbody raycastHitCompareByRigidbody = new PhysicsRaycastAllSystem.RaycastHitCompareByRigidbody();
         protected override void OnUpdate()
         {
             var endCommandBuffer = endBarrier.CreateCommandBuffer();
@@ -38,10 +45,18 @@ namespace RN.Network
                     int numFound = Physics.SphereCastNonAlloc(sphereCastAll.ray, sphereCastAll.radius, results, sphereCastAll.distance, sphereCastAll.layerMask);
                     if (numFound > 0)
                     {
-                        for (int i = 0; i < numFound; i++)
-                        {
-                            var hitInfo = results[i];
+                        var rs = results
+                            .Take(numFound)
+                            .Where(x => x.rigidbody != null);
 
+                        if (sphereCastAll.distinctDisable == false)
+                        {
+                            rs = rs.Distinct(raycastHitCompareByRigidbody);
+                        }
+
+
+                        foreach (var hitInfo in rs)
+                        { 
                             if (EntityBehaviour.getEntity(hitInfo.rigidbody, out var entity, World))
                             {
                                 raycastResults.Add(new PhysicsRaycastResults { entity = entity, point = hitInfo.point, normal = hitInfo.normal, distance = hitInfo.distance });

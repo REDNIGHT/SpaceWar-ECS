@@ -1,6 +1,8 @@
 ﻿using Unity.Entities;
 using Unity.Jobs;
 using UnityEngine;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace RN.Network
 {
@@ -9,6 +11,11 @@ namespace RN.Network
         public Ray ray;
         public float distance;
         public int layerMask;
+
+        /// <summary>
+        /// 移除多余的Collider 这些Collider都是同一个刚体的
+        /// </summary>
+        public bool distinctDisable;
     }
 
     [DisableAutoCreation]
@@ -25,6 +32,7 @@ namespace RN.Network
         }
 
         RaycastHit[] results = new RaycastHit[16];
+        RaycastHitCompareByRigidbody raycastHitCompareByRigidbody = new RaycastHitCompareByRigidbody();
         protected override void OnUpdate()
         {
             var endCommandBuffer = endBarrier.CreateCommandBuffer();
@@ -37,10 +45,17 @@ namespace RN.Network
                     int numFound = Physics.RaycastNonAlloc(raycastAll.ray, results, raycastAll.distance, raycastAll.layerMask);
                     if (numFound > 0)
                     {
-                        for (int i = 0; i < numFound; i++)
-                        {
-                            var hitInfo = results[i];
+                        var rs = results
+                            .Take(numFound)
+                            .Where(x => x.rigidbody != null);
 
+                        if (raycastAll.distinctDisable == false)
+                        {
+                            rs = rs.Distinct(raycastHitCompareByRigidbody);
+                        }
+
+                        foreach (var hitInfo in rs)
+                        {
                             if (EntityBehaviour.getEntity(hitInfo.rigidbody, out var entity, World))
                             {
                                 raycastResults.Add(new PhysicsRaycastResults { entity = entity, point = hitInfo.point, normal = hitInfo.normal, distance = hitInfo.distance });
@@ -48,6 +63,25 @@ namespace RN.Network
                         }
                     }
                 });
+        }
+
+        public struct RaycastHitCompareByRigidbody : IEqualityComparer<RaycastHit>
+        {
+            public bool Equals(RaycastHit x, RaycastHit y)
+            {
+                if (x.rigidbody == y.rigidbody)
+                    return true;
+                else
+                    return false;
+            }
+
+            public int GetHashCode(RaycastHit x)
+            {
+                if (x.rigidbody == null)
+                    return 0;
+                else
+                    return x.rigidbody.GetHashCode();
+            }
         }
     }
 }
