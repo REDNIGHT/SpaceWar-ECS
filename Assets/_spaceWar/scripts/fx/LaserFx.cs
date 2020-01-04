@@ -9,6 +9,7 @@ namespace RN.Network.SpaceWar.Fx
         bool raycastAll = true;
         LayerMask layerMask;
         float distance;
+        float startOffset;
         public override void onCreateFx(LaserSpawner actorSpawner)
         {
             lineRenderer = GetComponentInChildren<LineRenderer>();
@@ -18,6 +19,7 @@ namespace RN.Network.SpaceWar.Fx
             raycastAll = actorSpawner.raycastAll;
             layerMask = actorSpawner.layerMask;
             distance = actorSpawner.distance;
+            startOffset = actorSpawner.startOffset;
         }
 
         public override void onDestroyFx(LaserSpawner actorSpawner)
@@ -34,6 +36,14 @@ namespace RN.Network.SpaceWar.Fx
         IEnumerator playDestroyFx()
         {
             //
+            var ps = GetComponentInChildren<ParticleSystem>();
+            if (ps != null)
+            {
+                ps.Stop();
+            }
+
+
+            //
             var b = lineRenderer.startColor;
             var e = b;
             e.a = 0f;
@@ -44,6 +54,18 @@ namespace RN.Network.SpaceWar.Fx
                 yield return this;
             }
 
+
+            //
+            if (ps != null)
+            {
+                while (ps.isPlaying)
+                {
+                    yield return this;
+                }
+            }
+
+
+            //
             this.destroyGO();
         }
 
@@ -51,10 +73,10 @@ namespace RN.Network.SpaceWar.Fx
         {
             if (raycastAll == false)
             {
-                var ray = new Ray { origin = transform.position, direction = transform.forward };
+                var ray = new Ray { origin = transform.position + transform.forward * startOffset, direction = transform.forward };
 
                 var endPoint = new Vector3(0f, 0f, distance);
-                if (Physics.Raycast(ray, out RaycastHit hitInfo, distance, layerMask))
+                if (Physics.Raycast(ray, out RaycastHit hitInfo, distance - startOffset, layerMask))
                 {
                     endPoint = transform.InverseTransformPoint(hitInfo.point);
                 }

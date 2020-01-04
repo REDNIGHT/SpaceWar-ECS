@@ -1,12 +1,13 @@
-﻿using RN.Network;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RN.Network.SpaceWar.Fx
 {
     public class AccelerateFx : MonoBehaviour, IAccelerateFx
     {
-        public const float drag = 0.01f;
-        public const float defaultLifetime = 0.2f;
+        public const float dragA = 0.05f;
+        public const float dragB = 2500f;
+        public const float minLifetime = 0.5f;
+        public const float maxLifetime = 1.5f;
         public const float minRateOverDistance = 5f;
         public const float maxRateOverDistance = 50f;
         ParticleSystem[] _particleSystems;
@@ -18,7 +19,7 @@ namespace RN.Network.SpaceWar.Fx
             foreach (var ps in _particleSystems)
             {
                 var main = ps.main;
-                main.startLifetimeMultiplier = defaultLifetime;
+                main.startLifetimeMultiplier = minLifetime;
 
                 var emission = ps.emission;
                 emission.rateOverDistanceMultiplier = minRateOverDistance;
@@ -30,7 +31,7 @@ namespace RN.Network.SpaceWar.Fx
             foreach (var ps in _particleSystems)
             {
                 var main = ps.main;
-                main.startLifetimeMultiplier = 1f;
+                main.startLifetimeMultiplier = maxLifetime;
 
                 var emission = ps.emission;
                 emission.rateOverDistanceMultiplier = maxRateOverDistance;
@@ -39,16 +40,17 @@ namespace RN.Network.SpaceWar.Fx
 
         void FixedUpdate()
         {
-            var dA = drag * Time.fixedDeltaTime;
-            var dB = dA * 2500f;
+            var dA = dragA * Time.fixedDeltaTime;
+            var dB = dragB * Time.fixedDeltaTime;
+
             foreach (var ps in _particleSystems)
             {
                 var main = ps.main;
-                if (main.startLifetimeMultiplier > defaultLifetime)
+                if (main.startLifetimeMultiplier > minLifetime)
                 {
                     main.startLifetimeMultiplier -= dA;
-                    if (main.startLifetimeMultiplier < defaultLifetime)
-                        main.startLifetimeMultiplier = defaultLifetime;
+                    if (main.startLifetimeMultiplier < minLifetime)
+                        main.startLifetimeMultiplier = minLifetime;
 
                     var emission = ps.emission;
                     emission.rateOverDistanceMultiplier -= dB;

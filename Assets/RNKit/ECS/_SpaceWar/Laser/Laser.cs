@@ -10,6 +10,7 @@ namespace RN.Network.SpaceWar
     public struct Laser : IComponentData
     {
         public float distance;
+        public float startOffset;
     }
 
     [LaserEntity]

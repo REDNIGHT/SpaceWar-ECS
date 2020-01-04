@@ -18,6 +18,7 @@ namespace RN.Network.SpaceWar
 
         [Header("Physics")]
         public float distance = 5f;
+        public float startOffset = 1f;
         public float radius = 0f;
         public LayerMask layerMask;
         public bool raycastAll;
@@ -104,7 +105,7 @@ namespace RN.Network.SpaceWar
 
             yield return (_S_D, typeof(ActorAttribute3Offset<_HP>),       /**/ (e, m) => m.SetComponentData(e, new ActorAttribute3Offset<_HP> { maxOffset = hpMaxOffset, minOffset = hpMinOffset, scale = 1f }));
 
-            yield return (CS_D, typeof(Laser),                            /**/ (e, m) => m.SetComponentData(e, new Laser { distance = distance }));
+            yield return (CS_D, typeof(Laser),                            /**/ (e, m) => m.SetComponentData(e, new Laser { distance = distance, startOffset = startOffset }));
             yield return (_S_D, typeof(Laser_TR_Temp),                    /**/ null);
         }
 

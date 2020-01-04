@@ -124,5 +124,5 @@ MonoBehaviour:
     torque: 0.1
     maxTorque: 3
   mass: 0.675
-  linearDrag: 0.5
+  linearDrag: 0.25
   angularDrag: 0.75

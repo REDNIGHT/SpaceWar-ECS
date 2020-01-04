@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
@@ -32,6 +33,7 @@ namespace RN.Network
         }
 
         Collider[] results = new Collider[16];
+        ColliderCompareByRigidbody colliderCompareByRigidbody = new ColliderCompareByRigidbody();
         protected override void OnUpdate()
         {
             var endCommandBuffer = endBarrier.CreateCommandBuffer();
@@ -66,7 +68,7 @@ namespace RN.Network
 
                         if (overlapSphere.distinctDisable == false)
                         {
-                            rs = rs.Distinct();
+                            rs = rs.Distinct(colliderCompareByRigidbody);
                         }
 
 
@@ -114,6 +116,26 @@ namespace RN.Network
                         };
                     }
                 });
+        }
+
+
+        public struct ColliderCompareByRigidbody : IEqualityComparer<Collider>
+        {
+            public bool Equals(Collider x, Collider y)
+            {
+                if (x.attachedRigidbody == y.attachedRigidbody)
+                    return true;
+                else
+                    return false;
+            }
+
+            public int GetHashCode(Collider x)
+            {
+                if (x.attachedRigidbody == null)
+                    return 0;
+                else
+                    return x.attachedRigidbody.GetHashCode();
+            }
         }
     }
 }
