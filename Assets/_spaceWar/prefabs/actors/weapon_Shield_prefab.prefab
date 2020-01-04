@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3379073293462866126}
   - component: {fileID: 4345512779812379924}
   m_Layer: 0
-  m_Name: Pipe6
+  m_Name: baseModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,8 +29,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.03, z: 0}
   m_LocalScale: {x: 0.65, y: 0.5, z: 0.65}
   m_Children: []
-  m_Father: {fileID: 439666096897861451}
-  m_RootOrder: 2
+  m_Father: {fileID: 7218906999567332076}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3379073293462866126
 MeshFilter:
@@ -9777,6 +9777,7 @@ Transform:
   - {fileID: 5346751280336685502}
   - {fileID: 2370475188933939070}
   - {fileID: 6764327345051737113}
+  - {fileID: 6270891886082568276}
   - {fileID: 439666096897861451}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -14794,9 +14795,8 @@ Transform:
   m_Children:
   - {fileID: 6574947747952378948}
   - {fileID: 6875176542665650360}
-  - {fileID: 6270891886082568276}
   m_Father: {fileID: 7218906999567332076}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7941066972608678032
 GameObject:

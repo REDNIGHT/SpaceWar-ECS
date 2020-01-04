@@ -412,10 +412,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3168372420524151672}
   - {fileID: 875912710701200979}
   m_Father: {fileID: 7218906999567332076}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3185452582508409841
 GameObject:
@@ -531,6 +530,7 @@ Transform:
   - {fileID: 9197006900884534677}
   - {fileID: 4985364128402153938}
   - {fileID: 3629337981506518855}
+  - {fileID: 3168372420524151672}
   - {fileID: 840168092213443159}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -15501,7 +15501,7 @@ Transform:
   - {fileID: 1643332362067746262}
   - {fileID: 4022520236765517256}
   m_Father: {fileID: 840168092213443159}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7667953439038243095
 GameObject:
@@ -15699,7 +15699,7 @@ GameObject:
   - component: {fileID: 2532957753035195181}
   - component: {fileID: 1522861494404971770}
   m_Layer: 0
-  m_Name: Cylinder5B
+  m_Name: baseModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15712,12 +15712,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8528291864416753123}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
-  m_Father: {fileID: 840168092213443159}
-  m_RootOrder: 0
+  m_Father: {fileID: 7218906999567332076}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &2532957753035195181
 MeshFilter:

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Unity.Entities;
-using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 
@@ -70,11 +69,12 @@ namespace RN.Network.SpaceWar
         public const int DestroyFx_TransformIndex = 3;
 
         public const int WeaponItemCountFx_TransformIndex = 4;
+        public const int WeaponBaseModel_TransformIndex = 5;
 
         //public const int InstalledFx_TransformIndex = 5;
         //public const int UninstallFx_TransformIndex = 6;
 
-        public const int Model_TransformIndex = 5;
+        public const int Model_TransformIndex = 6;
 
         public override int[] removeTransformIndexInServer => new int[]
         {
@@ -82,9 +82,11 @@ namespace RN.Network.SpaceWar
             FireFx_TransformIndex,
             DestroyFx_TransformIndex,
             WeaponItemCountFx_TransformIndex,
+            WeaponBaseModel_TransformIndex,
+            Model_TransformIndex,
+
             //InstalledFx_TransformIndex,
             //UninstallFx_TransformIndex,
-            Model_TransformIndex,
         };
 
 

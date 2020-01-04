@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5160423634577789219}
   - component: {fileID: 8514887203818975863}
   m_Layer: 0
-  m_Name: Cylinder3
+  m_Name: baseModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,8 +29,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -0.038}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
-  m_Father: {fileID: 840168092213443159}
-  m_RootOrder: 0
+  m_Father: {fileID: 7218906999567332076}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5160423634577789219
 MeshFilter:
@@ -247,10 +247,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4495363442379648130}
   - {fileID: 2122450416121937720}
   m_Father: {fileID: 7218906999567332076}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2620888938718485546
 GameObject:
@@ -443,6 +442,7 @@ Transform:
   - {fileID: 9197006900884534677}
   - {fileID: 4034815350859479686}
   - {fileID: 3221722295250301123}
+  - {fileID: 4495363442379648130}
   - {fileID: 840168092213443159}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -10729,7 +10729,7 @@ Transform:
   - {fileID: 5876174865615301987}
   - {fileID: 8642217055462590669}
   m_Father: {fileID: 840168092213443159}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6829715038162543325
 GameObject:
