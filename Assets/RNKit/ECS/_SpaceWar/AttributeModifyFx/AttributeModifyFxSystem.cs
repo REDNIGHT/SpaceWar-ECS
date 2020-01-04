@@ -12,7 +12,8 @@ namespace RN.Network.SpaceWar
         protected override void OnUpdate()
         {
             Entities
-                .WithAll<TextMesh>().WithAllReadOnly<AttributeModifyFx, ActorLifetime>()
+                .WithAllReadOnly<TextMesh, AttributeModifyFx, ActorLifetime>()
+                .WithNone<OnDestroyMessage>()
                 .ForEach((ref ActorLifetime lifetime, TextMesh textMesh) =>
                 {
                     if (lifetime.value < fadeOutTime)
