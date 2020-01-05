@@ -4,59 +4,28 @@ namespace RN.Network.SpaceWar.Fx
 {
     public class AccelerateFx : MonoBehaviour, IAccelerateFx
     {
-        public const float dragA = 0.05f;
-        public const float dragB = 2500f;
-        public const float minLifetime = 0.5f;
-        public const float maxLifetime = 1.5f;
-        public const float minRateOverDistance = 5f;
-        public const float maxRateOverDistance = 50f;
-        ParticleSystem[] _particleSystems;
+        const float dampTime = 0.9f;
+        Animator[] animators;
+        static int accelerateFxHash = Animator.StringToHash("accelerateFx");
         void Awake()
         {
-            _particleSystems = GetComponentsInChildren<ParticleSystem>();
-            Debug.Assert(_particleSystems.Length > 0, "_particleSystems.Length > 0", this);
-
-            foreach (var ps in _particleSystems)
-            {
-                var main = ps.main;
-                main.startLifetimeMultiplier = minLifetime;
-
-                var emission = ps.emission;
-                emission.rateOverDistanceMultiplier = minRateOverDistance;
-            }
+            animators = GetComponentsInChildren<Animator>();
+            Debug.Assert(animators.Length > 0, "animators.Length > 0  " + name, this);
         }
 
         public void OnPlayFx()
         {
-            foreach (var ps in _particleSystems)
+            foreach (var animator in animators)
             {
-                var main = ps.main;
-                main.startLifetimeMultiplier = maxLifetime;
-
-                var emission = ps.emission;
-                emission.rateOverDistanceMultiplier = maxRateOverDistance;
+                animator.SetFloat(accelerateFxHash, 1f);
             }
         }
 
         void FixedUpdate()
         {
-            var dA = dragA * Time.fixedDeltaTime;
-            var dB = dragB * Time.fixedDeltaTime;
-
-            foreach (var ps in _particleSystems)
+            foreach (var animator in animators)
             {
-                var main = ps.main;
-                if (main.startLifetimeMultiplier > minLifetime)
-                {
-                    main.startLifetimeMultiplier -= dA;
-                    if (main.startLifetimeMultiplier < minLifetime)
-                        main.startLifetimeMultiplier = minLifetime;
-
-                    var emission = ps.emission;
-                    emission.rateOverDistanceMultiplier -= dB;
-                    if (emission.rateOverDistanceMultiplier < minRateOverDistance)
-                        emission.rateOverDistanceMultiplier = minRateOverDistance;
-                }
+                animator.SetFloat(accelerateFxHash, 0f, dampTime, Time.fixedDeltaTime);
             }
         }
     }

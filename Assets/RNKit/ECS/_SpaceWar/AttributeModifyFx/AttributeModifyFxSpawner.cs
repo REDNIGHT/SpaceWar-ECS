@@ -186,6 +186,10 @@ namespace RN.Network.SpaceWar
             }
 
             textMesh.transform.forward = Camera.main.transform.forward;
+            if (textMesh.transform.childCount > 0)
+            {
+                textMesh.transform.GetChild(0).GetComponent<TextMesh>().text = textMesh.text;
+            }
 
 
 

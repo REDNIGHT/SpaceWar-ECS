@@ -25,7 +25,12 @@ namespace RN.Network.SpaceWar
                         textMesh.color = color;
 
 
-                        //textMesh.transform.forward = Camera.main.transform.forward;
+                        textMesh.transform.forward = Camera.main.transform.forward;
+
+                        if (textMesh.transform.childCount > 0)
+                        {
+                            textMesh.transform.GetChild(0).GetComponent<TextMesh>().color = textMesh.color;
+                        }
                     }
                 });
         }

@@ -61,6 +61,6 @@ namespace RN.Network.SpaceWar
             }
         }
 
-        public Quaternion rotation { set => transform.rotation = value; }
+        //public Quaternion rotation { set => transform.rotation = value; }
     }
 }
