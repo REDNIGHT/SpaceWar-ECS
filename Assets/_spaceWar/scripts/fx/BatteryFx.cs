@@ -15,8 +15,18 @@ namespace RN.Network.SpaceWar.Fx
             if (destroyFx != null)
             {
                 destroyFx.transform.parent = actorSpawner.root;
-                //ps.Stop();
                 destroyFx.gameObject.SetActive(true);
+
+
+#if UNITY_EDITOR
+                var ps = destroyFx.GetComponent<ParticleSystem>();
+                if (ps != null)
+                {
+                    Debug.Assert(ps.main.stopAction == ParticleSystemStopAction.Destroy, name + "  ps.main.stopAction == ParticleSystemStopAction.Destroy", ps);
+
+                    ps.name += "  " + name;
+                }
+#endif
             }
             else
             {

@@ -21,10 +21,11 @@ namespace RN.Network.SpaceWar
         public float hpMinOffset = -5f;
         public float hpMaxOffset = -10f;
 
-        public const int DestroyFx_TransformIndex = 0;
-        public const int Model_TransformIndex = 1;
+        public const int Fx_TransformIndex = 0;
+        public const int DestroyFx_TransformIndex = 1;
+        public const int Model_TransformIndex = 2;
 
-        public override int[] removeTransformIndexInServer => new int[] { DestroyFx_TransformIndex, Model_TransformIndex, };
+        public override int[] removeTransformIndexInServer => new int[] { Fx_TransformIndex, DestroyFx_TransformIndex, Model_TransformIndex, };
 
 
         void OnValidate()

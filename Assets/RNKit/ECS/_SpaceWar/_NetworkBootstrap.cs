@@ -306,7 +306,7 @@ namespace RN.Network.SpaceWar
                     new KillClientSystem(),
 
                     new ActorVelocitySystem(),
-                    new AttributeModifyFxClientSystem { fadeOutTime = 0.5f },
+                    new AttributeModifyFxClientSystem(),
 
 
                     new RigidbodyControlSystem(),

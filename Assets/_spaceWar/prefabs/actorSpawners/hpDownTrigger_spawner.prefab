@@ -52,5 +52,5 @@ MonoBehaviour:
   delay: -1
   interval: 1
   maxCount: -1
-  hpMinOffset: -75
-  hpMaxOffset: -100
+  hpMinOffset: -25
+  hpMaxOffset: -50

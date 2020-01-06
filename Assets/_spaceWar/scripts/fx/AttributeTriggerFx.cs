@@ -15,8 +15,18 @@ namespace RN.Network.SpaceWar.Fx
             if (destroyFx != null)
             {
                 destroyFx.transform.parent = actorSpawner.root;
-                //ps.Stop();
                 destroyFx.gameObject.SetActive(true);
+
+
+#if UNITY_EDITOR
+                var ps = destroyFx.GetComponent<ParticleSystem>();
+                if (ps != null)
+                {
+                    Debug.Assert(ps.main.stopAction == ParticleSystemStopAction.Destroy, name + "  ps.main.stopAction == ParticleSystemStopAction.Destroy", ps);
+
+                    ps.name += "  " + name;
+                }
+#endif
             }
             else
             {
@@ -24,7 +34,27 @@ namespace RN.Network.SpaceWar.Fx
             }
 
 
-            GameObject.Destroy(gameObject);
+            //
+            {
+                var fx = transform.GetChild(AttributeTriggerSpawner.Fx_TransformIndex);
+                var ps = fx.GetComponent<ParticleSystem>();
+                if (ps != null)
+                {
+                    ps.transform.parent = actorSpawner.root;
+
+                    ps.Stop();
+                    var main = ps.main;
+                    main.stopAction = ParticleSystemStopAction.Destroy;
+
+
+#if UNITY_EDITOR
+                    ps.name += "  " + name;
+#endif
+                }
+
+
+                GameObject.Destroy(gameObject);
+            }
         }
     }
 }

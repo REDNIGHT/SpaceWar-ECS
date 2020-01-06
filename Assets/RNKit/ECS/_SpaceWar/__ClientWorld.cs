@@ -35,7 +35,7 @@ namespace RN.Network.SpaceWar
         public int maxPlayerNameCount = 16;
 
         [Header("AttributeModifyFxClientSystem")]
-        public float fadeOutTime = 0.5f;
+        public float fadeOutTime = 0.25f;
 
         [Header("PlayerInputClientSystem")]
         public float maxAngle = 90f;

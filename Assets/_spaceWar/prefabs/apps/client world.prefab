@@ -58,7 +58,7 @@ MonoBehaviour:
     LostCount: 0
   minPlayerNameCount: 2
   maxPlayerNameCount: 16
-  fadeOutTime: 0.5
+  fadeOutTime: 0.25
   maxAngle: 45
   mousePointMaxDistance: 50
   distanceMin: 2

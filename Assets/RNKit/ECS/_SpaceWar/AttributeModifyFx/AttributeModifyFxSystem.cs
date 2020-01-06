@@ -8,7 +8,7 @@ namespace RN.Network.SpaceWar
     //[AlwaysUpdateSystem]
     public class AttributeModifyFxClientSystem : ComponentSystem
     {
-        public float fadeOutTime = 0.5f;
+        public float fadeOutTime = 0.25f;
         protected override void OnUpdate()
         {
             Entities
