@@ -62,3 +62,9 @@ MonoBehaviour:
   - actorType: 138
     hitFxPrefab: {fileID: 924755349157902238, guid: b20c474754093cb4b9d980b3648192a0,
       type: 3}
+  - actorType: 89
+    hitFxPrefab: {fileID: 8398026952904161847, guid: 7ed5c041729ce634a9318947d17684f8,
+      type: 3}
+  - actorType: 90
+    hitFxPrefab: {fileID: 8398026952904161847, guid: af59dbaf621863a43b969990b60ae35f,
+      type: 3}

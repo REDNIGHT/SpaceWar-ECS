@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4224770116669239957}
   - component: {fileID: 2175040112022704959}
   m_Layer: 0
-  m_Name: _defaultHitFx
+  m_Name: _defaultHitFx_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4766,8 +4766,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1e32a22100b766448ae52280032f6061, type: 2}
-  - {fileID: 2100000, guid: 1e32a22100b766448ae52280032f6061, type: 2}
+  - {fileID: 2100000, guid: 9ba89270e6e293f4bbf130767472da8b, type: 2}
+  - {fileID: 2100000, guid: 9ba89270e6e293f4bbf130767472da8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

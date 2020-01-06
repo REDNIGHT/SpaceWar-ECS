@@ -12,14 +12,21 @@ namespace RN.Network.SpaceWar.Fx
         float startOffset;
         public override void onCreateFx(LaserSpawner actorSpawner)
         {
-            lineRenderer = GetComponentInChildren<LineRenderer>();
-            if (lineRenderer != null)
-                lineRenderer.SetPosition(1, new Vector3(0f, 0f, actorSpawner.distance));
-
             raycastAll = actorSpawner.raycastAll;
-            layerMask = actorSpawner.layerMask;
-            distance = actorSpawner.distance;
-            startOffset = actorSpawner.startOffset;
+            lineRenderer = GetComponentInChildren<LineRenderer>();
+
+            if (raycastAll)
+            {
+                lineRenderer.SetPosition(lineRenderer.positionCount - 1, new Vector3(0f, 0f, actorSpawner.distance));
+
+                enabled = false;
+            }
+            else
+            {
+                layerMask = actorSpawner.layerMask;
+                distance = actorSpawner.distance;
+                startOffset = actorSpawner.startOffset;
+            }
         }
 
         public override void onDestroyFx(LaserSpawner actorSpawner)
@@ -47,10 +54,13 @@ namespace RN.Network.SpaceWar.Fx
             var b = lineRenderer.startColor;
             var e = b;
             e.a = 0f;
+            var wb = lineRenderer.widthMultiplier;
+            var we = 0f;
             foreach (var t in new TimeEquation().linear.play(destroyFxTime))
             {
                 lineRenderer.startColor = Color.Lerp(b, e, t);
                 lineRenderer.endColor = lineRenderer.startColor;
+                lineRenderer.widthMultiplier = Mathf.Lerp(wb, we, t);
                 yield return this;
             }
 
@@ -81,7 +91,8 @@ namespace RN.Network.SpaceWar.Fx
                     endPoint = transform.InverseTransformPoint(hitInfo.point);
                 }
 
-                lineRenderer.SetPosition(1, endPoint);
+                lineRenderer.SetPosition(lineRenderer.positionCount - 1, endPoint);
+                lineRenderer.SetPosition(lineRenderer.positionCount - 2, Vector3.LerpUnclamped(lineRenderer.GetPosition(lineRenderer.positionCount - 3), endPoint, 0.95f));
             }
         }
 
