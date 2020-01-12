@@ -199,7 +199,8 @@ namespace RN.Network.SpaceWar
                     //
                     new ActorSyncCreateServerSystem(),
                     new ActorSyncDestroyServerSystem(),
-                    new ActorSyncAttributeServerSystem(),
+                    new ShipSyncAttributeServerSystem(),
+                    new WeaponSyncAttributeServerSystem(),
                     new ActorSyncDatasServerSystem(),
                     //new ActorDestroyServerSystem(),
 
@@ -280,8 +281,9 @@ namespace RN.Network.SpaceWar
                     //
                     new ActorSyncCreateClientSystem { actorCountInHashMap = 1024 },
                     new ActorSyncDatasClientSystem(),
-                    new ActorSyncAttributeClientSystem(),
-                    new WeaponItemCountFxClientSystem(),
+                    new ShipSyncAttributeClientSystem(),
+                    new WeaponSyncAttributeClientSystem(),
+                    new WeaponItemCountClientSystem(),
 
                     new ActorSyncDestroyClientSystem(),
                     new ActorDestroyClientSystem(),
@@ -297,7 +299,7 @@ namespace RN.Network.SpaceWar
 
                     new WeaponFirePrepareFxClientSystem(),
                     new WeaponFireFxClientSystem(),
-                    new AccelerateFxOnCreateClientSystem(),
+                    new ShipForceFxClientSystem(),
                     new ShieldOnCreateClientSystem(),
                     new ShieldOnDestroyClientSystem(),
                     new ShieldOnUpdateClientSystem(),

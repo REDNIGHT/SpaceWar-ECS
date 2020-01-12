@@ -254,9 +254,6 @@ namespace RN.Network.SpaceWar
         //[BurstCompile]
         public struct AccelerateJob : IJobForEachWithEntity<ControlForceDirection, ShipForceControl, ShipControlInfo, ActorAttribute1<_VelocityLevel>, Translation>
         {
-            public float fixedDeltaTime;
-
-            public bool disableMessage;
             public EntityCommandBuffer.Concurrent middleCommandBuffer;
 
             public void Execute(Entity shipEntity, int index,
@@ -265,7 +262,7 @@ namespace RN.Network.SpaceWar
             {
                 var velocityLevel = (int)shipVelocity.value;
 
-                if (shipForceControl.OnAccelerate(velocityLevel, fixedDeltaTime, out bool accelerateMessage))
+                if (shipForceControl.OnAccelerate(velocityLevel))
                 {
                     var accelerate = shipControlData.getAccelerate(velocityLevel);
 
@@ -274,10 +271,10 @@ namespace RN.Network.SpaceWar
                     controlForceDirection.maxVelocity = accelerate.maxVelocity;
                     controlForceDirection.direction = shipForceControl.moveDirection;
 
-                    if (accelerateMessage && disableMessage == false)
+                    /*if (accelerateMessage && disableMessage == false)
                     {
                         AccelerateFxSpawner.createInServer(middleCommandBuffer, index, shipEntity, translation);
-                    }
+                    }*/
                 }
             }
         }
@@ -311,8 +308,6 @@ namespace RN.Network.SpaceWar
 
             inputDeps = new AccelerateJob
             {
-                fixedDeltaTime = Time.fixedDeltaTime,
-
                 middleCommandBuffer = middleBarrier.CreateCommandBuffer().ToConcurrent(),
             }
             .Schedule(this, inputDeps);
@@ -349,8 +344,6 @@ namespace RN.Network.SpaceWar
 
             inputDeps = new ShipControlServerSystem.AccelerateJob
             {
-                fixedDeltaTime = Time.fixedDeltaTime,
-                disableMessage = true,
             }
             .Schedule(this, inputDeps);
 

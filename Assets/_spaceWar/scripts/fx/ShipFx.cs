@@ -1,5 +1,4 @@
-﻿using RN.Network;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RN.Network.SpaceWar.Fx
 {
@@ -20,29 +19,16 @@ namespace RN.Network.SpaceWar.Fx
 
         public override void onDestroyFx(ShipSpawner actorSpawner)
         {
-            var destroyFx = transform.GetChild(ShipSpawner.DestroyFx_TransformIndex);
-            if (destroyFx != null)
-            {
-                destroyFx.transform.parent = actorSpawner.root;
-                destroyFx.gameObject.SetActive(true);
+            var destroyFxT = transform.GetChild(ShipSpawner.DestroyFx_TransformIndex);
+            var forceFxT = transform.GetChild(ShipSpawner.ForceFx_TransformIndex);
 
 
-#if UNITY_EDITOR
-                var ps = destroyFx.GetComponent<ParticleSystem>();
-                if (ps != null)
-                {
-                    Debug.Assert(ps.main.stopAction == ParticleSystemStopAction.Destroy, name + "  ps.main.stopAction == ParticleSystemStopAction.Destroy", ps);
+            playDestroyFx(destroyFxT, actorSpawner);
+            continueFx(forceFxT, actorSpawner);
 
-                    ps.name += "  " + name;
-                }
-#endif
-            }
-            else
-            {
-                Debug.LogWarning($"destroyFx == null  this={this}", this);
-            }
 
-            GameObject.Destroy(gameObject);
+            //
+            this.destroyGO();
         }
     }
 }

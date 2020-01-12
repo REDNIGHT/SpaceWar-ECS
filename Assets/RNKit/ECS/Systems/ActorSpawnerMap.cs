@@ -79,6 +79,7 @@ namespace RN.Network
 
                 if (forceRemoveFxsInServer)
                 {
+                    Debug.Assert(actorSpawnerMap[actorType].isServer == true, "isServer == true", this);
                     actorSpawnerMap[actorType].RemoveFxs();
                 }
             }
@@ -149,6 +150,4 @@ namespace RN.Network
             actorSpawner.DestroyEntityInClient(actorEntity);
         }
     }
-
-
 }

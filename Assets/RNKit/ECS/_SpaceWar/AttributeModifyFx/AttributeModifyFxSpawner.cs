@@ -45,7 +45,7 @@ namespace RN.Network.SpaceWar
 
         void OnValidate()
         {
-            _actorType = ActorTypes.AttributeModifyCountFx;
+            _actorType = ActorTypes.AttributeModifyFx;
 
             for (var i = 0; i < hitFxInfos.Length; ++i)
             {
@@ -59,8 +59,8 @@ namespace RN.Network.SpaceWar
                     continue;
                 if (actorType > ActorTypes.__AttributeTrigger_Begin__ && actorType < ActorTypes.__AttributeTrigger_End__)
                     continue;
-                //if (actorType > ActorTypes.__PhysicsTrigger_Begin__ && actorType < ActorTypes.__PhysicsTrigger_End__)//物理陷阱不提供伤害
-                //    continue;
+                if (actorType > ActorTypes.__PhysicsTrigger_Begin__ && actorType < ActorTypes.__PhysicsTrigger_End__)//物理陷阱不提供伤害
+                    continue;
 
                 Debug.LogError($"hitFxInfos[{i}].actorType != {hitFxInfos[i].actorType}", this);
 
@@ -94,7 +94,7 @@ namespace RN.Network.SpaceWar
             short actorType, in Translation translation, float hp, float power, Entity targetEntity)
         {
             var entity = endCommandBuffer.CreateEntity(index, sEntityArchetype);
-            endCommandBuffer.SetComponent(index, entity, new Actor { actorType = (short)ActorTypes.AttributeModifyCountFx });
+            endCommandBuffer.SetComponent(index, entity, new Actor { actorType = (short)ActorTypes.AttributeModifyFx });
             endCommandBuffer.SetComponent(index, entity, new ActorVisibleDistanceOnCD { unreliableOnCreate = true, isUnlimited = false });
 
             endCommandBuffer.SetComponent(index, entity, translation);

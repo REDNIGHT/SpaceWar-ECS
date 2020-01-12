@@ -46,7 +46,7 @@ MonoBehaviour:
   prefabInServer: {fileID: 0}
   prefabInClient: {fileID: 8398026952904161847, guid: d39cdde6e2547dd4aa424023ac2fd29e,
     type: 3}
-  _actorType: 192
+  _actorType: 191
   lifetime: 1
   upVelocity: 1
   drag: 0.1
@@ -63,8 +63,17 @@ MonoBehaviour:
     hitFxPrefab: {fileID: 924755349157902238, guid: b20c474754093cb4b9d980b3648192a0,
       type: 3}
   - actorType: 89
-    hitFxPrefab: {fileID: 8398026952904161847, guid: 7ed5c041729ce634a9318947d17684f8,
+    hitFxPrefab: {fileID: 8398026952904161847, guid: 0b654631b1ac7ce47ade9d44676e65fc,
       type: 3}
   - actorType: 90
-    hitFxPrefab: {fileID: 8398026952904161847, guid: af59dbaf621863a43b969990b60ae35f,
+    hitFxPrefab: {fileID: 8398026952904161847, guid: 1d826db3670b217439f9a2808e48eb6f,
+      type: 3}
+  - actorType: 153
+    hitFxPrefab: {fileID: 2209031216915404747, guid: c948ccae27695284f94c0b55b8a1e51e,
+      type: 3}
+  - actorType: 156
+    hitFxPrefab: {fileID: 7493003262896139372, guid: 2540418da69ab8847a6115e69aea9bc9,
+      type: 3}
+  - actorType: 157
+    hitFxPrefab: {fileID: 2860364025816837929, guid: fc79be471ee6b584295afb9ee41741d5,
       type: 3}

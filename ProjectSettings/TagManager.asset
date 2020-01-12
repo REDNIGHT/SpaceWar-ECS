@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - SpaceScene_PlanetRings
+  - SpaceScene_LocalStar
+  - SpaceScene_Planet
+  - SpaceScene_Galaxy
+  - SpaceScene_Nebula
+  - SpaceScene_Camera
+  - SpaceScene_Moon
+  - Thruster
   layers:
   - Default
   - TransparentFX
@@ -20,7 +28,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - actorOnTrigger
   - actor
   - weapon
   - 
@@ -36,7 +44,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - DeepSpace
   m_SortingLayers:
   - name: Default
     uniqueID: 0

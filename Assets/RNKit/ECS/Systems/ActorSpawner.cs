@@ -216,10 +216,12 @@ namespace RN.Network
         //
         public abstract int[] removeTransformIndexInServer { get; }
 
+        /// <summary>
+        /// 在服务器端 需要删除渲染和没用的组件...
+        /// 客户端不需要
+        /// </summary>
         public virtual void RemoveFxs()
         {
-            //在服务器端 需要删除渲染和没用的组件...
-            Debug.Assert(isServer == true, "isServer == true", this);
             if (prefabInServer != null)
             {
                 prefabInServer = Instantiate(prefabInServer);

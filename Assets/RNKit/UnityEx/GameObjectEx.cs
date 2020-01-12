@@ -114,15 +114,15 @@ public static class GameObjectEx
     public static void destroy(this GameObject go)
     {
         go.name += "(destroy)";
-        go.SetActive(false);
-        go.transform.SetParent(null);
+        //go.SetActive(false);
+        //go.transform.SetParent(null);
         Object.Destroy(go);
     }
     public static void destroy(this GameObject go, float delay)
     {
         go.name += "(destroy)";
-        go.SetActive(false);
-        go.transform.SetParent(null);
+        //go.SetActive(false);
+        //go.transform.SetParent(null);
         Object.Destroy(go, delay);
     }
     public static void destroy(this Component self)

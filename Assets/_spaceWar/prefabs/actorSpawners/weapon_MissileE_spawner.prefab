@@ -54,7 +54,7 @@ MonoBehaviour:
   itemCount: 10
   fireInputTime: 0
   firePrepare: 0.5
-  fireInterval: 1
+  fireInterval: 1.5
   needPrepareMessage: 1
   needPrepareEachLoop: 0
   consumePower: 6

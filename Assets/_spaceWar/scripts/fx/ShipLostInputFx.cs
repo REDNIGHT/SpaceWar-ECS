@@ -5,14 +5,22 @@ namespace RN.Network.SpaceWar.Fx
 {
     public class ShipLostInputFx : MonoBehaviour, IShipLostInputFx
     {
+        private void Awake()
+        {
+            foreach (var ps in GetComponentsInChildren<ParticleSystem>(true))
+            {
+                ps.gameObject.SetActive(false);
+            }
+        }
         public void OnPlayFx(float time)
         {
-            var ps = GetComponent<ParticleSystem>();
+            foreach (var ps in GetComponentsInChildren<ParticleSystem>(true))
+            {
+                var main = ps.main;
+                main.duration = time;
 
-            var main = ps.main;
-            main.duration = time;
-
-            gameObject.SetActive(true);
+                ps.gameObject.SetActive(true);
+            }
         }
     }
 }

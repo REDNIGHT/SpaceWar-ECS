@@ -54,7 +54,7 @@ namespace RN.Network.SpaceWar
         public const int Slots_TransformIndex = 0;
         public const int AssistSlots_TransformIndex = 1;
         public const int ShieldRoot_TransformIndex = 2;
-        public const int AccelerateFx_TransformIndex = 3;
+        public const int ForceFx_TransformIndex = 3;
         public const int DisableInputFx_TransformIndex = 4;
         public const int DestroyFx_TransformIndex = 5;
         public const int Name_TransformIndex = 6;
@@ -65,7 +65,7 @@ namespace RN.Network.SpaceWar
 
         public override int[] removeTransformIndexInServer => new int[]
         {
-            AccelerateFx_TransformIndex,
+            ForceFx_TransformIndex,
             DisableInputFx_TransformIndex,
             DestroyFx_TransformIndex,
             Name_TransformIndex,
@@ -137,7 +137,7 @@ namespace RN.Network.SpaceWar
 
 
             yield return (_S_D, typeof(ShipSlotList),                     /**/ null);
-            yield return (C__P, typeof(SlotAngleLimitLines),                    /**/ null);
+            yield return (C__P, typeof(SlotAngleLimitLines),              /**/ null);
             yield return (CS_D, typeof(ShipWeaponArray),                  /**/ null);
 
             yield return (_S_D, typeof(ShipShields),                      /**/ (e, m) => m.SetComponentData(e, new ShipShields { shield0 = shield0, shield1 = shield1, shield2 = shield2 }));
@@ -145,6 +145,7 @@ namespace RN.Network.SpaceWar
             yield return (_S_D, typeof(ShipMoveInput),                    /**/ null);
             yield return (_S_D, typeof(ShipForceControl),                 /**/ null);
             yield return (_S_D, typeof(ShipTorqueControl),                /**/ null);
+            yield return (C__D, typeof(ShipForceAttribute),               /**/ null);
             yield return (_S_D, typeof(ShipControlInfo),                  /**/ (e, m) => m.SetComponentData(e,
                 new ShipControlInfo
                 {

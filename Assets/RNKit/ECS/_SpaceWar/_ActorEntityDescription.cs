@@ -194,8 +194,11 @@ namespace RN.Network.SpaceWar
     /// </summary>
     public enum ActorSynDataTypes : sbyte
     {
-        Hp_Power = 0,
-        WeaponAttribute = 1,
+        Ship_Hp_Power = 0,
+        Ship_ForceAttribute = 1,
+        Ship_AccelerateAttribute = 2,
+
+        WeaponAttribute = 3,
     }
 
     public enum ActorTypes : byte
@@ -333,11 +336,10 @@ namespace RN.Network.SpaceWar
 
         //
         WeaponFirePrepareFx,
-        AccelerateFx,
         ShipLostInputFx,
 
         //
-        AttributeModifyCountFx,
+        AttributeModifyFx,
 
 
 

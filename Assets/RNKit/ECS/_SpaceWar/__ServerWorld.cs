@@ -139,7 +139,7 @@ namespace RN.Network.SpaceWar
             playerObserveServerSystem.forceSyncTime = forceSyncTime;
 
             //
-            var actorSyncAttributeServerSystem = world.GetExistingSystem<ActorSyncAttributeServerSystem>();
+            var actorSyncAttributeServerSystem = world.GetExistingSystem<ShipSyncAttributeServerSystem>();
             actorSyncAttributeServerSystem.perFrame = perFrame;
         }
 

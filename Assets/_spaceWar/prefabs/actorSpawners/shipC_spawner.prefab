@@ -77,15 +77,15 @@ MonoBehaviour:
   accelerate0:
     force: 5
     maxVelocity: 6.5
-    consumePower: 10
+    consumePower: 20
   accelerate1:
     force: 6
     maxVelocity: 7.5
-    consumePower: 12
+    consumePower: 24
   accelerate2:
     force: 7
     maxVelocity: 8
-    consumePower: 14
+    consumePower: 28
   power0:
     max: 200
     regain: 15

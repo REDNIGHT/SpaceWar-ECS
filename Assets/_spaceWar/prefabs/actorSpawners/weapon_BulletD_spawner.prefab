@@ -57,9 +57,9 @@ MonoBehaviour:
   fireInterval: 0.5
   needPrepareMessage: 1
   needPrepareEachLoop: 1
-  consumePower: 10
+  consumePower: 40
   fireActorType: 76
-  consumePowerByMainSlot: 15
+  consumePowerByMainSlot: 50
   fireActorTypeByMainSlot: 76
   attributeScaleByMainSlot: 1.5
   fireDirectionByShip: 0

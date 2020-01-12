@@ -43,35 +43,19 @@ namespace RN.Network.SpaceWar
 
         //
         public bool accelerateFire;
-        public float accelerateMessageTime;
 
-        public bool OnAccelerate(int accelerateLevel, float fixedDeltaTime, out bool accelerateMessage)
+        public bool OnAccelerate(int accelerateLevel)
         {
-            accelerateMessage = false;
-
-            var b = accelerateFire && accelerateLevel > 0;
-            if (b)
-            {
-                if (accelerateMessageTime == 0f)
-                {
-                    accelerateMessage = true;
-                }
-
-                if (accelerateMessageTime >= 1f)
-                {
-                    accelerateMessageTime = 0f;
-                }
-                else
-                {
-                    accelerateMessageTime += fixedDeltaTime;
-                }
-            }
-            else
-            {
-                accelerateMessageTime = 0f;
-            }
-            return b;
+            return accelerateFire && accelerateLevel > 0;
         }
+    }
+
+    [ShipEntity]
+    public struct ShipForceAttribute : IComponentData
+    {
+        public bool accelerate;
+        public float force;
+        public float torque;
     }
 
     [ShipEntity]

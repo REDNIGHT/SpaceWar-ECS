@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab867e666e1f8034897edf54fdce70c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceRemoveFxsInServer: 0
+  forceRemoveFxsInServer: 1
   actorSpawners:
   - {fileID: 572826587221713148, guid: 0d3e0ac8bcb757d4bbf44bcb7674e736, type: 3}
   - {fileID: 572826587221713148, guid: 420160d50f284804d822a18381b2d4fb, type: 3}
@@ -97,7 +97,6 @@ MonoBehaviour:
   - {fileID: 4562276720444775055, guid: bf8fdd1c575610545b9af948c36f1cdd, type: 3}
   - {fileID: 4562276720444775055, guid: fb5080a9aa89d7a42b7ded0dfa3fffad, type: 3}
   - {fileID: 6469751876581038942, guid: 799637d348e5ecb4bb56938dd28fbc08, type: 3}
-  - {fileID: 1875238814703621427, guid: 6fb0adb4be0b7624a80da404b35f482a, type: 3}
   - {fileID: -3011874944603571505, guid: bb3f32663ff7ef74984de24001d4eed3, type: 3}
   - {fileID: 5892791542324020613, guid: 7a6b5b9cf35d32b4f8c5f69c98239517, type: 3}
   root: {fileID: 0}

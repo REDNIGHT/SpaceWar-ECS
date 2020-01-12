@@ -28,8 +28,9 @@ namespace RN.Network.SpaceWar
         public float hpMaxOffset = -10f;
 
         public const int Raycast_TransformIndex = 0;
+        public const int Trail_TransformIndex = 1;
 
-        public override int[] removeTransformIndexInServer => null;
+        public override int[] removeTransformIndexInServer => new int[] { Trail_TransformIndex, };
 
         void OnValidate()
         {

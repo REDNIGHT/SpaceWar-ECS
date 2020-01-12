@@ -68,7 +68,7 @@ namespace RN.Network.SpaceWar
         public const int FireFx_TransformIndex = 2;
         public const int DestroyFx_TransformIndex = 3;
 
-        public const int WeaponItemCountFx_TransformIndex = 4;
+        public const int WeaponItemCount_TransformIndex = 4;
         public const int WeaponBaseModel_TransformIndex = 5;
 
         //public const int InstalledFx_TransformIndex = 5;
@@ -81,7 +81,7 @@ namespace RN.Network.SpaceWar
             FirePrepareFx_TransformIndex,
             FireFx_TransformIndex,
             DestroyFx_TransformIndex,
-            WeaponItemCountFx_TransformIndex,
+            WeaponItemCount_TransformIndex,
             WeaponBaseModel_TransformIndex,
             Model_TransformIndex,
 

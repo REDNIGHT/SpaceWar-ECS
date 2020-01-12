@@ -48,7 +48,7 @@ MonoBehaviour:
   prefabInClient: {fileID: 3175456126978940257, guid: 484e5529cfa2b1a40adea0ef40f51cac,
     type: 3}
   _actorType: 139
-  triggerCount: -1
+  triggerCount: 1
   delay: -1
   interval: 1
   maxCount: -1

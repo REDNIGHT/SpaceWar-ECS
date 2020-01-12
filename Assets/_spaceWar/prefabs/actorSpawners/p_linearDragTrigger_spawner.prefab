@@ -55,6 +55,6 @@ MonoBehaviour:
   tangentForce: 0
   torque: 0
   mode: 0
-  drag: 2.5
+  drag: 7.5
   angularDrag: 0
-  triggerFxResultStateInclude: 0
+  triggerFxResultStateInclude: 1

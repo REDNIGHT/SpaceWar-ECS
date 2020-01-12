@@ -9,15 +9,19 @@ namespace RN.Network.SpaceWar.Fx
         {
             Debug.Assert(actorSpawner.isClient == true, "isClient == true", this);
 
-            var ps = GetComponent<ParticleSystem>();
-            var shape = ps.shape;
-            shape.radius = actorSpawner.radius;
+            foreach (var ps in GetComponentsInChildren<ParticleSystem>())
+            {
+                if (ps.name == "_")
+                    continue;
+
+                var shape = ps.shape;
+                shape.radius = actorSpawner.radius;
+            }
         }
 
         public override void onDestroyFx(ExplosionSpawner actorSpawner)
         {
             Debug.Assert(actorSpawner.isClient == true, "isClient == true", this);
-            //在客户端 爆炸效果会自己删除
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using RN.Network;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace RN.Network.SpaceWar.Fx
@@ -11,19 +11,11 @@ namespace RN.Network.SpaceWar.Fx
 
         public override void onDestroyFx(MissileSpawner actorSpawner)
         {
-            var ps = transform.GetChild(MissileSpawner.fx_TransformIndex).GetComponent<ParticleSystem>();
-            if (ps != null)
-            {
-                ps.transform.parent = actorSpawner.root;
-                ps.Stop();
-            }
-            else
-            {
-                Debug.LogWarning($"ps == null  this={this}", this);
-            }
+            var fxT = transform.GetChild(MissileSpawner.fx_TransformIndex);
 
-            GameObject.Destroy(gameObject);
+            continueFx(fxT, actorSpawner);
+
+            this.destroyGO();
         }
     }
-
 }
