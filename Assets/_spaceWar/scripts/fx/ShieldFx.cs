@@ -1,5 +1,4 @@
-﻿using RN.Network;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace RN.Network.SpaceWar.Fx

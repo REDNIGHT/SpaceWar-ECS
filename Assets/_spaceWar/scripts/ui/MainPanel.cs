@@ -216,5 +216,10 @@ namespace RN.Network.SpaceWar
             yield return LoadingPanel.singleton.In();
             LoadingPanel.singleton.setProgress(SceneManager.LoadSceneAsync(1));
         }
+
+        protected void on_host(Button b)
+        {
+            Debug.LogWarning("//todo...");
+        }
     }
 }

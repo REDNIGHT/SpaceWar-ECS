@@ -29,7 +29,8 @@ namespace RN.Network.SpaceWar
                     var forceFxT = shipT.GetChild(ShipSpawner.ForceFx_TransformIndex);
 
                     var fx = forceFxT.GetComponent<IForceFx>();
-                    fx.OnPlayFx(shipForceAttribute);
+                    if (fx != null)
+                        fx.OnPlayFx(shipForceAttribute);
                 });
 
 

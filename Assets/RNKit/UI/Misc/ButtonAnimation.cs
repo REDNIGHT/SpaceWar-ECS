@@ -119,16 +119,26 @@ namespace RN.UI
 
             var b = GetComponent<Selectable>();
             var cs = b.colors;
-            cs.normalColor = buttonBGColor;
 
             var c = buttonBGColor;
-            c.a = 0.75f;
+
+            c.a = 1f;
+            cs.selectedColor = c;
+
+            c.a = 0.8f;
+            cs.normalColor = c;
+
+            c.a = 0.6f;
             cs.highlightedColor = c;
 
-            c.a = 0.5f;
+            c.a = 0.4f;
             cs.pressedColor = c;
 
-            cs.disabledColor = Color.black;
+            c = Color.grey;
+            c.a = 0.4f;
+            cs.disabledColor = c;
+
+
             b.colors = cs;
 
 

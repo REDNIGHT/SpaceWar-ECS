@@ -1,8 +1,8 @@
 using UnityEngine;
 
-#if POST_PROCESSING
+#if UNITY_POST_PROCESSING_STACK_V2
+using System.Linq;
 using UnityEngine.Rendering.PostProcessing;
-using UnityEngine.Experimental.Rendering.LightweightPipeline;
 #endif
 
 namespace RN
@@ -12,6 +12,10 @@ namespace RN
         protected void Start()
         {
             //
+#if UNITY_POST_PROCESSING_STACK_V2
+            postProcessProfile = Camera.main.GetComponentInChildren<PostProcessVolume>().profile;
+            Debug.Assert(postProcessProfile != null);
+#endif
             read();
         }
 
@@ -41,7 +45,8 @@ namespace RN
             }
         }
 
-        /*public bool FXAA
+#if UNITY_POST_PROCESSING_STACK_V2
+        public bool FXAA
         {
             get
             {
@@ -51,14 +56,9 @@ namespace RN
             {
                 Camera.main.GetComponent<PostProcessLayer>().antialiasingMode = value ? PostProcessLayer.Antialiasing.FastApproximateAntialiasing : PostProcessLayer.Antialiasing.None;
             }
-        }*/
+        }
 
-#if POST_PROCESSING
-        public PostProcessProfile postProcessProfile;
-            
-        //public bool defaultFXAA = false;
-        public bool defaultBloom = false;
-        public bool defaultDepthOfField = false;
+        PostProcessProfile postProcessProfile;
 
         public bool bloom
         {
@@ -68,7 +68,7 @@ namespace RN
             }
             set
             {
-                postProcessProfile.settings.Where(x => (x is DepthOfField || x is AmbientOcclusion) == false).forEach(x => x.active = value);
+                postProcessProfile.settings.Find(x => x is Bloom).active = value;
             }
         }
 
@@ -84,7 +84,7 @@ namespace RN
             }
         }
 
-        /*public bool ambientOcclusion
+        public bool ambientOcclusion
         {
             get
             {
@@ -94,10 +94,33 @@ namespace RN
             {
                 postProcessProfile.settings.Find(x => x is AmbientOcclusion).active = value;
             }
-        }*/
+        }
 
-        public LightweightPipelineAsset[] lightweightPipelineAssets;
+        public bool vignette
+        {
+            get
+            {
+                return postProcessProfile.settings.Find(x => x is Vignette).active;
+            }
+            set
+            {
+                postProcessProfile.settings.Find(x => x is Vignette).active = value;
+            }
+        }
+
+        public bool autoExposure
+        {
+            get
+            {
+                return postProcessProfile.settings.Find(x => x is AutoExposure).active;
+            }
+            set
+            {
+                postProcessProfile.settings.Find(x => x is AutoExposure).active = value;
+            }
+        }
 #endif
+
         public int qualityLevel
         {
             get
@@ -106,12 +129,12 @@ namespace RN
             }
             set
             {
+                if (value >= qualityLevelCount)
+                    value = 0;
                 QualitySettings.SetQualityLevel(value);
 
-#if POST_PROCESSING
-                if (value >= lightweightPipelineAssets.Length)
-                    value = 0;
-                GraphicsSettings.renderPipelineAsset = lightweightPipelineAssets[value];
+#if false
+                UnityEngine.Rendering.GraphicsSettings.renderPipelineAsset = ???;
 #endif
             }
         }
@@ -121,40 +144,63 @@ namespace RN
             get { return QualitySettings.names[QualitySettings.GetQualityLevel()]; }
         }
 
+        public int qualityLevelCount
+        {
+            get { return QualitySettings.names.Length; }
+        }
+
         //
-        public int defaultQualityLevel = 2;
         void read()
         {
             volume = PlayerPrefs.GetFloat(this + ".volume", volume);
             //BGMVolume = PlayerPrefs.GetFloat(this + ".BGMVolume", BGMVolume);
 
-#if POST_PROCESSING
-            //FXAA = PlayerPrefsX.GetBool(this + ".FXAA", defaultFXAA);
-            bloom = PlayerPrefsX.GetBool(this + ".bloom", defaultBloom);
-            depthOfField = PlayerPrefsX.GetBool(this + ".depthOfField", defaultDepthOfField);
-            //ambientOcclusion = PlayerPrefsX.GetBool(this + ".ambientOcclusion", ambientOcclusion);
+#if UNITY_POST_PROCESSING_STACK_V2
+            FXAA = PlayerPrefsX.GetBool(this + ".FXAA", FXAA);
+            bloom = PlayerPrefsX.GetBool(this + ".bloom", bloom);
+            depthOfField = PlayerPrefsX.GetBool(this + ".depthOfField", depthOfField);
+            ambientOcclusion = PlayerPrefsX.GetBool(this + ".ambientOcclusion", ambientOcclusion);
+            vignette = PlayerPrefsX.GetBool(this + ".vignette", vignette);
+            autoExposure = PlayerPrefsX.GetBool(this + ".autoExposure", autoExposure);
 #endif
 
-            qualityLevel = PlayerPrefs.GetInt(this + ".qualityLevel", defaultQualityLevel);
-
-            //fps = PlayerPrefs.GetInt(this + ".fps", fps);
+            qualityLevel = PlayerPrefs.GetInt(this + ".qualityLevel", QualitySettings.GetQualityLevel());
         }
         public void save()
         {
             PlayerPrefs.SetFloat(this + ".volume", volume);
             //PlayerPrefs.SetFloat(this + ".BGMVolume", BGMVolume);
 
-#if POST_PROCESSING
-            //PlayerPrefsX.SetBool(this + ".FXAA", FXAA);
+#if UNITY_POST_PROCESSING_STACK_V2
+            PlayerPrefsX.SetBool(this + ".FXAA", FXAA);
             PlayerPrefsX.SetBool(this + ".bloom", bloom);
             PlayerPrefsX.SetBool(this + ".depthOfField", depthOfField);
-            //PlayerPrefsX.SetBool(this + ".ambientOcclusion", ambientOcclusion);
+            PlayerPrefsX.SetBool(this + ".ambientOcclusion", ambientOcclusion);
+            PlayerPrefsX.SetBool(this + ".vignette", vignette);
+            PlayerPrefsX.SetBool(this + ".autoExposure", autoExposure);
 
-            PlayerPrefs.SetInt(this + ".qualityLevel", qualityLevel);
 #endif
-            //PlayerPrefs.GetInt(this + ".fps", fps);
+            PlayerPrefs.SetInt(this + ".qualityLevel", qualityLevel);
 
             PlayerPrefs.Save();
+        }
+
+        [RN._Editor.ButtonInEndArea]
+        public void clear()
+        {
+            PlayerPrefs.DeleteKey(this + ".volume");
+            //PlayerPrefs.DeleteKey(this + ".BGMVolume");
+
+#if UNITY_POST_PROCESSING_STACK_V2
+            PlayerPrefs.DeleteKey(this + ".FXAA");
+            PlayerPrefs.DeleteKey(this + ".bloom");
+            PlayerPrefs.DeleteKey(this + ".depthOfField");
+            PlayerPrefs.DeleteKey(this + ".ambientOcclusion");
+            PlayerPrefs.DeleteKey(this + ".vignette");
+            PlayerPrefs.DeleteKey(this + ".autoExposure");
+
+#endif
+            PlayerPrefs.DeleteKey(this + ".qualityLevel");
         }
     }
 }
