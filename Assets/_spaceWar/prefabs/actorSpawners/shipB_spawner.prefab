@@ -104,7 +104,7 @@ MonoBehaviour:
     prepare: 1
     interval: 8
     duration: 6
-    consumePower: 45
+    consumePower: 90
     torque: 0.1
     maxTorque: 2
   shield1:
@@ -112,7 +112,7 @@ MonoBehaviour:
     prepare: 1
     interval: 10
     duration: 8
-    consumePower: 50
+    consumePower: 100
     torque: 0.1
     maxTorque: 2
   shield2:
@@ -120,7 +120,7 @@ MonoBehaviour:
     prepare: 1
     interval: 12
     duration: 10
-    consumePower: 55
+    consumePower: 110
     torque: 0.1
     maxTorque: 2
   mass: 0.7

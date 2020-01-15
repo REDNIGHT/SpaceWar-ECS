@@ -21,6 +21,10 @@ namespace RN.Network.SpaceWar
             public Transform hitFxPrefab;
         }
         public Transform defaultHitFxPrefab;
+
+        /// <summary>
+        /// 子弹,导弹,恢复等击中的效果
+        /// </summary>
         public HitFxInfo[] hitFxInfos;
         Dictionary<ActorTypes, Transform> hitFxInfoMap = new Dictionary<ActorTypes, Transform>();
 

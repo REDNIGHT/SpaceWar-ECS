@@ -56,10 +56,10 @@ namespace RN.Network.SpaceWar
         //
         public const int OnTrigger_TransformIndex = 0;
         public const int Raycast_TransformIndex = 1;
-        public const int fx_TransformIndex = 2;
+        public const int Fx_TransformIndex = 2;
         public const int Model_TransformIndex = 3;
 
-        public override int[] removeTransformIndexInServer => new int[] { fx_TransformIndex, Model_TransformIndex, };
+        public override int[] removeTransformIndexInServer => new int[] { Fx_TransformIndex, Model_TransformIndex, };
 
         void OnValidate()
         {

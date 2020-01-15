@@ -258,7 +258,7 @@ namespace RN.Network
 
 
             //
-            foreach (var t in prefabInServer.GetComponentsInChildren<Transform>())
+            foreach (var t in prefabInServer.GetComponentsInChildren<Transform>(true))
             {
                 if (t == null)
                     continue;

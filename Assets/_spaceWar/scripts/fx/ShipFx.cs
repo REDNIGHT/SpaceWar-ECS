@@ -24,11 +24,21 @@ namespace RN.Network.SpaceWar.Fx
 
 
             playDestroyFx(destroyFxT, actorSpawner);
-            continueFx(forceFxT, actorSpawner);
+            continueMultiFxs(forceFxT, actorSpawner);
 
 
             //
             this.destroyGO();
+        }
+
+
+        private void OnValidate()
+        {
+            var destroyFxT = transform.GetChild(ShipSpawner.DestroyFx_TransformIndex);
+            validateDestroyFx(destroyFxT);
+
+            var forceFxT = transform.GetChild(ShipSpawner.ForceFx_TransformIndex);
+            validateContinueFx(forceFxT);
         }
     }
 }

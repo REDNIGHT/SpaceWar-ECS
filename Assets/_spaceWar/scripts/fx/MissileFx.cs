@@ -11,11 +11,17 @@ namespace RN.Network.SpaceWar.Fx
 
         public override void onDestroyFx(MissileSpawner actorSpawner)
         {
-            var fxT = transform.GetChild(MissileSpawner.fx_TransformIndex);
+            var fxT = transform.GetChild(MissileSpawner.Fx_TransformIndex);
 
             continueFx(fxT, actorSpawner);
 
             this.destroyGO();
+        }
+
+        private void OnValidate()
+        {
+            var fxT = transform.GetChild(MissileSpawner.Fx_TransformIndex);
+            validateContinueFx(fxT);
         }
     }
 }

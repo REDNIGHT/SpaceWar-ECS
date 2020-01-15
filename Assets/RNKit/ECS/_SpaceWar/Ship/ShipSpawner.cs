@@ -74,6 +74,20 @@ namespace RN.Network.SpaceWar
             Model_TransformIndex,
         };
 
+        public override void RemoveFxs()
+        {
+            base.RemoveFxs();
+
+            foreach (var s in prefabInServer.GetComponentsInChildren<SlotInfo>(true))
+            {
+                s.enabled = false;
+            }
+            foreach (var s in prefabInServer.GetComponentsInChildren<Fx.ShieldFx>(true))
+            {
+                s.destroy();
+            }
+        }
+
         void OnValidate()
         {
             if (_actorType > ActorTypes.__Ship_Begin__ && _actorType < ActorTypes.__Ship_End__)

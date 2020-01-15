@@ -6,17 +6,17 @@ public static class ParticleSystemEx
     public static void autoDestroyRootParticleSystem(this Component psRoot, bool stop)
     {
         var ps = psRoot.GetComponentInChildren<ParticleSystem>();
-        ps.startCoroutine(ps.autoDestroyRootParticleSystemE(stop, psRoot));
+        ps.autoDestroyRootParticleSystemE(stop, psRoot).startCoroutine();
     }
 
     public static void autoDestroyRootParticleSystem(this ParticleSystem psRoot, bool stop)
     {
-        psRoot.startCoroutine(psRoot.autoDestroyRootParticleSystemE(stop));
+        psRoot.autoDestroyRootParticleSystemE(stop).startCoroutine();
     }
 
     public static void autoDestroyMultiParticleSystem(this Component psRoot, bool stop)
     {
-        psRoot.startCoroutine(psRoot.autoDestroyMultiParticleSystemE(stop));
+        psRoot.autoDestroyMultiParticleSystemE(stop).startCoroutine();
     }
 
     public static IEnumerator autoDestroyRootParticleSystemE(this ParticleSystem ps, bool stop, Component root = null)

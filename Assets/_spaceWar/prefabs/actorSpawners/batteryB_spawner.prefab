@@ -50,4 +50,5 @@ MonoBehaviour:
   _actorType: 186
   HP: 750
   HPRegain: 1
+  followParent: 1
   targetVelocityScale: 0

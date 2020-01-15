@@ -97,6 +97,7 @@ namespace RN.Network.SpaceWar
 
     public interface IShieldFx
     {
+        void OnEnable();
         void OnDestroyFx();
     }
 }

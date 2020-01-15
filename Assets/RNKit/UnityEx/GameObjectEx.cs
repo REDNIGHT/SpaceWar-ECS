@@ -801,8 +801,13 @@ public static class GameObjectEx
         }
     }
 
+    public static void startCoroutine(this IEnumerator routine)
+    {
+        CoroutineManager.singleton.StartCoroutine(routine);
+    }
+
     static Dictionary<object, Coroutine> coroutineMap = new Dictionary<object, Coroutine>();
-    public static void startCoroutine(this object key, IEnumerator routine)
+    public static void startCoroutine(this IEnumerator routine, object key)
     {
         Coroutine coroutine;
         if (coroutineMap.TryGetValue(key, out coroutine))
@@ -812,7 +817,6 @@ public static class GameObjectEx
 
         CoroutineManager.singleton.StartCoroutine(routine);
     }
-
     public static void stopCoroutine(this object key)
     {
         Coroutine coroutine;

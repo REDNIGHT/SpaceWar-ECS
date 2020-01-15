@@ -16,5 +16,11 @@ namespace RN.Network.SpaceWar.Fx
 
             this.destroyGO();
         }
+
+        private void OnValidate()
+        {
+            var destroyFxT = transform.GetChild(BatterySpawner.DestroyFx_TransformIndex);
+            validateDestroyFx(destroyFxT);
+        }
     }
 }
