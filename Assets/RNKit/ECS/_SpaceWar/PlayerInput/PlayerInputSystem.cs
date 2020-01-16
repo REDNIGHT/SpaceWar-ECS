@@ -354,10 +354,9 @@ namespace RN.Network.SpaceWar
 
             //
             rootPlane = new Plane(Vector3.up, root.position);
-            controller = GameObject.FindObjectOfType<CameraControllerSetting>();
 
             var singletonEntity = GetSingletonEntity<MyPlayerSingleton>();
-            EntityManager.AddComponent<MouseSingleton>(singletonEntity);
+            EntityManager.AddComponent<MouseDataSingleton>(singletonEntity);
 
 
             //
@@ -374,41 +373,51 @@ namespace RN.Network.SpaceWar
         }
 
         Plane rootPlane;
-        bool getMousePointOnRootPlane(out Vector3 point)
+        bool getMousePointOnRootPlane(out float3 point)
         {
             var ray = Camera.main.ScreenPointToRay(mouseInput.screenPosition);
-            return rootPlane.raycast(ray, out point);
+            var b = rootPlane.raycast(ray, out Vector3 p);
+            point = p;
+            return b;
         }
 
-        Transform cameraTarget;
         public float mousePointMaxDistance = 50f;
-        public CameraControllerSetting controller { set { cameraTarget = value.transform.Find("target"); } }
-        void updateMouse(ref MouseSingleton mouseSingleton)
+        void updateMouse(ref MouseDataSingleton mouseData)
         {
-            mouseSingleton = GetSingleton<MouseSingleton>();
+            mouseData = default;
+            var cameraData = GetSingleton<CameraDataSingleton>();
             if (getMousePointOnRootPlane(out var mousePoint))
             {
-                var distance = mousePoint - cameraTarget.position;
-                if (distance == Vector3.zero)
+                var direction = mousePoint - cameraData.targetPosition;
+
+                if (direction.Equals(float3.zero))
                 {
-                    mouseSingleton.point = mousePoint;
-                    mouseSingleton.direction = new float3(0f, 0f, 1f);
+                    mouseData.point = mousePoint;
+                    mouseData.direction = new float3(0f, 0f, 1f);
                 }
                 else
                 {
-                    var direction = distance;
                     direction.y = 0;
-                    direction = math.normalize(distance);
-                    if (math.length(distance) > mousePointMaxDistance)
+                    direction = math.normalize(direction);
+                    var distance = math.length(direction);
+                    if (distance > mousePointMaxDistance)
                     {
-                        mousePoint = cameraTarget.position + direction * mousePointMaxDistance;
+                        distance = mousePointMaxDistance;
+                        mousePoint = cameraData.targetPosition + direction * mousePointMaxDistance;
                     }
 
-                    mouseSingleton.point = mousePoint;
-                    mouseSingleton.direction = direction;
+                    mouseData.point = mousePoint;
+                    mouseData.direction = direction;
+                    mouseData.distance = distance;
                 }
-                SetSingleton(mouseSingleton);
             }
+            else
+            {
+                mouseData.point = cameraData.targetPosition;
+                mouseData.direction = new float3(0f, 0f, 1f);
+            }
+
+            SetSingleton(mouseData);
         }
 
 
@@ -418,7 +427,7 @@ namespace RN.Network.SpaceWar
         bool actorInput()
         {
             //
-            MouseSingleton mouseSingleton = default;
+            MouseDataSingleton mouseSingleton = default;
             updateMouse(ref mouseSingleton);
 
 
@@ -495,7 +504,7 @@ namespace RN.Network.SpaceWar
                                     accelerate = input.GetButton(PlayerInputActions.Accelerate),
                                 }
                             };
-                            
+
                             if (math.distance(s.observerPosition, lastShipMoveInput.observerPosition) > 10f
                             || s.shipMoveInput.moveForward != lastShipMoveInput.shipMoveInput.moveForward
                             || s.shipMoveInput.moveBack != lastShipMoveInput.shipMoveInput.moveBack

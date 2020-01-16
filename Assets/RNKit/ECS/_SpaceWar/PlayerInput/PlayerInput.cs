@@ -103,10 +103,11 @@ namespace RN.Network.SpaceWar
         }
     }
 
-    public struct MouseSingleton : IComponentData
+    public struct MouseDataSingleton : IComponentData
     {
         public float3 point;
         public float3 direction;
+        public float distance;
     }
 
 

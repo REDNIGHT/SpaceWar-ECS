@@ -33,7 +33,7 @@ namespace RN.Network.SpaceWar
 
 
             var myTeamPlayerCount = 0;
-            var cameraControllerSingleton = GetSingleton<CameraControllerSingleton>();
+            var cameraControllerSingleton = GetSingleton<CameraDataSingleton>();
             //
             Entities
                 .WithAllReadOnly<TActor, ActorOwner, Transform>()

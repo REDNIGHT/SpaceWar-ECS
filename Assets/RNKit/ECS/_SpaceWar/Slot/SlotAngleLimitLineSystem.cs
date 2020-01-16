@@ -56,7 +56,7 @@ namespace RN.Network.SpaceWar
 
         void update()
         {
-            getShipSlotList()?.update(GetSingleton<MouseSingleton>().point);
+            getShipSlotList()?.update(GetSingleton<MouseDataSingleton>().point);
         }
 
         protected override void OnUpdate()

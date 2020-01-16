@@ -34,7 +34,7 @@ namespace RN.Network.SpaceWar
                     }
                 });
 
-            var cameraControllerSingleton = GetSingleton<CameraControllerSingleton>();
+            var cameraControllerSingleton = GetSingleton<CameraDataSingleton>();
             Entities
                 .WithAllReadOnly<ActorAttributePanel, Ship, ActorAttribute3<_HP>, ActorAttribute3<_Power>>()
                 .WithNone<OnDestroyMessage>()
