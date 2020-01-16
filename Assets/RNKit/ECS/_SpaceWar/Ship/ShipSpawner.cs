@@ -57,7 +57,7 @@ namespace RN.Network.SpaceWar
         public const int Colliders_TransformIndex = 3;
         public const int Model_TransformIndex = 4;
         public const int ForceFx_TransformIndex = 5;
-        public const int DisableInputFx_TransformIndex = 6;
+        public const int LostInputFx_TransformIndex = 6;
         public const int DestroyFx_TransformIndex = 7;
         public const int Locator_TransformIndex = 8;
         public const int UI_TransformIndex = 9;
@@ -67,7 +67,7 @@ namespace RN.Network.SpaceWar
         {
             Model_TransformIndex,
             ForceFx_TransformIndex,
-            DisableInputFx_TransformIndex,
+            LostInputFx_TransformIndex,
             DestroyFx_TransformIndex,
             Locator_TransformIndex,
             UI_TransformIndex,

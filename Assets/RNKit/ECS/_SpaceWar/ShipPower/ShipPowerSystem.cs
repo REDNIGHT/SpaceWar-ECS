@@ -216,15 +216,15 @@ namespace RN.Network.SpaceWar
 
                     //
                     var shipT = EntityManager.GetComponentObject<Transform>(actorCreator.entity);
-                    var disableInputFxT = shipT.GetChild(ShipSpawner.DisableInputFx_TransformIndex);
-                    var fx = disableInputFxT.GetComponent<IShipLostInputFx>();
+                    var lostInputT = shipT.GetChild(ShipSpawner.LostInputFx_TransformIndex);
+                    var fx = lostInputT.GetComponent<IShipLostInputFx>();
                     if (fx != null)
                     {
                         fx.OnPlayFx(shipLostInputFx.time);
                     }
                     else
                     {
-                        disableInputFxT.gameObject.SetActive(true);
+                        lostInputT.gameObject.SetActive(true);
                     }
                 });
         }
