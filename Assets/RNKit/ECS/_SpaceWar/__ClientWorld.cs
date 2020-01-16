@@ -44,10 +44,7 @@ namespace RN.Network.SpaceWar
         [Header("ActorLocatorSystem<Ship>")]
         public float distanceMin = 2f;
         public float distanceScale = 0.005f;
-
-        [Header("ActorAttributePanel")]
-        public ActorAttributePanel shipAttributePanelPrefab;
-
+        
         void Awake()
         {
             if (string.IsNullOrEmpty(__ip))
@@ -97,11 +94,7 @@ namespace RN.Network.SpaceWar
             var shipLocatorSystem = world.GetExistingSystem<ActorLocatorSystem<Ship>>();
             shipLocatorSystem.distanceMin = distanceMin;
             shipLocatorSystem.distanceScale = distanceScale;
-
-            //
-            var actorAttributeUISystem = world.GetExistingSystem<ActorAttributePanelSystem>();
-            actorAttributeUISystem.shipAttributePanelPrefab = shipAttributePanelPrefab;
-
+            
             //
             var playerNameClientSystem = world.GetExistingSystem<PlayerNameClientSystem>();
             playerNameClientSystem.minPlayerNameCount = minPlayerNameCount;
@@ -218,6 +211,7 @@ namespace RN.Network.SpaceWar
 
 
         //
+        [Header("Player")]
         public string myPlayerName;
 
         public int myPlayerTeam;

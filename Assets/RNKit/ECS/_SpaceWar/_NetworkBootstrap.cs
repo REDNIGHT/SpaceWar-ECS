@@ -339,9 +339,7 @@ namespace RN.Network.SpaceWar
                     new CameraControllerSystem(),
                     new ActorLocatorSystem<Ship>
                     {
-                        Name_TransformIndex = ShipSpawner.Name_TransformIndex,
-                        MyLocator_TransformIndex = ShipSpawner.MyLocator_TransformIndex,
-                        TeamLocators_TransformIndex = ShipSpawner.TeamLocators_TransformIndex
+                        Locator_TransformIndex = ShipSpawner.Locator_TransformIndex,
                     },
                     new ActorAttributePanelSystem(),
 

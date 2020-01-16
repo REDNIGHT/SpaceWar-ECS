@@ -61,10 +61,8 @@ MonoBehaviour:
   fadeOutTime: 0.25
   maxAngle: 45
   mousePointMaxDistance: 50
-  distanceMin: 2
-  distanceScale: 0.005
-  shipAttributePanelPrefab: {fileID: -5272953987108030148, guid: 6b61ed20191e5e842b88498599d18e9f,
-    type: 3}
+  distanceMin: 2.5
+  distanceScale: 0.01
   myPlayerName: 
   myPlayerTeam: 0
   myActorType: 1

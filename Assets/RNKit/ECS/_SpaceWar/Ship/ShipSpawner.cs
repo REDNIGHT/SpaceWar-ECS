@@ -54,24 +54,23 @@ namespace RN.Network.SpaceWar
         public const int Slots_TransformIndex = 0;
         public const int AssistSlots_TransformIndex = 1;
         public const int ShieldRoot_TransformIndex = 2;
-        public const int ForceFx_TransformIndex = 3;
-        public const int DisableInputFx_TransformIndex = 4;
-        public const int DestroyFx_TransformIndex = 5;
-        public const int Name_TransformIndex = 6;
-        public const int MyLocator_TransformIndex = 7;
-        public const int TeamLocators_TransformIndex = 8;
-        public const int Colliders_TransformIndex = 9;
-        public const int Model_TransformIndex = 10;
+        public const int Colliders_TransformIndex = 3;
+        public const int Model_TransformIndex = 4;
+        public const int ForceFx_TransformIndex = 5;
+        public const int DisableInputFx_TransformIndex = 6;
+        public const int DestroyFx_TransformIndex = 7;
+        public const int Locator_TransformIndex = 8;
+        public const int UI_TransformIndex = 9;
+        public const int __UI_AttributePanel_TransformIndex = 0;
 
         public override int[] removeTransformIndexInServer => new int[]
         {
+            Model_TransformIndex,
             ForceFx_TransformIndex,
             DisableInputFx_TransformIndex,
             DestroyFx_TransformIndex,
-            Name_TransformIndex,
-            MyLocator_TransformIndex,
-            TeamLocators_TransformIndex,
-            Model_TransformIndex,
+            Locator_TransformIndex,
+            UI_TransformIndex,
         };
 
         public override void RemoveFxs()

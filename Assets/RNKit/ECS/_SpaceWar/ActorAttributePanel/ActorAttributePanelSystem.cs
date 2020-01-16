@@ -7,8 +7,6 @@ namespace RN.Network.SpaceWar
     //[AlwaysUpdateSystem]
     public class ActorAttributePanelSystem : ComponentSystem
     {
-        public ActorAttributePanel shipAttributePanelPrefab;
-
         protected override void OnUpdate()
         {
             Entity myActorEntity = default;
@@ -24,24 +22,25 @@ namespace RN.Network.SpaceWar
                 .WithAllReadOnly<Ship, OnCreateMessage, Transform>()
                 .ForEach((Entity actorEntity, Transform actorTransform) =>
                 {
+                    var ui_AttributePanelT = actorTransform
+                        .GetChild(ShipSpawner.UI_TransformIndex)
+                        .GetChild(ShipSpawner.__UI_AttributePanel_TransformIndex);
+
+                    ui_AttributePanelT.gameObject.SetActive(myActorEntity == actorEntity);
+
                     if (myActorEntity == actorEntity)
                     {
-                        var ui = GameObject.Instantiate(shipAttributePanelPrefab);
-                        ui.transform.parent = actorTransform;
-                        ui.transform.localPosition = Vector3.zero;
-
-                        EntityManager.AddComponentObject(actorEntity, ui);
+                        EntityManager.AddComponentObject(actorEntity, ui_AttributePanelT.GetComponent<ActorAttributePanel>());
                     }
                 });
 
-            var cameraControllerSingleton = GetSingleton<CameraDataSingleton>();
+            var cameraData = GetSingleton<CameraDataSingleton>();
             Entities
                 .WithAllReadOnly<ActorAttributePanel, Ship, ActorAttribute3<_HP>, ActorAttribute3<_Power>>()
                 .WithNone<OnDestroyMessage>()
-                .ForEach((Entity actorEntity, ActorAttributePanel actorAttributeUI, ref ActorAttribute3<_HP> hp, ref ActorAttribute3<_Power> power) =>
+                .ForEach((ActorAttributePanel actorAttributeUI, ref ActorAttribute3<_HP> hp, ref ActorAttribute3<_Power> power) =>
                 {
-                    actorAttributeUI.setAttributes(hp, power);
-                    actorAttributeUI.transform.rotation = cameraControllerSingleton.targetRotation;
+                    actorAttributeUI.setAttributes(hp, power, cameraData);
                 });
         }
     }
