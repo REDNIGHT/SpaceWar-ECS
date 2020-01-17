@@ -67,23 +67,24 @@ namespace RN.Network.SpaceWar
         public const int FirePrepareFx_TransformIndex = 1;
         public const int FireFx_TransformIndex = 2;
         public const int DestroyFx_TransformIndex = 3;
-
-        public const int WeaponItemCount_TransformIndex = 4;
-        public const int WeaponBaseModel_TransformIndex = 5;
+        public const int Mask_TransformIndex = 4;
+        public const int UI_TransformIndex = 5;
+        public const int __UI_AttributePanel_TransformIndex = 0;
+        public const int Model_TransformIndex = 6;
+        public const int BaseModel_TransformIndex = 7;
 
         //public const int InstalledFx_TransformIndex = 5;
         //public const int UninstallFx_TransformIndex = 6;
-
-        public const int Model_TransformIndex = 6;
 
         public override int[] removeTransformIndexInServer => new int[]
         {
             FirePrepareFx_TransformIndex,
             FireFx_TransformIndex,
             DestroyFx_TransformIndex,
-            WeaponItemCount_TransformIndex,
-            WeaponBaseModel_TransformIndex,
+            Mask_TransformIndex,
+            UI_TransformIndex,
             Model_TransformIndex,
+            BaseModel_TransformIndex,
 
             //InstalledFx_TransformIndex,
             //UninstallFx_TransformIndex,
@@ -99,7 +100,6 @@ namespace RN.Network.SpaceWar
 
             _actorType = ActorTypes.__Weapon_Begin__ + 1;
         }
-
 
         private void Awake()
         {
@@ -197,8 +197,10 @@ namespace RN.Network.SpaceWar
 
             yield return (CS_D, typeof(WeaponAttribute),                          /**/ (e, m) => m.SetComponentData(e, new WeaponAttribute { hp = hp, itemCount = itemCount }));
             yield return (CS_D, typeof(Weapon),                                   /**/ (e, m) => m.SetComponentData(e, new Weapon { type = weaponType, autoFire = autoFire }));
-        }
 
+
+            yield return (C__D, typeof(TransformRotationByCamera),                /**/ null);
+        }
 
         public override ushort OnCreateSerializeInServer(ref ActorCreateDatas datas, Entity actorEntity)
         {

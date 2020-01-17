@@ -31,7 +31,6 @@ namespace RN.Network.SpaceWar
 
 
             var memberCount = 0;
-            var cameraData = GetSingleton<CameraDataSingleton>();
             //
             Entities
                 .WithAllReadOnly<TActor, ActorOwner, Transform>()
@@ -43,7 +42,7 @@ namespace RN.Network.SpaceWar
 
                     if (actorT == myActorT)//myself
                     {
-                        myActorLocator.setMyself(cameraData);
+                        myActorLocator.setMyself();
                         return;
                     }
 
@@ -54,7 +53,7 @@ namespace RN.Network.SpaceWar
 
                     if (playerTeamId != 0 && playerTeamId == myPlayerTeamId)//my team
                     {
-                        actorLocator.setMemberMask(true, cameraData);
+                        actorLocator.setMemberMask(true);
 
                         if (myActorLocator != null)
                         {
@@ -63,11 +62,11 @@ namespace RN.Network.SpaceWar
                     }
                     else//other team
                     {
-                        actorLocator.setMemberMask(false, cameraData);
+                        actorLocator.setMemberMask(false);
                     }
 
 
-                    actorLocator.setName(playerName, cameraData);
+                    actorLocator.setName(playerName);
                 });
 
 

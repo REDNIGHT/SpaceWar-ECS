@@ -15,7 +15,7 @@ namespace RN.Network.SpaceWar
             clearMyMemberArrows(0);
         }
 
-        public void setMyself(in CameraDataSingleton cameraData)
+        public void setMyself()
         {
             transform.GetChild(Name_TransformIndex).gameObject.SetActive(false);
 
@@ -61,19 +61,19 @@ namespace RN.Network.SpaceWar
 
 
 
-        public void setName(string playerName, in CameraDataSingleton cameraData)
+        public void setName(string playerName)
         {
             var nameT = transform.GetChild(Name_TransformIndex);
             nameT.GetComponentInChildren<TextMesh>().text = playerName;
 
-            nameT.transform.rotation = cameraData.targetRotation;
+            //nameT.transform.rotation = cameraData.targetRotation;
         }
-        public void setMemberMask(bool v, in CameraDataSingleton cameraData)
+        public void setMemberMask(bool v)
         {
             transform.GetChild(MemberMask_TransformIndex).gameObject.SetActive(v);
 
-            if (v)
-                transform.GetChild(MemberMask_TransformIndex).rotation = cameraData.targetRotation;
+            //if (v)
+            //    transform.GetChild(MemberMask_TransformIndex).rotation = cameraData.targetRotation;
         }
     }
 }

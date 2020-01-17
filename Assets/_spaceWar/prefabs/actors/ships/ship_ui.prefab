@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3138352047184127374}
-  - component: {fileID: 6574258144992204995}
+  - component: {fileID: 3463409175392815684}
   m_Layer: 8
   m_Name: attributePanel
   m_TagString: Untagged
@@ -39,7 +39,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &6574258144992204995
+--- !u!114 &3463409175392815684
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 859929080205867980}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcf9988cc0f3b7f41b80f183ff62417c, type: 3}
+  m_Script: {fileID: 11500000, guid: cdcc1da13392c61408049e986b81c11a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attributes: {fileID: 6165966896318421673}
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 7838282195796117818}
   - component: {fileID: 1231344033017273201}
   m_Layer: 8
-  m_Name: ui
+  m_Name: ship_ui
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -545,18 +545,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7297837839614766553}
-  m_LocalRotation: {x: -0, y: -0, z: 0.38268343, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: 0, z: 0.2588191, w: 0.9659258}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3138352047184127374}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45.000004}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -309, y: -91.5}
-  m_SizeDelta: {x: 100, y: 3}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 30}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -274.25, y: -6.3}
+  m_SizeDelta: {x: 125, y: 3}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &4315464719834084428
 CanvasRenderer:
   m_ObjectHideFlags: 0

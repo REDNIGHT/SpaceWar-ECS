@@ -5,7 +5,7 @@ namespace RN.Network.SpaceWar
 {
     [DisableAutoCreation]
     //[AlwaysUpdateSystem]
-    public class ActorAttributePanelSystem : ComponentSystem
+    public class ShipAttributePanelClientSystem : ComponentSystem
     {
         protected override void OnUpdate()
         {
@@ -31,17 +31,16 @@ namespace RN.Network.SpaceWar
 
                     if (myActorEntity == actorEntity)
                     {
-                        EntityManager.AddComponentObject(actorEntity, ui_AttributePanelT.GetComponent<ActorAttributePanel>());
+                        EntityManager.AddComponentObject(actorEntity, ui_AttributePanelT.GetComponent<ShipAttributePanel>());
                     }
                 });
 
-            var cameraData = GetSingleton<CameraDataSingleton>();
             Entities
-                .WithAllReadOnly<ActorAttributePanel, Ship, ActorAttribute3<_HP>, ActorAttribute3<_Power>>()
+                .WithAllReadOnly<ShipAttributePanel, Ship, ActorAttribute3<_HP>, ActorAttribute3<_Power>>()
                 .WithNone<OnDestroyMessage>()
-                .ForEach((ActorAttributePanel actorAttributeUI, ref ActorAttribute3<_HP> hp, ref ActorAttribute3<_Power> power) =>
+                .ForEach((ShipAttributePanel actorAttributeUI, ref ActorAttribute3<_HP> hp, ref ActorAttribute3<_Power> power) =>
                 {
-                    actorAttributeUI.setAttributes(hp, power, cameraData);
+                    actorAttributeUI.setAttributes(hp, power);
                 });
         }
     }

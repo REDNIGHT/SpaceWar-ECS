@@ -60,6 +60,8 @@ namespace RN.Network.SpaceWar
         public const int LostInputFx_TransformIndex = 6;
         public const int DestroyFx_TransformIndex = 7;
         public const int Locator_TransformIndex = 8;
+        public const int __Locator_Name_TransformIndex = 0;
+        public const int __Locator_Mask_TransformIndex = 1;
         public const int UI_TransformIndex = 9;
         public const int __UI_AttributePanel_TransformIndex = 0;
 
@@ -177,9 +179,13 @@ namespace RN.Network.SpaceWar
                     accelerate2 = accelerate2
                 }));
 
-            yield return (C__P, typeof(ActorAttributePanel),                /**/ null);
-            yield return (CS_D, typeof(Ship),                               /**/ null);
+            yield return (C__P, typeof(ShipAttributePanel),                /**/ null);
+            yield return (CS_D, typeof(Ship),                              /**/ null);
+
+
+            yield return (C__D, typeof(TransformRotationByCamera),         /**/ null);
         }
+
 
         public void AddComponentTypesInMyShip(Entity shipEntity)
         {

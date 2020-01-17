@@ -283,7 +283,7 @@ namespace RN.Network.SpaceWar
                     new ActorSyncDatasClientSystem(),
                     new ShipSyncAttributeClientSystem(),
                     new WeaponSyncAttributeClientSystem(),
-                    new WeaponItemCountClientSystem(),
+                    new WeaponAttributePanelClientSystem(),
 
                     new ActorSyncDestroyClientSystem(),
                     new ActorDestroyClientSystem(),
@@ -341,7 +341,8 @@ namespace RN.Network.SpaceWar
                     {
                         Locator_TransformIndex = ShipSpawner.Locator_TransformIndex,
                     },
-                    new ActorAttributePanelSystem(),
+                    new ShipAttributePanelClientSystem(),
+                    new TransformRotationByCameraSystem(),
 
                     new NetworkStreamStateSystem(),
                     new NetworkStreamSendSystem(),

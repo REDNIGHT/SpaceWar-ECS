@@ -122,6 +122,18 @@ namespace RN.Network.SpaceWar
                     }
                     dampedTransform.target = slotT;
                     EntityManager.AddComponentObject(weaponEntity, dampedTransform);
+
+
+                    //
+                    var maskT = weaponT.GetChild(WeaponSpawner.Mask_TransformIndex);
+                    maskT.gameObject.SetActive(false);
+
+                    var uiT = weaponT.GetChild(WeaponSpawner.UI_TransformIndex);
+                    if (uiT.childCount > 0)
+                    {
+                        var attributePanel = uiT.GetChild(WeaponSpawner.__UI_AttributePanel_TransformIndex);
+                        attributePanel.gameObject.SetActive(false);
+                    }
                 });
 
             Entities
@@ -150,8 +162,20 @@ namespace RN.Network.SpaceWar
                             dampedTransform.weaponBaseT = null;
 
                             weaponBaseT.SetParent(weaponT, false);
-                            weaponBaseT.SetSiblingIndex(WeaponSpawner.WeaponBaseModel_TransformIndex);
+                            weaponBaseT.SetSiblingIndex(WeaponSpawner.BaseModel_TransformIndex);
                         }
+                    }
+
+
+                    //
+                    var maskT = weaponT.GetChild(WeaponSpawner.Mask_TransformIndex);
+                    maskT.gameObject.SetActive(true);
+
+                    var uiT = weaponT.GetChild(WeaponSpawner.UI_TransformIndex);
+                    if (uiT.childCount > 0)
+                    {
+                        var attributePanel = uiT.GetChild(WeaponSpawner.__UI_AttributePanel_TransformIndex);
+                        attributePanel.gameObject.SetActive(true);
                     }
                 });
         }
@@ -204,7 +228,7 @@ namespace RN.Network.SpaceWar
 
                                 var weaponT = dampedTransform.transform;
 
-                                var weaponBaseT = weaponT.GetChild(WeaponSpawner.WeaponBaseModel_TransformIndex);
+                                var weaponBaseT = weaponT.GetChild(WeaponSpawner.BaseModel_TransformIndex);
 
 
                                 weaponBaseT.SetParent(slotT, false);
