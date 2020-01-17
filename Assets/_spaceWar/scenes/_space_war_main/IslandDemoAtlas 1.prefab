@@ -1,0 +1,274 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 400000}
+  - component: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: IslandDemoAtlas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983d17c1d441e7143bebbe304c0e50f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texture: {fileID: 2800000, guid: b96ae14a5fa164cbda52e52ab1694f94, type: 3}
+  elementNumber: 9
+  editElements: 0
+  elementsList:
+  - name: Caustic_Spot_05
+    UV:
+      serializedVersion: 2
+      x: 0.7597656
+      y: 0.6225586
+      width: 0.1850586
+      height: 0.18603516
+    Imported: 1
+  - name: Caustic_Spot_06
+    UV:
+      serializedVersion: 2
+      x: 0.7597656
+      y: 0.81103516
+      width: 0.2055664
+      height: 0.18652344
+    Imported: 1
+  - name: Glint_01
+    UV:
+      serializedVersion: 2
+      x: 0.5073242
+      y: 0.24267578
+      width: 0.25
+      height: 0.25
+    Imported: 1
+  - name: Glint_09
+    UV:
+      serializedVersion: 2
+      x: 0.5073242
+      y: 0.4951172
+      width: 0.25
+      height: 0.25
+    Imported: 1
+  - name: Glint_10
+    UV:
+      serializedVersion: 2
+      x: 0.5073242
+      y: 0.7475586
+      width: 0.25
+      height: 0.25
+    Imported: 1
+  - name: Glow_Chroma
+    UV:
+      serializedVersion: 2
+      x: 0.2548828
+      y: 0.12988281
+      width: 0.25
+      height: 0.25
+    Imported: 1
+  - name: Glow_LargeFalloff
+    UV:
+      serializedVersion: 2
+      x: 0.2548828
+      y: 0.38232422
+      width: 0.25
+      height: 0.25
+    Imported: 1
+  - name: Glow_NoneUniform_02
+    UV:
+      serializedVersion: 2
+      x: 0.2548828
+      y: 0.6347656
+      width: 0.25
+      height: 0.25
+    Imported: 1
+  - name: Iris_Hexagon_Chroma
+    UV:
+      serializedVersion: 2
+      x: 0.0024414062
+      y: 0.12988281
+      width: 0.25
+      height: 0.25
+    Imported: 1
+  - name: Iris_Hexagon_Soft
+    UV:
+      serializedVersion: 2
+      x: 0.7597656
+      y: 0.23046875
+      width: 0.125
+      height: 0.125
+    Imported: 1
+  - name: Iris_Hexagon_SuperSoft
+    UV:
+      serializedVersion: 2
+      x: 0.7597656
+      y: 0.35791016
+      width: 0.125
+      height: 0.125
+    Imported: 1
+  - name: Iris_Pentagon_Chroma
+    UV:
+      serializedVersion: 2
+      x: 0.0024414062
+      y: 0.38232422
+      width: 0.25
+      height: 0.25
+    Imported: 1
+  - name: Iris_Pentagon_Soft
+    UV:
+      serializedVersion: 2
+      x: 0.38476562
+      y: 0.0024414062
+      width: 0.125
+      height: 0.125
+    Imported: 1
+  - name: Iris_Pentagon_SuperSoft
+    UV:
+      serializedVersion: 2
+      x: 0.25732422
+      y: 0.0024414062
+      width: 0.125
+      height: 0.125
+    Imported: 1
+  - name: Misc_Square_Soft
+    UV:
+      serializedVersion: 2
+      x: 0.12988281
+      y: 0.0024414062
+      width: 0.125
+      height: 0.125
+    Imported: 1
+  - name: Misc_Square_SoftSuper
+    UV:
+      serializedVersion: 2
+      x: 0.0024414062
+      y: 0.0024414062
+      width: 0.125
+      height: 0.125
+    Imported: 1
+  - name: Shimmer_Long_Chroma_02
+    UV:
+      serializedVersion: 2
+      x: 0.0024414062
+      y: 0.6347656
+      width: 0.25
+      height: 0.25
+    Imported: 1
+  - name: Spectrum_Long
+    UV:
+      serializedVersion: 2
+      x: 0.51220703
+      y: 0.12207031
+      width: 0.21386719
+      height: 0.03515625
+    Imported: 1
+  - name: Spectrum_Point_01
+    UV:
+      serializedVersion: 2
+      x: 0.7597656
+      y: 0.48535156
+      width: 0.15283203
+      height: 0.13476562
+    Imported: 1
+  - name: Spectrum_Thick_wide
+    UV:
+      serializedVersion: 2
+      x: 0.91503906
+      y: 0.43359375
+      width: 0.08251953
+      height: 0.18652344
+    Imported: 1
+  - name: Steak_SuperSoftEnds
+    UV:
+      serializedVersion: 2
+      x: 0.5073242
+      y: 0.17773438
+      width: 0.25
+      height: 0.0625
+    Imported: 1
+  - name: Streak_LongBlue
+    UV:
+      serializedVersion: 2
+      x: 0.5073242
+      y: 0.15966797
+      width: 0.25
+      height: 0.015625
+    Imported: 1
+  - name: Streak_LongWhite
+    UV:
+      serializedVersion: 2
+      x: 0.7597656
+      y: 0.21240234
+      width: 0.125
+      height: 0.015625
+    Imported: 1
+  - name: Streak_Orange
+    UV:
+      serializedVersion: 2
+      x: 0.0024414062
+      y: 0.88720703
+      width: 0.39160156
+      height: 0.11035156
+    Imported: 1
+  elementNameList:
+  - Caustic_Spot_05
+  - Caustic_Spot_06
+  - Glint_01
+  - Glint_09
+  - Glint_10
+  - Glow_Chroma
+  - Glow_LargeFalloff
+  - Glow_NoneUniform_02
+  - Iris_Hexagon_Chroma
+  - Iris_Hexagon_Soft
+  - Iris_Hexagon_SuperSoft
+  - Iris_Pentagon_Chroma
+  - Iris_Pentagon_Soft
+  - Iris_Pentagon_SuperSoft
+  - Misc_Square_Soft
+  - Misc_Square_SoftSuper
+  - Shimmer_Long_Chroma_02
+  - Spectrum_Long
+  - Spectrum_Point_01
+  - Spectrum_Thick_wide
+  - Steak_SuperSoftEnds
+  - Streak_LongBlue
+  - Streak_LongWhite
+  - Streak_Orange
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
