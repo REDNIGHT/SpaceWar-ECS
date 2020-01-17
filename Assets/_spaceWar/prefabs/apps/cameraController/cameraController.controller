@@ -163,6 +163,14 @@ BlendTree:
     m_DirectBlendParameter: zoom
     m_Mirror: 0
   - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: e93609cc77b532d4e8ff1db6dae82319, type: 2}
+    m_Threshold: 0.5
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: zoom
+    m_Mirror: 0
+  - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 9113541e2b6504545854493765627492, type: 2}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}

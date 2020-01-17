@@ -394,12 +394,13 @@ namespace RN.Network.SpaceWar
                 {
                     mouseData.point = mousePoint;
                     mouseData.direction = new float3(0f, 0f, 1f);
+                    mouseData.distance = 0f;
                 }
                 else
                 {
                     direction.y = 0;
-                    direction = math.normalize(direction);
                     var distance = math.length(direction);
+                    direction = math.normalize(direction);
                     if (distance > mousePointMaxDistance)
                     {
                         distance = mousePointMaxDistance;

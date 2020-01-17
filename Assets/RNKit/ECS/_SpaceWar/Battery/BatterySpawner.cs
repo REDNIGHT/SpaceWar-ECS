@@ -32,10 +32,10 @@ namespace RN.Network.SpaceWar
         //
         public const int Slots_TransformIndex = 0;
         public const int OnTrigger_TransformIndex = 1;
-        public const int DestroyFx_TransformIndex = 2;
-        //public const int DisableInputFx_TransformIndex = ShipSpawner.DisableInputFx_TransformIndex;
-        public const int Colliders_TransformIndex = 3;
+        public const int Colliders_TransformIndex = 2;
+        public const int DestroyFx_TransformIndex = 3;
         public const int Model_TransformIndex = 4;
+        //public const int DisableInputFx_TransformIndex = ShipSpawner.DisableInputFx_TransformIndex;
 
         public override int[] removeTransformIndexInServer => new int[] { DestroyFx_TransformIndex, Model_TransformIndex, };
 

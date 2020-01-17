@@ -94,7 +94,7 @@ namespace RN.Network.SpaceWar
         public float aimByMouseScale = 0.01f;
         void aimByMouse(in MouseDataSingleton mouseData)
         {
-            target.position = Vector3.Lerp(target.position, mouseData.point, aimByMouseScale * zoomValue);
+            target.position = Vector3.Lerp(target.position, target.position + (Vector3)(mouseData.direction * mouseData.distance * math.pow(zoomValue, 4f)), aimByMouseScale);
         }
 
 

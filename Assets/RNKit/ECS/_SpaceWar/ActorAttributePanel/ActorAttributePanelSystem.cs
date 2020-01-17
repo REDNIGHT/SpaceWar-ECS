@@ -20,6 +20,7 @@ namespace RN.Network.SpaceWar
 
             Entities
                 .WithAllReadOnly<Ship, OnCreateMessage, Transform>()
+                .WithNone<Battery>()
                 .ForEach((Entity actorEntity, Transform actorTransform) =>
                 {
                     var ui_AttributePanelT = actorTransform
