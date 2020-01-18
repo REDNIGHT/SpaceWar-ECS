@@ -2,6 +2,7 @@
 using System;
 using Unity.Entities;
 using UnityEngine.Experimental.PlayerLoop;
+using UnityEngine;
 
 namespace RN.Network.SpaceWar
 {
@@ -285,7 +286,6 @@ namespace RN.Network.SpaceWar
 
                     new WeaponSyncInstalledStateClientSystem(),
                     new WeaponSyncAttributeClientSystem(),
-                    new WeaponAttributePanelClientSystem(),
 
                     new ActorSyncDestroyClientSystem(),
                     new ActorDestroyClientSystem(),
@@ -343,7 +343,16 @@ namespace RN.Network.SpaceWar
                         Locator_TransformIndex = ShipSpawner.Locator_TransformIndex,
                     },
                     new ShipAttributePanelClientSystem(),
+                    new WeaponAttributePanelClientSystem(),
                     new TransformRotationByCameraSystem(),
+
+                    new Actor3DUIPanelBySystem()
+                    {
+                        layerMask = LayerMask.GetMask("actor","weapon"),
+                        radius = 1f,
+                        showTime = 1f,
+                    },
+
 
                     new NetworkStreamStateSystem(),
                     new NetworkStreamSendSystem(),

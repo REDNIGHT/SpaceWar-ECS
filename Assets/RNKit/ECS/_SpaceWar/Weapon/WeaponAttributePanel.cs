@@ -5,7 +5,7 @@ using Unity.Mathematics;
 
 namespace RN.Network.SpaceWar
 {
-    public class WeaponAttributePanel : MonoBehaviour
+    public class WeaponAttributePanel : MonoBehaviour, IActor3DUIPanel
     {
         public RectTransform attributes;
         CanvasGroup canvasGroup;
@@ -14,9 +14,11 @@ namespace RN.Network.SpaceWar
             attributes.gameObject.SetActive(false);
             canvasGroup = attributes.GetComponent<CanvasGroup>();
         }
+
+        bool init = false;
         public void setAttributes(int hp, int itemCount)
         {
-            //
+            init = true;
             setCount(attributes.GetChild(0), hp);
             setCount(attributes.GetChild(1), itemCount);
         }
@@ -35,17 +37,61 @@ namespace RN.Network.SpaceWar
             }
         }
 
+
+        //
+        float time = 0f;
+        float fadeoutTime = 0.5f;
+        public void show(float showTime, in CameraDataSingleton cameraData)
+        {
+            if (init == false)
+                return;
+
+            if (time <= 0f)
+            {
+                attributes.gameObject.SetActive(true);
+            }
+
+            //
+            time = showTime;
+            fadeoutTime = showTime * 0.75f;
+            canvasGroup.alpha = 1f;
+
+            //
+            setSide(cameraData);
+        }
+
+        private void Update()
+        {
+            if (time > 0f)
+            {
+                time -= Time.deltaTime;
+
+                if (time < fadeoutTime)
+                {
+                    canvasGroup.alpha = time / fadeoutTime;
+                }
+
+                if (time <= 0)
+                {
+                    attributes.gameObject.SetActive(false);
+                }
+            }
+        }
+
+
         void setSide(in CameraDataSingleton cameraData)
         {
+            transform.localScale = Vector3.one;
+
             var dampedTransform = GetComponentInParent<_DampedTransform>();
             if (dampedTransform == null)
             {
-                Debug.LogWarning("dampedTransform == null", this);
+                //Debug.LogWarning("dampedTransform == null", this);
                 return;
             }
             if (dampedTransform.shipT == null)
             {
-                Debug.LogWarning("dampedTransform.shipT == null", this);
+                //Debug.LogWarning("dampedTransform.shipT == null", this);
                 return;
             }
 
@@ -55,71 +101,8 @@ namespace RN.Network.SpaceWar
             var cameraForward = math.forward(cameraData.targetRotation);
 
             var angle = Vector3.SignedAngle(cameraForward, weaponDir, Vector3.up);
-
-            transform.localScale = angle < 0f ? new Vector3(1f, 1f, 1f) : new Vector3(-1f, 1f, 1f);
-        }
-
-
-        //
-        public void autoPlay(in CameraDataSingleton cameraData)
-        {
-            if (visible)
-                return;
-
-            setSide(cameraData);
-            StopAllCoroutines();
-
-
-            attributes.gameObject.SetActive(true);
-            canvasGroup.alpha = 1f;
-            StartCoroutine(fadeout(showTime));
-        }
-
-
-        //
-        const float showTime = 1.5f;
-        const float hideTime = 0.75f;
-        IEnumerator fadeout(float _showTime)
-        {
-            if (_showTime > 0f)
-                yield return new WaitForSeconds(_showTime);
-
-            foreach (var t in new TimeEquation().linear.play(hideTime))
-            {
-                canvasGroup.alpha = 1f - t;
-                yield return this;
-            }
-
-            attributes.gameObject.SetActive(false);
-        }
-
-
-
-
-        //
-        public bool visible { get; protected set; } = false;
-
-        public void begin()
-        {
-            attributes.gameObject.SetActive(true);
-            canvasGroup.alpha = 1f;
-
-            StopAllCoroutines();
-
-            //
-            visible = true;
-        }
-
-        public void end()
-        {
-            visible = false;
-
-            StartCoroutine(fadeout(0f));
-        }
-
-        public void update(in CameraDataSingleton cameraData)
-        {
-            setSide(cameraData);
+            if (angle > 0f)
+                transform.localScale = new Vector3(-1f, 1f, 1f);
         }
     }
 }

@@ -44,7 +44,12 @@ namespace RN.Network.SpaceWar
         [Header("ActorLocatorSystem<Ship>")]
         public float distanceMin = 2f;
         public float distanceScale = 0.005f;
-        
+
+        [Header("Actor3DUIPanelBySystem")]
+        public LayerMask layerMask;
+        public float radius = 1f;
+        public float showTime = 1f;
+
         void Awake()
         {
             if (string.IsNullOrEmpty(__ip))
@@ -94,11 +99,17 @@ namespace RN.Network.SpaceWar
             var shipLocatorSystem = world.GetExistingSystem<ActorLocatorSystem<Ship>>();
             shipLocatorSystem.distanceMin = distanceMin;
             shipLocatorSystem.distanceScale = distanceScale;
-            
+
             //
             var playerNameClientSystem = world.GetExistingSystem<PlayerNameClientSystem>();
             playerNameClientSystem.minPlayerNameCount = minPlayerNameCount;
             playerNameClientSystem.maxPlayerNameCount = maxPlayerNameCount;
+
+            //
+            var actor3DUIByMouseSystem = world.GetExistingSystem<Actor3DUIPanelBySystem>();
+            actor3DUIByMouseSystem.layerMask = layerMask;
+            actor3DUIByMouseSystem.radius = radius;
+            actor3DUIByMouseSystem.showTime = showTime;
         }
 
         private void Start()

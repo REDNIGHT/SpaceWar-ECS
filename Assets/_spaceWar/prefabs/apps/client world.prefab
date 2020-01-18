@@ -63,6 +63,11 @@ MonoBehaviour:
   mousePointMaxDistance: 50
   distanceMin: 2.5
   distanceScale: 0.01
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 16908288
+  radius: 1.5
+  showTime: 0.5
   myPlayerName: 
   myPlayerTeam: 0
   myActorType: 1
