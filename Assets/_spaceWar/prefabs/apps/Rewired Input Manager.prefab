@@ -452,33 +452,6 @@ MonoBehaviour:
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 2
-    - _id: 27
-      _name: Weapon7
-      _type: 1
-      _descriptiveName: Weapon7
-      _positiveDescriptiveName: 
-      _negativeDescriptiveName: 
-      _behaviorId: 0
-      _userAssignable: 1
-      _categoryId: 2
-    - _id: 28
-      _name: Weapon8
-      _type: 1
-      _descriptiveName: Weapon8
-      _positiveDescriptiveName: 
-      _negativeDescriptiveName: 
-      _behaviorId: 0
-      _userAssignable: 1
-      _categoryId: 2
-    - _id: 29
-      _name: Weapon9
-      _type: 1
-      _descriptiveName: Weapon9
-      _positiveDescriptiveName: 
-      _negativeDescriptiveName: 
-      _behaviorId: 0
-      _userAssignable: 1
-      _categoryId: 2
     - _id: 30
       _name: AssistWeapon0
       _type: 1
@@ -501,24 +474,6 @@ MonoBehaviour:
       _name: AssistWeapon2
       _type: 1
       _descriptiveName: AssistWeapon2
-      _positiveDescriptiveName: 
-      _negativeDescriptiveName: 
-      _behaviorId: 0
-      _userAssignable: 1
-      _categoryId: 2
-    - _id: 33
-      _name: AssistWeapon3
-      _type: 1
-      _descriptiveName: AssistWeapon3
-      _positiveDescriptiveName: 
-      _negativeDescriptiveName: 
-      _behaviorId: 0
-      _userAssignable: 1
-      _categoryId: 2
-    - _id: 34
-      _name: AssistWeapon4
-      _type: 1
-      _descriptiveName: AssistWeapon4
       _positiveDescriptiveName: 
       _negativeDescriptiveName: 
       _behaviorId: 0
@@ -547,7 +502,7 @@ MonoBehaviour:
       - categoryId: 1
         actionIds: 000000000100000002000000030000000400000005000000
       - categoryId: 2
-        actionIds: 060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f000000200000002100000022000000
+        actionIds: 060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001e0000001f00000020000000
     inputBehaviors:
     - _id: 0
       _name: Default
@@ -933,7 +888,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 2
-        _actionId: 8
+        _actionId: 9
         _elementType: 1
         _elementIdentifierId: -1
         _axisRange: 0
@@ -944,7 +899,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 2
-        _actionId: 9
+        _actionId: 8
         _elementType: 1
         _elementIdentifierId: -1
         _axisRange: 0
@@ -1054,39 +1009,6 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 2
-        _actionId: 27
-        _elementType: 1
-        _elementIdentifierId: -1
-        _axisRange: 0
-        _invert: 0
-        _axisContribution: 0
-        _keyboardKeyCode: 56
-        _modifierKey1: 0
-        _modifierKey2: 0
-        _modifierKey3: 0
-      - _actionCategoryId: 2
-        _actionId: 28
-        _elementType: 1
-        _elementIdentifierId: -1
-        _axisRange: 0
-        _invert: 0
-        _axisContribution: 0
-        _keyboardKeyCode: 57
-        _modifierKey1: 0
-        _modifierKey2: 0
-        _modifierKey3: 0
-      - _actionCategoryId: 2
-        _actionId: 29
-        _elementType: 1
-        _elementIdentifierId: -1
-        _axisRange: 0
-        _invert: 0
-        _axisContribution: 0
-        _keyboardKeyCode: 48
-        _modifierKey1: 0
-        _modifierKey2: 0
-        _modifierKey3: 0
-      - _actionCategoryId: 2
         _actionId: 30
         _elementType: 1
         _elementIdentifierId: -1
@@ -1116,28 +1038,6 @@ MonoBehaviour:
         _invert: 0
         _axisContribution: 0
         _keyboardKeyCode: 284
-        _modifierKey1: 0
-        _modifierKey2: 0
-        _modifierKey3: 0
-      - _actionCategoryId: 2
-        _actionId: 33
-        _elementType: 1
-        _elementIdentifierId: -1
-        _axisRange: 0
-        _invert: 0
-        _axisContribution: 0
-        _keyboardKeyCode: 285
-        _modifierKey1: 0
-        _modifierKey2: 0
-        _modifierKey3: 0
-      - _actionCategoryId: 2
-        _actionId: 34
-        _elementType: 1
-        _elementIdentifierId: -1
-        _axisRange: 0
-        _invert: 0
-        _axisContribution: 0
-        _keyboardKeyCode: 286
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0

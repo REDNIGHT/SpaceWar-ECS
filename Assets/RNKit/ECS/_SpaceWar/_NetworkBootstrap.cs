@@ -282,6 +282,8 @@ namespace RN.Network.SpaceWar
                     new ActorSyncCreateClientSystem { actorCountInHashMap = 1024 },
                     new ActorSyncDatasClientSystem(),
                     new ShipSyncAttributeClientSystem(),
+
+                    new WeaponSyncInstalledStateClientSystem(),
                     new WeaponSyncAttributeClientSystem(),
                     new WeaponAttributePanelClientSystem(),
 
@@ -289,7 +291,6 @@ namespace RN.Network.SpaceWar
                     new ActorDestroyClientSystem(),
 
 
-                    new WeaponSyncInstalledStateClientSystem(),
                     new WeaponConstraintClientSystem(),
                     new ShipWeaponArrayOnWeaponInstallClientSystem(),
                     new ShipWeaponArray2AttributeLevelsClientSystem(),

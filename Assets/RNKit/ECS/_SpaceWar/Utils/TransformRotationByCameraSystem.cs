@@ -16,20 +16,24 @@ namespace RN.Network.SpaceWar
                 .WithNone<OnDestroyMessage>()
                 .ForEach((TransformRotationByCamera transformRotationByCamera) =>
                 {
-                    foreach (var d in transformRotationByCamera.datas)
-                        update(d.transform, d.isUI, cameraData.targetRotation);
+                    foreach (var t in transformRotationByCamera.transforms)
+                    {
+                        Debug.Assert(t != null, "t != null", transformRotationByCamera);
+
+                        if (t.gameObject.activeSelf)
+                        {
+                            update(t, t is RectTransform, cameraData.targetRotation);
+                        }
+                    }
                 });
         }
 
         void update(Transform transform, bool isUI, in Quaternion targetRotation)
         {
-            if (transform != null && transform.gameObject.activeSelf)
-            {
-                if (isUI)
-                    transform.rotation = targetRotation * offset;
-                else
-                    transform.rotation = targetRotation;
-            }
+            if (isUI)
+                transform.rotation = targetRotation * offset;
+            else
+                transform.rotation = targetRotation;
         }
     }
 }

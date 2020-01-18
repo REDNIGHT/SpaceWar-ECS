@@ -95,6 +95,7 @@ namespace RN.Network.SpaceWar
 
     public class _DampedTransform : MonoBehaviour
     {
+        public Transform shipT;
         public Transform target;
         public Transform weaponBaseT;
     }
@@ -120,6 +121,8 @@ namespace RN.Network.SpaceWar
                     {
                         dampedTransform = weaponT.gameObject.AddComponent<_DampedTransform>();
                     }
+
+                    dampedTransform.shipT = shipT;
                     dampedTransform.target = slotT;
                     EntityManager.AddComponentObject(weaponEntity, dampedTransform);
 
@@ -127,13 +130,6 @@ namespace RN.Network.SpaceWar
                     //
                     var maskT = weaponT.GetChild(WeaponSpawner.Mask_TransformIndex);
                     maskT.gameObject.SetActive(false);
-
-                    var uiT = weaponT.GetChild(WeaponSpawner.UI_TransformIndex);
-                    if (uiT.childCount > 0)
-                    {
-                        var attributePanel = uiT.GetChild(WeaponSpawner.__UI_AttributePanel_TransformIndex);
-                        attributePanel.gameObject.SetActive(false);
-                    }
                 });
 
             Entities
@@ -143,6 +139,7 @@ namespace RN.Network.SpaceWar
                 {
                     //解除weapon的约束
                     var dampedTransform = weaponT.gameObject.GetComponent<_DampedTransform>();
+                    dampedTransform.shipT = null;
                     dampedTransform.target = null;
 
                     EntityManager.RemoveComponent<_DampedTransform>(weaponEntity);
@@ -170,13 +167,6 @@ namespace RN.Network.SpaceWar
                     //
                     var maskT = weaponT.GetChild(WeaponSpawner.Mask_TransformIndex);
                     maskT.gameObject.SetActive(true);
-
-                    var uiT = weaponT.GetChild(WeaponSpawner.UI_TransformIndex);
-                    if (uiT.childCount > 0)
-                    {
-                        var attributePanel = uiT.GetChild(WeaponSpawner.__UI_AttributePanel_TransformIndex);
-                        attributePanel.gameObject.SetActive(true);
-                    }
                 });
         }
     }

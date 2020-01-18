@@ -8,13 +8,26 @@ using UnityEngine;
 namespace RN.Network.SpaceWar
 {
     /// <summary>
-    /// 只给自己的client同步属性值
-    /// 自己ship的属性 不会发送到其他客户端里
+    /// 只把自己的weapon属性发送到自己的client
+    /// 自己weapon的属性 不会发送到其他客户端里
     /// </summary>
     [DisableAutoCreation]
     //[AlwaysUpdateSystem]
     public class WeaponSyncAttributeServerSystem : JobComponentSystem
     {
+        [BurstCompile]
+        [RequireComponentTag(typeof(OnWeaponInstallMessage))]
+        struct WeaponAttributeInstallJob : IJobForEach<WeaponAttribute>
+        {
+            public void Execute(ref WeaponAttribute weaponAttribute)
+            {
+                weaponAttribute.lastHp = -1;
+                weaponAttribute.lastItemCount = -1;
+            }
+        }
+
+
+        //这里有时不会执行 造成客户端没显示weapon ui 是因为AlwaysUpdateSystem 估计是bug 先不管了
         [BurstCompile]
         [RequireComponentTag(typeof(ObserverPosition))]
         [ExcludeComponent(typeof(NetworkDisconnectedMessage))]
@@ -66,12 +79,20 @@ namespace RN.Network.SpaceWar
         int curFrame = 0;
         protected override JobHandle OnUpdate(JobHandle inputDeps)
         {
+            //
+            inputDeps = new WeaponAttributeInstallJob
+            {
+            }
+            .Schedule(this, inputDeps);
+
+
+
+            //
             ++curFrame;
             if (curFrame < perFrame)
                 return inputDeps;
             curFrame = 0;
 
-            //
             inputDeps = new SyncJob
             {
                 weaponAttributeFromEntity = GetComponentDataFromEntity<WeaponAttribute>(true),

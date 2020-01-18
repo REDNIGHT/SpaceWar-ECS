@@ -1313,13 +1313,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133ea668369e1f247b635a8bb4f68cf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  datas:
-  - isUI: 0
-    transform: {fileID: 5758786399365846313}
-  - isUI: 0
-    transform: {fileID: 6748734686686039795}
-  - isUI: 1
-    transform: {fileID: 6644019248717483383}
+  transforms:
+  - {fileID: 5758786399365846313}
+  - {fileID: 6748734686686039795}
+  - {fileID: 2461231456719925840}
 --- !u!1 &1608435296601389875
 GameObject:
   m_ObjectHideFlags: 0
@@ -5472,9 +5469,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b61ed20191e5e842b88498599d18e9f, type: 3}
---- !u!224 &6644019248717483383 stripped
+--- !u!224 &2461231456719925840 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3138352047184127374, guid: 6b61ed20191e5e842b88498599d18e9f,
+  m_CorrespondingSourceObject: {fileID: 6165966896318421673, guid: 6b61ed20191e5e842b88498599d18e9f,
     type: 3}
   m_PrefabInstance: {fileID: 8627180277945231609}
   m_PrefabAsset: {fileID: 0}
