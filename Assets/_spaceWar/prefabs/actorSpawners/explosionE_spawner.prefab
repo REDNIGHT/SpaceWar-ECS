@@ -51,10 +51,10 @@ MonoBehaviour:
   delay: 0
   interval: 0.25
   maxCount: -1
-  radius: 1
+  radius: 1.25
   layerMask:
     serializedVersion: 2
     m_Bits: 6356993
-  force: 10
+  force: 60
   hpMinOffset: -50
   hpMaxOffset: -100

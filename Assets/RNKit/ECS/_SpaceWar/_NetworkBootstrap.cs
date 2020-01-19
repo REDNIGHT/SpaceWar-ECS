@@ -284,8 +284,8 @@ namespace RN.Network.SpaceWar
                     new ActorSyncDatasClientSystem(),
                     new ShipSyncAttributeClientSystem(),
 
-                    new WeaponSyncInstalledStateClientSystem(),
                     new WeaponSyncAttributeClientSystem(),
+                    new WeaponSyncInstalledStateClientSystem(),
 
                     new ActorSyncDestroyClientSystem(),
                     new ActorDestroyClientSystem(),

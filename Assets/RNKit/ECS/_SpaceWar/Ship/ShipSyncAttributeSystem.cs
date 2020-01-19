@@ -211,6 +211,7 @@ namespace RN.Network.SpaceWar
             }
             .ScheduleSingle(this, inputDeps);
 
+            //inputDeps.Complete();//后面ActorSyncDestroyClientSystem.actorClientSystem.actorEntityFromActorId.Remove 需要这里的actorClientSystem.actorEntityFromActorId操作结束
             return inputDeps;
         }
     }

@@ -14,7 +14,7 @@ namespace RN.Network
         public bool linecastFilter;
 
         /// <summary>
-        /// 移除多余的Collider 这些Collider都是同一个刚体的
+        /// 移除多余的Collider 这些Collider都拥有同一个刚体
         /// </summary>
         public bool distinctDisable;
     }

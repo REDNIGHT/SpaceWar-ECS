@@ -55,6 +55,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 6356993
-  force: 50
+  force: 90
   hpMinOffset: -50
   hpMaxOffset: -250

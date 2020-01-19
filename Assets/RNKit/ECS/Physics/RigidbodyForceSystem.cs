@@ -140,16 +140,25 @@ namespace RN.Network
                         if (rigidbody.isKinematic)
                             continue;
 
-#if true
+#if false
                         var direction2Center = (float3)rigidbody.position - translation.Value;
-                        var distance2Center = 1f;
+
+                        var distance2Center = math.length(direction2Center);
+                        if (distance2Center >= rigidbodyExplosionForce.radius)
+                            return;
+
                         if (rigidbodyExplosionForce.radius > 0f)
-                            distance2Center = 1f - math.length(direction2Center) / rigidbodyExplosionForce.radius;
+                        {
+                            distance2Center = 1f - distance2Center / rigidbodyExplosionForce.radius;
+                        }
+
+
                         direction2Center = math.normalize(direction2Center);
 
                         var force = rigidbodyExplosionForce.force * direction2Center * distance2Center;
 
-                        rigidbody.AddForce(force, rigidbodyExplosionForce.mode);
+                        //rigidbody.AddForce(force, rigidbodyExplosionForce.mode);
+                        rigidbody.AddForceAtPosition(force, translation.Value, rigidbodyExplosionForce.mode);
 #else
                         //这爆炸效果带旋转的 还旋转得不稳定
                         rigidbody.AddExplosionForce
@@ -181,9 +190,9 @@ namespace RN.Network
                             continue;
 
                         var direction2Center = (float3)rigidbody.position - translation.Value;
-                        var distance2Center = 1f;
+                        var distance2Center = math.length(direction2Center);
                         if (rigidbodyForceByCenter.radius > 0f)
-                            distance2Center = 1f - math.length(direction2Center) / rigidbodyForceByCenter.radius;
+                            distance2Center = 1f - distance2Center / rigidbodyForceByCenter.radius;
                         direction2Center = math.normalize(direction2Center);
 
                         var force = rigidbodyForceByCenter.force * direction2Center * distance2Center;
