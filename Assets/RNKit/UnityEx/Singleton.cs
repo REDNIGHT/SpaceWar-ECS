@@ -110,14 +110,8 @@ namespace RN
 
         protected void OnDestroy()
         {
-            if (notThis)
-                return;
-
             _singleton = null;
         }
-
-        protected bool isThis { get { return _singleton == this; } }
-        protected bool notThis { get { return _singleton != this; } }
     }
 
     /*public abstract class Singleton2<T> : Singleton<T>

@@ -151,8 +151,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7367205249398460885}
-  - component: {fileID: 3361269726034920277}
-  - component: {fileID: 1021985555487915101}
+  - component: {fileID: 7367205249219052953}
+  - component: {fileID: 7367205249219052952}
   m_Layer: 31
   m_Name: CustomSkybox
   m_TagString: Untagged
@@ -174,7 +174,7 @@ Transform:
   m_Father: {fileID: 7367205249662416319}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3361269726034920277
+--- !u!33 &7367205249219052953
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,7 +182,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7367205249398460884}
   m_Mesh: {fileID: 0}
---- !u!23 &1021985555487915101
+--- !u!23 &7367205249219052952
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -477,6 +477,11 @@ PrefabInstance:
     - target: {fileID: 7342665564399099283, guid: 3ef7feec1442616499b668a56ee24faf,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3574793271819913677, guid: 3ef7feec1442616499b668a56ee24faf,
+        type: 3}
+      propertyPath: m_UseCustomVertexStreams
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 27489491820102997, guid: 3ef7feec1442616499b668a56ee24faf,
@@ -955,6 +960,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpaceGlobalFxs
+      objectReference: {fileID: 0}
+    - target: {fileID: 6369772766615059164, guid: 771e8ab5e7924ff4181943c98b3b0bf2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6568369298887221251, guid: 771e8ab5e7924ff4181943c98b3b0bf2,
         type: 3}
