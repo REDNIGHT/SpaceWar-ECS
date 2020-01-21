@@ -2,6 +2,7 @@
 using Unity.Jobs;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.ParticleSystem;
 
 namespace RN
 {
@@ -81,7 +82,6 @@ namespace RN
         public string tagFilter;
 
         public float radius = 1f;
-        public Vector3 size = Vector3.zero;
 
         public enum Side
         {
@@ -111,34 +111,68 @@ namespace RN
         {
             get
             {
-                if (radius > 0f)
-                {
-                    var s = radius * 2f;
-                    return new Bounds(transform.position, new Vector3(s, s, s));
-                }
-                else
-                {
-                    return new Bounds(transform.position, size);
-                }
+                var s = radius * 2f;
+                return new Bounds(transform.position, new Vector3(s, s, s));
             }
         }
 
 
-        internal JobHandle Schedule(ParticleSystem ps, ParticleSystemRenderer psRenderer, JobHandle inputDeps)
+        internal JobHandle Schedule(ParticleSystem ps, in MinMaxCurve multiplier, ParticleSystemRenderer psRenderer, JobHandle inputDeps)
         {
             if (side == Side.InSide)
             {
                 if (psRenderer.bounds.Intersects(bounds))
-                    return onSchedule(ps, psRenderer, inputDeps);
+                    return onSchedule(ps, multiplier, inputDeps);
                 else
                     return inputDeps;
             }
             else
             {
-                return onSchedule(ps, psRenderer, inputDeps);
+                return onSchedule(ps, multiplier, inputDeps);
             }
         }
-        protected abstract JobHandle onSchedule(ParticleSystem ps, ParticleSystemRenderer psRenderer, JobHandle inputDeps);
+
+        static Particle[] _particles = new Particle[512];
+        protected virtual JobHandle onSchedule(ParticleSystem ps, in MinMaxCurve multiplier, JobHandle inputDeps)
+        {
+            if (ps.particleCount > _particles.Length)
+                _particles = new Particle[ps.particleCount];
+
+            ps.GetParticles(_particles);
+
+            onSchedule(_particles, ps.particleCount, multiplier);
+
+            ps.SetParticles(_particles, ps.particleCount);
+            return inputDeps;
+        }
+
+        protected virtual void onSchedule(Particle[] particles, int count, in MinMaxCurve multiplier)
+        {
+            var sqrRadius = radius * radius;
+
+            for (int i = 0; i < count; ++i)
+            {
+                float sqrDistance = (particles[i].position - transform.position).sqrMagnitude;
+
+                if (side == Side.InSide)
+                {
+                    if (sqrDistance < sqrRadius)
+                    {
+                        onSchedule(ref particles[i], in multiplier);
+                    }
+                }
+                else
+                {
+                    if (sqrDistance > sqrRadius)
+                    {
+                        onSchedule(ref particles[i], in multiplier);
+                    }
+                }
+            }
+        }
+
+        protected abstract void onSchedule(ref Particle particles, in MinMaxCurve multiplier);
+
         /*{
             //[BurstCompile] // Enable if using the Burst package
             struct UpdateParticlesJob : IJobParticleSystem
@@ -163,10 +197,7 @@ namespace RN
 
         void OnDrawGizmosSelected()
         {
-            if (radius > 0f)
-                Gizmos.DrawWireSphere(transform.position, radius);
-            else if (size != Vector3.zero)
-                Gizmos.DrawCube(transform.position, size);
+            Gizmos.DrawWireSphere(transform.position, radius);
         }
     }
 }

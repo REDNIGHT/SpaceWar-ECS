@@ -58,7 +58,7 @@ namespace RN
             JobHandle inputDeps = default;
             foreach (var particleTrigger in particleTriggers)
             {
-                inputDeps = particleTrigger.Schedule(ps, psRenderer, inputDeps);
+                inputDeps = particleTrigger.Schedule(ps, multiplier, psRenderer, inputDeps);
             }
         }
     }
