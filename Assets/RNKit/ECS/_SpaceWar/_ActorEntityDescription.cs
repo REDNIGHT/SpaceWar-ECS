@@ -356,14 +356,10 @@ namespace RN.Network.SpaceWar
 
         //
         public const float smoothTime = 1f;
-
-        //public const float ignoreDistance = 1f;
-        //public const float overIgnoreDistanceSmoothTime = 0.5f;
-
-        public const float rotationLerpT = 0.2f;
-
+        public const float rotationLerpT = 1f;
+        
         public const float smoothTime_NORB = 0.1f;
-        public const float rotationLerpT_NORB = 10f;
+        public const float rotationLerpT_NORB = 5f;
 
 
         protected static void _initRigidbody(Entity e, EntityManager m, float mass, float linearDrag, float angularDrag)

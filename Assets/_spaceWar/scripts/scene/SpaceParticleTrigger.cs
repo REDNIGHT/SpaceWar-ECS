@@ -8,7 +8,7 @@ namespace RN.Network.SpaceWar.Fx
     [RequireComponent(typeof(ParticleSystem), typeof(ParticleTriggerInParticleSystem))]
     public class SpaceParticleTrigger : ParticleTrigger
     {
-        public float remainingLifetime = 1f;
+        public float remainingLifetime = 0f;
         private IEnumerator Start()
         {
             yield return this;

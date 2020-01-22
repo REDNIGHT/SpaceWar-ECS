@@ -143,7 +143,7 @@ namespace RN.Network.SpaceWar
             yield return (CS_D, typeof(Translation),                              /**/ null);
             yield return (CS_D, typeof(Rotation),                                 /**/ null);
             yield return (_S_D, typeof(Transform_In_OnCreate),                    /**/ null);//通过控制刚体来控制Transform 所以这里只需要初始化时给Transform赋值就可以了
-            yield return (C__D, typeof(TransformSmooth_In),                       /**/ (e, m) => m.SetComponentData(e, new TransformSmooth_In { smoothTime = smoothTime, rotationLerpT = rotationLerpT }));
+            yield return (C__D, typeof(TransformSmooth_In),                       /**/ (e, m) => m.SetComponentData(e, new TransformSmooth_In { smoothTime = smoothTime, rotationLerpT = 5f }));
 
 
             yield return (CS_D, typeof(Rigidbody),                                /**/ (e, m) => _initRigidbody(e, m, mass, linearDrag, angularDrag));
