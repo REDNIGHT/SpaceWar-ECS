@@ -12,6 +12,7 @@ TagManager:
   - SpaceScene_Camera
   - SpaceScene_Moon
   - Thruster
+  - SpaceParticle
   layers:
   - Default
   - TransparentFX

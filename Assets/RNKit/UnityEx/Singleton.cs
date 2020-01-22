@@ -22,9 +22,9 @@ namespace RN
         where T : Singleton<T>
     {
         //
-        protected static bool _appIsQuitting = false;
-        public static bool appIsQuitting { get { return _appIsQuitting; } }
-        protected void OnApplicationQuit() { _appIsQuitting = true; }
+        //protected static bool _appIsQuitting = false;
+        //public static bool appIsQuitting { get { return _appIsQuitting; } }
+        //protected void OnApplicationQuit() { _appIsQuitting = true; }
 
 
         /// <summary>
@@ -45,8 +45,7 @@ namespace RN
                         return singletonForce;
                 }
 #endif
-                if (_appIsQuitting)
-                    return null;
+                //if (_appIsQuitting) return null;
 
                 return _singleton;
             }
@@ -79,6 +78,24 @@ namespace RN
                 return _singleton;
             }
         }
+
+        public static void autoCreate()
+        {
+            if (singleton == null)
+            {
+                var go = new GameObject();
+                //go.hideFlags = HideFlags.HideInHierarchy;
+                if (Application.isPlaying == false)
+                    go.hideFlags = HideFlags.HideAndDontSave;
+
+                go.name = typeof(T).Name;
+                var t = go.AddComponent<T>();
+
+                if (Application.isPlaying == false)
+                    _singleton = t;
+            }
+        }
+
 
 
         protected void Awake()

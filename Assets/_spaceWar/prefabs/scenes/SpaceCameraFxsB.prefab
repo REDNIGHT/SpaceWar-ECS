@@ -4667,6 +4667,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_ConstantMin: 0
     m_ConstantMax: 1
+  size: 0
   particleTriggers:
   - {fileID: 1282604839432045759}
 --- !u!199 &3574793271819913677
@@ -4758,7 +4759,7 @@ GameObject:
   - component: {fileID: 7342665564399099283}
   - component: {fileID: 27489491820102997}
   m_Layer: 0
-  m_Name: SpaceCameraFxs
+  m_Name: SpaceCameraFxsB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5354,7 +5355,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 256
+    maxNumParticles: 150
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -5619,7 +5620,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 256
+      scalar: 150
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -9551,5 +9552,6 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_ConstantMin: 0
     m_ConstantMax: 1
+  size: 0
   particleTriggers:
   - {fileID: 3581608580714507808}

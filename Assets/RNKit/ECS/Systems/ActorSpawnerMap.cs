@@ -75,7 +75,7 @@ namespace RN.Network
                 actorSpawnerMap[actorType] = Instantiate(actorSpawner, transform);
                 actorSpawnerMap[actorType].name = actorSpawner.name;
                 actorSpawnerMap[actorType].Init(entityManager, root);
-                actorSpawnerMap[actorType].gameObject.SetActive(false);
+                //actorSpawnerMap[actorType].gameObject.SetActive(false);
 
                 if (forceRemoveFxsInServer)
                 {

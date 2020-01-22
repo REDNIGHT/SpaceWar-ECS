@@ -6,9 +6,11 @@ using static UnityEngine.ParticleSystem;
 
 namespace RN
 {
+    [ExecuteInEditMode]
     public class ParticleTriggerInParticleSystem : MonoBehaviour
     {
         public MinMaxCurve multiplier = new MinMaxCurve(1f);
+        public float size = 0f;
         public List<ParticleTrigger> particleTriggers;
 
         ParticleSystem ps;
@@ -39,13 +41,16 @@ namespace RN
         {
             if (CompareTag("Untagged") == false)
             {
+#if UNITY_EDITOR
+                if (Application.isPlaying == false) ParticleTriggerManager.autoCreate();
+#endif
                 ParticleTriggerManager.singleton.addParticleTriggerInParticleSystem(this);
             }
         }
 
         private void OnDisable()
         {
-            if (CompareTag("Untagged") == false)
+            if (CompareTag("Untagged") == false && ParticleTriggerManager.singleton != null)
             {
                 ParticleTriggerManager.singleton.removeParticleTriggerInParticleSystem(this);
             }
@@ -58,7 +63,7 @@ namespace RN
             JobHandle inputDeps = default;
             foreach (var particleTrigger in particleTriggers)
             {
-                inputDeps = particleTrigger.Schedule(ps, multiplier, psRenderer, inputDeps);
+                inputDeps = particleTrigger.Schedule(ps, multiplier, size, psRenderer, inputDeps);
             }
         }
     }

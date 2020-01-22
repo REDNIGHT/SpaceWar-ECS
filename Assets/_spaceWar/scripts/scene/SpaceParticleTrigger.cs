@@ -11,9 +11,15 @@ namespace RN.Network.SpaceWar.Fx
         public float remainingLifetime = 0f;
         private IEnumerator Start()
         {
-            yield return this;
-            var shape = GetComponent<ParticleSystem>().shape;
-            shape.radiusThickness = 0f;
+            if (Application.isPlaying)
+            {
+                yield return this;
+                yield return this;
+                yield return this;
+                yield return this;
+                var shape = GetComponent<ParticleSystem>().shape;
+                shape.radiusThickness = 0f;
+            }
         }
         protected override void onSchedule(ref Particle particles, in MinMaxCurve multiplier)
         {

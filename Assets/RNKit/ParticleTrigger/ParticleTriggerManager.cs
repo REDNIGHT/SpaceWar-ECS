@@ -11,19 +11,8 @@ namespace RN
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]//这个只执行一次
         static void Initialize()
         {
-            SceneManager.sceneLoaded += sceneLoaded;
-            //SceneManager.sceneUnloaded += sceneUnloaded;
-        }
-
-        static void sceneLoaded(Scene s, LoadSceneMode m)
-        {
-            var go = new GameObject();
-            go.hideFlags = HideFlags.HideInHierarchy;
-            if (Application.isPlaying == false)
-                go.hideFlags = HideFlags.HideAndDontSave;
-
-            go.name = "ParticleTriggerSystem";
-            go.AddComponent<ParticleTriggerManager>();
+            ParticleTriggerManager.autoCreate();
+            GameObject.DontDestroyOnLoad(ParticleTriggerManager.singletonGO);
         }
 
         HashSet<ParticleTrigger> particleTriggers = new HashSet<ParticleTrigger>();
@@ -77,6 +66,7 @@ namespace RN
     }
 
 
+    [ExecuteInEditMode]
     public abstract class ParticleTrigger : MonoBehaviour
     {
         public string tagFilter;
@@ -95,13 +85,16 @@ namespace RN
         {
             if (tagFilter.isNullOrEmpty() == false)
             {
+#if UNITY_EDITOR
+                if (Application.isPlaying == false) ParticleTriggerManager.autoCreate();
+#endif
                 ParticleTriggerManager.singleton.addParticleTrigger(this);
             }
         }
 
         private void OnDisable()
         {
-            if (tagFilter.isNullOrEmpty() == false)
+            if (tagFilter.isNullOrEmpty() == false && ParticleTriggerManager.singleton != null)
             {
                 ParticleTriggerManager.singleton.removeParticleTrigger(this);
             }
@@ -117,58 +110,69 @@ namespace RN
         }
 
 
-        internal JobHandle Schedule(ParticleSystem ps, in MinMaxCurve multiplier, ParticleSystemRenderer psRenderer, JobHandle inputDeps)
+        internal JobHandle Schedule(ParticleSystem ps, in MinMaxCurve multiplier, float particleSize, ParticleSystemRenderer psRenderer, JobHandle inputDeps)
         {
             if (side == Side.InSide)
             {
                 if (psRenderer.bounds.Intersects(bounds))
-                    return onSchedule(ps, multiplier, inputDeps);
+                    return onSchedule(ps, multiplier, particleSize, inputDeps);
                 else
                     return inputDeps;
             }
             else
             {
-                return onSchedule(ps, multiplier, inputDeps);
+                return onSchedule(ps, multiplier, particleSize, inputDeps);
             }
         }
 
         static Particle[] _particles = new Particle[512];
-        protected virtual JobHandle onSchedule(ParticleSystem ps, in MinMaxCurve multiplier, JobHandle inputDeps)
+        protected virtual JobHandle onSchedule(ParticleSystem ps, in MinMaxCurve multiplier, float particleSize, JobHandle inputDeps)
         {
             if (ps.particleCount > _particles.Length)
                 _particles = new Particle[ps.particleCount];
 
             ps.GetParticles(_particles);
 
-            onSchedule(_particles, ps.particleCount, multiplier);
+            onSchedule(_particles, ps.particleCount, multiplier, particleSize);
 
             ps.SetParticles(_particles, ps.particleCount);
             return inputDeps;
         }
 
-        protected virtual void onSchedule(Particle[] particles, int count, in MinMaxCurve multiplier)
+        protected virtual void onSchedule(Particle[] particles, int count, in MinMaxCurve multiplier, float particleSize)
         {
             var sqrRadius = radius * radius;
+            var sqrParticleSize = particleSize * particleSize;
 
             for (int i = 0; i < count; ++i)
             {
-                float sqrDistance = (particles[i].position - transform.position).sqrMagnitude;
-
-                if (side == Side.InSide)
+                if (condition(particles[i], sqrRadius, sqrParticleSize))
                 {
-                    if (sqrDistance < sqrRadius)
-                    {
-                        onSchedule(ref particles[i], in multiplier);
-                    }
-                }
-                else
-                {
-                    if (sqrDistance > sqrRadius)
-                    {
-                        onSchedule(ref particles[i], in multiplier);
-                    }
+                    onSchedule(ref particles[i], in multiplier);
                 }
             }
+        }
+
+        protected virtual bool condition(in Particle particle, float sqrRadius, float sqrParticleSize)
+        {
+            float sqrDistance = (particle.position - transform.position).sqrMagnitude;
+
+            if (side == Side.InSide)
+            {
+                if (sqrDistance - sqrParticleSize < sqrRadius)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                if (sqrDistance - sqrParticleSize > sqrRadius)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         protected abstract void onSchedule(ref Particle particles, in MinMaxCurve multiplier);

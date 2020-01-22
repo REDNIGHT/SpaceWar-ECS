@@ -118,6 +118,7 @@ namespace RN.Network.SpaceWar
             var rigidbodyVelocity = entityManager.GetComponentData<RigidbodyVelocity>(actorEntity);
             m |= datas.LinearVelicity(rigidbodyVelocity.linear);
             m |= datas.AngularVelicity(rigidbodyVelocity.angular);
+
             return m;
         }
 
@@ -126,7 +127,7 @@ namespace RN.Network.SpaceWar
             if (actorClientSystem.actorEntityFromActorId.TryGetValue(datas.intValueA, out Entity creatorEntity))
                 entityManager.SetComponentData(actorEntity, new WeaponCreator { entity = creatorEntity });
 
-            entityManager.SetComponentData(actorEntity, new Translation { Value = datas.position });
+            entityManager.SetComponentData(actorEntity, new Translation { Value = datas.position - datas.linearVelicity * Time.fixedDeltaTime * 2f });//这里减去两次速度 是因为执行完物理运算后再发送数据 客户端也是执行完物理运算再显示  而且子弹速度很快
             entityManager.SetComponentData(actorEntity, new Rotation { Value = datas.rotation });
 
             entityManager.SetComponentData(actorEntity, new RigidbodyVelocity { linear = datas.linearVelicity, angular = datas.angularVelicity });
