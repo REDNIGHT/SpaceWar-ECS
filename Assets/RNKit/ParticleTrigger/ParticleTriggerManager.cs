@@ -6,7 +6,7 @@ using static UnityEngine.ParticleSystem;
 
 namespace RN
 {
-    class ParticleTriggerManager : Singleton<ParticleTriggerManager>
+    public class ParticleTriggerManager : Singleton<ParticleTriggerManager>
     {
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]//这个只执行一次
         static void Initialize()
@@ -15,53 +15,22 @@ namespace RN
             GameObject.DontDestroyOnLoad(ParticleTriggerManager.singletonGO);
         }
 
-        HashSet<ParticleTrigger> particleTriggers = new HashSet<ParticleTrigger>();
+        HashSet<ParticleTrigger> _particleTriggers = new HashSet<ParticleTrigger>();
+
+        public IEnumerable<ParticleTrigger> getParticleTriggers(string tag)
+        {
+            foreach (var pt in _particleTriggers)
+                if (pt.tagFilter == tag)
+                    yield return pt;
+        }
+
         internal void addParticleTrigger(ParticleTrigger particleTrigger)
         {
-            particleTriggers.Add(particleTrigger);
-
-            foreach (var particleTriggerInParticleSystem in particleTriggerInParticleSystems)
-            {
-                if (particleTriggerInParticleSystem.CompareTag(particleTrigger.tagFilter))
-                    particleTriggerInParticleSystem.add(particleTrigger);
-            }
+            _particleTriggers.Add(particleTrigger);
         }
         internal void removeParticleTrigger(ParticleTrigger particleTrigger)
         {
-            particleTriggers.Remove(particleTrigger);
-
-            foreach (var particleTriggerInParticleSystem in particleTriggerInParticleSystems)
-            {
-                if (particleTriggerInParticleSystem.CompareTag(particleTrigger.tagFilter))
-                    particleTriggerInParticleSystem.remove(particleTrigger);
-            }
-        }
-
-
-        HashSet<ParticleTriggerInParticleSystem> particleTriggerInParticleSystems = new HashSet<ParticleTriggerInParticleSystem>();
-        internal void addParticleTriggerInParticleSystem(ParticleTriggerInParticleSystem particleTriggerInParticleSystem)
-        {
-            particleTriggerInParticleSystems.Add(particleTriggerInParticleSystem);
-
-            foreach (var particleTrigger in particleTriggers)
-            {
-                if (particleTriggerInParticleSystem.CompareTag(particleTrigger.tagFilter))
-                {
-                    particleTriggerInParticleSystem.add(particleTrigger);
-                }
-            }
-        }
-        internal void removeParticleTriggerInParticleSystem(ParticleTriggerInParticleSystem particleTriggerInParticleSystem)
-        {
-            particleTriggerInParticleSystems.Remove(particleTriggerInParticleSystem);
-
-            foreach (var particleTrigger in particleTriggers)
-            {
-                if (particleTriggerInParticleSystem.CompareTag(particleTrigger.tagFilter))
-                {
-                    particleTriggerInParticleSystem.remove(particleTrigger);
-                }
-            }
+            _particleTriggers.Remove(particleTrigger);
         }
     }
 
@@ -81,7 +50,7 @@ namespace RN
         public Side side;
 
 
-        private void OnEnable()
+        protected void OnEnable()
         {
             if (tagFilter.isNullOrEmpty() == false)
             {
@@ -110,7 +79,7 @@ namespace RN
         }
 
 
-        internal JobHandle Schedule(ParticleSystem ps, in MinMaxCurve multiplier, float particleSize, ParticleSystemRenderer psRenderer, JobHandle inputDeps)
+        internal JobHandle Schedule(ParticleSystem ps, float multiplier, float particleSize, ParticleSystemRenderer psRenderer, JobHandle inputDeps)
         {
             if (side == Side.InSide)
             {
@@ -126,7 +95,7 @@ namespace RN
         }
 
         static Particle[] _particles = new Particle[512];
-        protected virtual JobHandle onSchedule(ParticleSystem ps, in MinMaxCurve multiplier, float particleSize, JobHandle inputDeps)
+        protected virtual JobHandle onSchedule(ParticleSystem ps, float multiplier, float particleSize, JobHandle inputDeps)
         {
             if (ps.particleCount > _particles.Length)
                 _particles = new Particle[ps.particleCount];
@@ -139,7 +108,7 @@ namespace RN
             return inputDeps;
         }
 
-        protected virtual void onSchedule(Particle[] particles, int count, in MinMaxCurve multiplier, float particleSize)
+        protected virtual void onSchedule(Particle[] particles, int count, float multiplier, float particleSize)
         {
             var sqrRadius = radius * radius;
             var sqrParticleSize = particleSize * particleSize;
@@ -148,7 +117,7 @@ namespace RN
             {
                 if (condition(particles[i], sqrRadius, sqrParticleSize))
                 {
-                    onSchedule(ref particles[i], in multiplier);
+                    onSchedule(ref particles[i], multiplier);
                 }
             }
         }
@@ -175,7 +144,7 @@ namespace RN
             return false;
         }
 
-        protected abstract void onSchedule(ref Particle particles, in MinMaxCurve multiplier);
+        protected abstract void onSchedule(ref Particle particle, float multiplier);
 
         /*{
             //[BurstCompile] // Enable if using the Burst package

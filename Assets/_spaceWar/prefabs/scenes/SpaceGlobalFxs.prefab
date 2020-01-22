@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1744250549984174815}
   - component: {fileID: 3381132917972792135}
   - component: {fileID: 936786011089612326}
+  - component: {fileID: 5452547662926226113}
   m_Layer: 0
   m_Name: Asteroids
   m_TagString: SpaceParticle
@@ -690,7 +691,7 @@ ParticleSystem:
     m_TextureBilinearFiltering: 0
     randomDirectionAmount: 1
     sphericalDirectionAmount: 0
-    randomPositionAmount: 2
+    randomPositionAmount: 4
     radius:
       value: 80
       mode: 0
@@ -929,14 +930,14 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 95.90001
-          outSlope: 95.90001
+          inSlope: 201.5714
+          outSlope: 201.5714
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 1
+          outWeight: 0.99220407
         - serializedVersion: 3
-          time: 0.01
+          time: 0.005
           value: 1
           inSlope: 0
           outSlope: 0
@@ -945,7 +946,7 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.99
+          time: 0.995
           value: 1
           inSlope: 0
           outSlope: 0
@@ -956,8 +957,8 @@ ParticleSystem:
         - serializedVersion: 3
           time: 1
           value: 0
-          inSlope: -95.99927
-          outSlope: -95.99927
+          inSlope: -176.37202
+          outSlope: -176.37202
           tangentMode: 0
           weightedMode: 0
           inWeight: 1
@@ -1097,7 +1098,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   RotationModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
       minMaxState: 3
@@ -3289,7 +3290,7 @@ ParticleSystem:
     range: {x: 0, y: 1}
     separateAxes: 0
   RotationBySpeedModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -3399,7 +3400,7 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7853982
+      scalar: 1.7453293
       minScalar: 0.7853982
       maxCurve:
         serializedVersion: 2
@@ -4716,6 +4717,21 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 4300000, guid: eade511218618254b919fb435580e5f1, type: 3}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &5452547662926226113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176587986429280385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438d04618ce56ef4d825775a1cc63a81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplier: 1
+  size: 0
+  particleTriggers: []
 --- !u!1 &8215676565190518078
 GameObject:
   m_ObjectHideFlags: 0

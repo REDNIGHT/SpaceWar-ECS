@@ -9,23 +9,26 @@ namespace RN.Network.SpaceWar.Fx
     public class SpaceParticleTrigger : ParticleTrigger
     {
         public float remainingLifetime = 0f;
+        public bool emitAll = true;
         private IEnumerator Start()
         {
             if (Application.isPlaying)
             {
+                var ps = GetComponent<ParticleSystem>();
+                if (emitAll)
+                    ps.Emit(ps.main.maxParticles);
+
                 yield return this;
-                yield return this;
-                yield return this;
-                yield return this;
-                var shape = GetComponent<ParticleSystem>().shape;
+
+                var shape = ps.shape;
                 shape.radiusThickness = 0f;
             }
         }
-        protected override void onSchedule(ref Particle particles, in MinMaxCurve multiplier)
+        protected override void onSchedule(ref Particle particle, float multiplier)
         {
-            if (particles.remainingLifetime > remainingLifetime)
+            if (particle.remainingLifetime > remainingLifetime)
             {
-                particles.remainingLifetime = remainingLifetime;
+                particle.remainingLifetime = remainingLifetime;
             }
         }
     }

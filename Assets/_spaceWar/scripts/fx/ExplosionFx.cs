@@ -17,6 +17,10 @@ namespace RN.Network.SpaceWar.Fx
                 var shape = ps.shape;
                 shape.radius = actorSpawner.radius;
             }
+
+            var explosionParticleTrigger = GetComponentInChildren<ExplosionParticleTrigger>();
+            if (explosionParticleTrigger != null)
+                explosionParticleTrigger.radius = 5f + actorSpawner.radius;
         }
 
         public override void onDestroyFx(ExplosionSpawner actorSpawner)

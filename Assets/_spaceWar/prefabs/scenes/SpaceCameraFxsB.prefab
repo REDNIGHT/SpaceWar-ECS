@@ -4650,23 +4650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438d04618ce56ef4d825775a1cc63a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier:
-    m_Mode: 0
-    m_CurveMultiplier: 0
-    m_CurveMin:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_CurveMax:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_ConstantMin: 0
-    m_ConstantMax: 1
+  multiplier: 1
   size: 0
   particleTriggers:
   - {fileID: 1282604839432045759}
@@ -9535,23 +9519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438d04618ce56ef4d825775a1cc63a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier:
-    m_Mode: 0
-    m_CurveMultiplier: 0
-    m_CurveMin:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_CurveMax:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_ConstantMin: 0
-    m_ConstantMax: 1
+  multiplier: 1
   size: 0
   particleTriggers:
   - {fileID: 3581608580714507808}
