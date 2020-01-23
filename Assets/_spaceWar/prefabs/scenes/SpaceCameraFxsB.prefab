@@ -4732,6 +4732,7 @@ MonoBehaviour:
   radius: 250
   side: 1
   remainingLifetime: 1
+  emitAll: 1
 --- !u!1 &2518360995008032296
 GameObject:
   m_ObjectHideFlags: 0
@@ -9507,6 +9508,7 @@ MonoBehaviour:
   radius: 100
   side: 1
   remainingLifetime: 1
+  emitAll: 1
 --- !u!114 &2220681330187120271
 MonoBehaviour:
   m_ObjectHideFlags: 0

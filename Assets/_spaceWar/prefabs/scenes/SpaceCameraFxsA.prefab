@@ -3350,7 +3350,7 @@ ParticleSystem:
     range: {x: 0, y: 1}
     separateAxes: 0
   RotationBySpeedModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -3460,7 +3460,7 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7853982
+      scalar: 0.17453292
       minScalar: 0.7853982
       maxCurve:
         serializedVersion: 2
@@ -4809,6 +4809,7 @@ MonoBehaviour:
   radius: 55
   side: 1
   remainingLifetime: 0
+  emitAll: 1
 --- !u!1 &9220600755230504752
 GameObject:
   m_ObjectHideFlags: 0
@@ -8100,7 +8101,7 @@ ParticleSystem:
     range: {x: 0, y: 1}
     separateAxes: 0
   RotationBySpeedModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -8210,7 +8211,7 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7853982
+      scalar: 0.17453292
       minScalar: 0.7853982
       maxCurve:
         serializedVersion: 2
@@ -9559,3 +9560,4 @@ MonoBehaviour:
   radius: 55
   side: 1
   remainingLifetime: 0
+  emitAll: 1
