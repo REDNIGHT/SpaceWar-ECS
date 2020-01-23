@@ -5,9 +5,10 @@ using static UnityEngine.ParticleSystem;
 
 namespace RN.Network.SpaceWar.Fx
 {
-    public class ExplosionParticleTrigger : ParticleTrigger
+    public class ExplosionParticleTrigger : BaseParticleTrigger
     {
-        public float remainingLifetime = 10f;
+        public float remainingLifetime = 0f;
+
         public bool executeOnes = true;
         public float forceMin = 5f;
         public float forceMax = 10f;
@@ -20,7 +21,7 @@ namespace RN.Network.SpaceWar.Fx
                 enabled = false;
         }
 
-        protected override void onSchedule(ref Particle particle, float multiplier)
+        protected override void onSchedule(ref Particle particle)
         {
             particle.remainingLifetime = remainingLifetime;
 
@@ -29,7 +30,7 @@ namespace RN.Network.SpaceWar.Fx
             direction.Normalize();
 
             var t = 1f - distance / radius;
-            particle.velocity += direction * Mathf.LerpUnclamped(forceMin, forceMax, t) * multiplier;
+            particle.velocity += direction * Mathf.LerpUnclamped(forceMin, forceMax, t);
             //particle.angularVelocity += Mathf.LerpUnclamped(torqueMin, torqueMax, t) * multiplier;
             //particle.angularVelocity3D *= Mathf.LerpUnclamped(torqueMin, torqueMax, t) * multiplier;
 

@@ -6,10 +6,11 @@ using static UnityEngine.ParticleSystem;
 namespace RN.Network.SpaceWar.Fx
 {
     [RequireComponent(typeof(ParticleSystem), typeof(ParticleTriggerInParticleSystem))]
-    public class SpaceParticleTrigger : ParticleTrigger
+    public class SpaceParticleTrigger : BaseParticleTrigger
     {
         public float remainingLifetime = 0f;
         public bool emitAll = true;
+
         private IEnumerator Start()
         {
             if (Application.isPlaying)
@@ -24,7 +25,8 @@ namespace RN.Network.SpaceWar.Fx
                 shape.radiusThickness = 0f;
             }
         }
-        protected override void onSchedule(ref Particle particle, float multiplier)
+
+        protected override void onSchedule(ref Particle particle)
         {
             if (particle.remainingLifetime > remainingLifetime)
             {

@@ -9,7 +9,6 @@ namespace RN
     [ExecuteInEditMode]
     public class ParticleTriggerInParticleSystem : MonoBehaviour
     {
-        public float multiplier = 1f;
         public float size = 0f;
         public List<ParticleTrigger> particleTriggers;
 
@@ -34,7 +33,9 @@ namespace RN
 
             foreach (var particleTrigger in particleTriggers)
             {
-                inputDeps = particleTrigger.Schedule(ps, multiplier, size, psRenderer, inputDeps);
+                if (particleTrigger.gameObject.activeInHierarchy == false || particleTrigger.enabled == false) continue;
+
+                inputDeps = particleTrigger.Schedule(ps, size, psRenderer, inputDeps);
             }
 
 
@@ -43,7 +44,9 @@ namespace RN
 #endif
             foreach (var particleTrigger in ParticleTriggerManager.singleton.getParticleTriggers(tag))
             {
-                inputDeps = particleTrigger.Schedule(ps, multiplier, size, psRenderer, inputDeps);
+                if (particleTrigger.gameObject == gameObject) continue;
+
+                inputDeps = particleTrigger.Schedule(ps, size, psRenderer, inputDeps);
             }
         }
     }
