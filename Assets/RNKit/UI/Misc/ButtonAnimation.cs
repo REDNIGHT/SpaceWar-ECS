@@ -113,8 +113,7 @@ namespace RN.UI
         [RN._Editor.ButtonInEndArea1]
         void setTextButton()
         {
-            if (GetComponent<Image>() != null)
-                GetComponent<Image>().color = Color.white;
+            GetComponent<Image>().color = Color.white;
             GetComponent<Selectable>().targetGraphic = GetComponent<Image>();
             transform.find<Text>("text").color = Color.white;
 
