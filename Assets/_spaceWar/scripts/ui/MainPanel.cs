@@ -147,7 +147,7 @@ namespace RN.Network.SpaceWar
         protected IEnumerator on_sInfoItem(Button b)
         {
             var sInfo = gameServerInfos.gsInfos[b.transform.GetSiblingIndex()];
-            return next(sInfo.ip, sInfo.port);
+            return next(sInfo.ip, sInfo.port, 1);
         }
 
 
@@ -202,10 +202,10 @@ namespace RN.Network.SpaceWar
 
             PlayerPrefs.SetString(IpKey, ipInputField.text);
 
-            return next(ip, port);
+            return next(ip, port, 1);
         }
 
-        IEnumerator next(string ip, ushort port)
+        IEnumerator next(string ip, ushort port, int sceneBuildIndex)
         {
             __ClientWorld.__ip = ip;
             __ClientWorld.__port = port;
@@ -214,12 +214,12 @@ namespace RN.Network.SpaceWar
             //
             yield return Out();
             yield return LoadingPanel.singleton.In();
-            LoadingPanel.singleton.setProgress(SceneManager.LoadSceneAsync(1));
+            LoadingPanel.singleton.setProgress(SceneManager.LoadSceneAsync(sceneBuildIndex));
         }
 
-        protected void on_host(Button b)
+        IEnumerator on_host(Button b)
         {
-            Debug.LogWarning("//todo...");
+            return next("127.0.0.1", 80, 2);
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using RN.UI;
 using System.Collections;
+using System.Net;
+using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -71,6 +73,39 @@ namespace RN.Network.SpaceWar
         {
             clientWorld.myPlayerTeam = int.Parse(inputField.text);
             clientWorld.ChangeMyPlayerTeam();
+        }
+
+        //
+        protected void on_localIP_updateUI(Button b)
+        {
+            var sw = GameObject.FindObjectOfType<__ServerWorld>();
+            if (sw != null)
+            {
+                b.transform.GetChild(0).GetComponent<Text>().text = "Host ip  " + GetIPAddress() + ":" + sw.listenPort;
+            }
+            else
+            {
+                b.gameObject.SetActive(false);
+            }
+        }
+        protected void on_localIP(Button b)
+        {
+            var sw = GameObject.FindObjectOfType<__ServerWorld>();
+            GUIUtility.systemCopyBuffer = GetIPAddress() + ":" + sw.listenPort;
+
+            Message.singleton.show("Copy host ip success!");
+        }
+
+        static string GetIPAddress()
+        {
+            foreach (IPAddress ip in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            return "?";
         }
     }
 }

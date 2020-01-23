@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/_space_war_main.unity
     guid: ba1e8676821d5da4394e40f07d3c85ce
   - enabled: 1
+    path: Assets/_space_war_client.unity
+    guid: fe96a1e3072709d4f890aab7f4059b1b
+  - enabled: 1
     path: Assets/_space_war_host.unity
     guid: 44afc5e2f33daf649afc4e2eaad9320f
   m_configObjects: {}
