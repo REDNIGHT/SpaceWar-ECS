@@ -4729,7 +4729,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438d04618ce56ef4d825775a1cc63a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 1
   size: 0
   particleTriggers: []
 --- !u!1 &8215676565190518078

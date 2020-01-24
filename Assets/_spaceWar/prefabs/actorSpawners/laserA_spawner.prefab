@@ -52,7 +52,8 @@ MonoBehaviour:
   delay: 0
   interval: 0.25
   maxCount: 10
-  distance: 40
+  distance: 60
+  startOffset: 1
   radius: 0
   layerMask:
     serializedVersion: 2

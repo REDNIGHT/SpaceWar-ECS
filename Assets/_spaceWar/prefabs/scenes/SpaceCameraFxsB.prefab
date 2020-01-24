@@ -4650,7 +4650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438d04618ce56ef4d825775a1cc63a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 1
   size: 0
   particleTriggers:
   - {fileID: 1282604839432045759}
@@ -4802,9 +4801,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3322401225306708114}
   - component: {fileID: 517901768778483729}
+  - component: {fileID: 2220681330187120271}
   - component: {fileID: 6822168651689642865}
   - component: {fileID: 3581608580714507808}
-  - component: {fileID: 2220681330187120271}
   m_Layer: 0
   m_Name: SpaceParticles
   m_TagString: Untagged
@@ -9430,6 +9429,21 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &2220681330187120271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2557188801631977056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438d04618ce56ef4d825775a1cc63a81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 0
+  particleTriggers:
+  - {fileID: 3581608580714507808}
 --- !u!199 &6822168651689642865
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -9509,19 +9523,3 @@ MonoBehaviour:
   side: 1
   remainingLifetime: 1
   emitAll: 1
---- !u!114 &2220681330187120271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2557188801631977056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 438d04618ce56ef4d825775a1cc63a81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multiplier: 1
-  size: 0
-  particleTriggers:
-  - {fileID: 3581608580714507808}

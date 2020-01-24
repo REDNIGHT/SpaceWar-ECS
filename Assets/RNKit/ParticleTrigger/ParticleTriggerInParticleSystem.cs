@@ -10,14 +10,14 @@ namespace RN
     public class ParticleTriggerInParticleSystem : MonoBehaviour
     {
         public float size = 0f;
-        public List<ParticleTrigger> particleTriggers;
+        public List<BaseParticleTrigger> particleTriggers;
 
         ParticleSystem ps;
         ParticleSystemRenderer psRenderer;
         private void Awake()
         {
             if (particleTriggers == null)
-                particleTriggers = new List<ParticleTrigger>();
+                particleTriggers = new List<BaseParticleTrigger>();
 
             ps = GetComponent<ParticleSystem>();
             Debug.Assert(ps != null, "ps != null", this);

@@ -91,8 +91,8 @@ namespace RN.Network.SpaceWar.Fx
                     endPoint = transform.InverseTransformPoint(hitInfo.point);
                 }
 
-                lineRenderer.SetPosition(lineRenderer.positionCount - 1, endPoint);
                 lineRenderer.SetPosition(lineRenderer.positionCount - 2, Vector3.LerpUnclamped(lineRenderer.GetPosition(lineRenderer.positionCount - 3), endPoint, 0.95f));
+                lineRenderer.SetPosition(lineRenderer.positionCount - 1, endPoint);
             }
         }
 
