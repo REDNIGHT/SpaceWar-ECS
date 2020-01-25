@@ -5467,6 +5467,56 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3219791676835943201, guid: 6b61ed20191e5e842b88498599d18e9f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219791676835943201, guid: 6b61ed20191e5e842b88498599d18e9f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219791676835943201, guid: 6b61ed20191e5e842b88498599d18e9f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219791676835943201, guid: 6b61ed20191e5e842b88498599d18e9f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -56.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219791676835943201, guid: 6b61ed20191e5e842b88498599d18e9f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 380
+      objectReference: {fileID: 0}
+    - target: {fileID: 4454965829861770355, guid: 6b61ed20191e5e842b88498599d18e9f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4454965829861770355, guid: 6b61ed20191e5e842b88498599d18e9f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4454965829861770355, guid: 6b61ed20191e5e842b88498599d18e9f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4454965829861770355, guid: 6b61ed20191e5e842b88498599d18e9f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4454965829861770355, guid: 6b61ed20191e5e842b88498599d18e9f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 380
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b61ed20191e5e842b88498599d18e9f, type: 3}
 --- !u!224 &2461231456719925840 stripped

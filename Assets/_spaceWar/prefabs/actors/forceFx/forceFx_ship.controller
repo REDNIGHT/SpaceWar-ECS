@@ -71,18 +71,26 @@ BlendTree:
     m_DirectBlendParameter: accelerateFx
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: aef181b54b0980c4c9f8ad5be40e1dfc, type: 2}
-    m_Threshold: 1
+    m_Motion: {fileID: 7400000, guid: b708903b579ebee49b8b8686f282e14b, type: 2}
+    m_Threshold: 0.0001
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
-    m_DirectBlendParameter: accelerateFx
+    m_DirectBlendParameter: forceFx
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 9d11406ca3612da4b8108dfb498f50b2, type: 2}
+    m_Threshold: 2
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: forceFx
     m_Mirror: 0
   m_BlendParameter: forceFx
   m_BlendParameterY: accelerateFx
   m_MinThreshold: 0
-  m_MaxThreshold: 1
-  m_UseAutomaticThresholds: 1
+  m_MaxThreshold: 2
+  m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
 --- !u!1107 &7935034661885097148
