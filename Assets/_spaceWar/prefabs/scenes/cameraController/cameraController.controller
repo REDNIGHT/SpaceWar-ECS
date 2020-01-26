@@ -26,10 +26,10 @@ AnimatorController:
   m_AnimatorParameters:
   - m_Name: zoom
     m_Type: 1
-    m_DefaultFloat: 1
+    m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: zoom Layer
@@ -84,13 +84,13 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 8566665779433581188}
+  m_TimeParameterActive: 1
+  m_Motion: {fileID: 7400000, guid: 7933f4bbb3ac54d41aea5792abd2d4fb, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: zoom
 --- !u!206 &1688184029074090664
 BlendTree:
   m_ObjectHideFlags: 1

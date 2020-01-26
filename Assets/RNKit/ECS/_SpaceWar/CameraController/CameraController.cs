@@ -94,7 +94,7 @@ namespace RN.Network.SpaceWar
         public float aimByMouseScale = 0.01f;
         void aimByMouse(in MouseDataSingleton mouseData)
         {
-            target.position = Vector3.Lerp(target.position, target.position + (Vector3)(mouseData.direction * mouseData.distance * math.pow(zoomValue, 4f)), aimByMouseScale);
+            target.position = Vector3.Lerp(target.position, target.position + (Vector3)(mouseData.direction * mouseData.distance * math.pow(1f - zoomValue, 4f)), aimByMouseScale);
         }
 
 
@@ -113,7 +113,7 @@ namespace RN.Network.SpaceWar
         public float zoomScale = 0.1f;
         public float zoomDampTime = 1f;
         readonly int zoomId = Animator.StringToHash("zoom");
-        float zoomValue = 1f;
+        float zoomValue = 0f;
         void zoomByMouse()
         {
             var mouseZ = input.GetAxis(PlayerInputActions.MouseZ);
