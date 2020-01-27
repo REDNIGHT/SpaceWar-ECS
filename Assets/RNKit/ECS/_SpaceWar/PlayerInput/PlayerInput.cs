@@ -111,4 +111,9 @@ namespace RN.Network.SpaceWar
     }
 
 
+    public interface IMouseFx
+    {
+        void OnPlayFx(in float3 position);
+    }
+
 }

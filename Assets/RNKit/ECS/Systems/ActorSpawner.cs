@@ -287,6 +287,14 @@ namespace RN.Network
                     Destroy(mf.gameObject);
                     continue;
                 }
+
+                var @as = t.GetComponent<AudioSource>();
+                if (@as != null)
+                {
+                    //Debug.LogWarning($"prefabInServer={prefabInServer.name}  destory:{mf}  t.parent={t.parent}", t.parent);
+                    Destroy(@as);
+                    continue;
+                }
             }
         }
     }

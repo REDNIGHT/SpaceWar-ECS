@@ -15,8 +15,11 @@ public static class AudioSourceEx
             yield return null;
         }
     }
-    public static IEnumerator fadeOut(this AudioSource audio, float fadeOutTime = 0.5f)
+    public static IEnumerator fadeOut(this AudioSource audio, float fadeOutTime = 0.5f, float delay = 0f)
     {
+        if (delay > 0f)
+            yield return new WaitForSeconds(delay);
+
         var b = audio.volume;
         var e = 0f;
         foreach (var t in new TimeEquation().linear.playRealtime(fadeOutTime))

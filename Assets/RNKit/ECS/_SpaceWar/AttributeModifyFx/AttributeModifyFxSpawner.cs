@@ -4,6 +4,7 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
+using UnityEngine.Animations;
 
 namespace RN.Network.SpaceWar
 {
@@ -218,9 +219,18 @@ namespace RN.Network.SpaceWar
                     Debug.Assert(fx != null, "fx != null", this);
 
                     var targetT = entityManager.GetComponentObject<Transform>(targetEntity);
-                    fx.parent = targetT;
-                    fx.localPosition = Vector3.zero;
-                    fx.localRotation = Quaternion.identity;
+
+                    var constraint = fx.GetComponent<IConstraint>();
+                    if (constraint != null)
+                    {
+                        constraint.AddSource(new ConstraintSource { weight = 1f, sourceTransform = targetT });
+                    }
+                    else
+                    {
+                        fx.parent = targetT;
+                        fx.localPosition = Vector3.zero;
+                        fx.localRotation = Quaternion.identity;
+                    }
                 }
             }
         }

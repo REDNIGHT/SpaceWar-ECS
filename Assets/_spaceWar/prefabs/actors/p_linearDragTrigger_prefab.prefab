@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3175456126978940257}
   - component: {fileID: 6115194814376785131}
-  - component: {fileID: 7370993750027066532}
   - component: {fileID: -5612210243653746009}
+  - component: {fileID: 7616675665427051534}
   m_Layer: 25
   m_Name: p_linearDragTrigger_prefab
   m_TagString: Untagged
@@ -48,22 +48,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7370993750027066532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285508021969745415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50eaf832814e5cb4c9c8a414be65fba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enterEnable: 0
-  stayEnable: 1
-  exitEnable: 0
-  toPhysicsRigidbodyResults: 0
 --- !u!114 &-5612210243653746009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +60,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baffebf614cf9ec48916d0f60f101bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7616675665427051534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285508021969745415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d66a8bdbf857efc4aa07d3f74eba5f3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enterEnable: 0
+  stayEnable: 0
+  exitEnable: 0
+  toPhysicsRigidbodyResults: 0
 --- !u!1 &3294447863280010111
 GameObject:
   m_ObjectHideFlags: 0

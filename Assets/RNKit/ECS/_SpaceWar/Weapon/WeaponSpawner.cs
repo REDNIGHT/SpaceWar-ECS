@@ -72,6 +72,7 @@ namespace RN.Network.SpaceWar
         public const int __UI_AttributePanel_TransformIndex = 0;
         public const int Model_TransformIndex = 6;
         public const int BaseModel_TransformIndex = 7;
+        public const int InstalledFx_TransformIndex = 8;
 
         //public const int InstalledFx_TransformIndex = 5;
         //public const int UninstallFx_TransformIndex = 6;

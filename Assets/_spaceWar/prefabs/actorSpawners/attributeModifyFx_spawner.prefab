@@ -77,3 +77,5 @@ MonoBehaviour:
   - actorType: 157
     hitFxPrefab: {fileID: 2860364025816837929, guid: fc79be471ee6b584295afb9ee41741d5,
       type: 3}
+  - actorType: 124
+    hitFxPrefab: {fileID: 0}

@@ -121,15 +121,14 @@ namespace RN.Network
             }
         }
 
-        private void OnTriggerEnter(Collider other)
+        protected virtual void onTrigger(Collider other, TriggerResultState state)
         {
-            if (enterEnable == false) return;
             if (entityManager == null) return;
             if (entityManager.Exists(entity) == false) return;
 
             if (EntityBehaviour.getEntity(other.attachedRigidbody, out Entity transformEntity, entityManager.World))
             {
-                entityManager.GetBuffer<PhysicsTriggerResults>(entity).Add(new PhysicsTriggerResults { state = TriggerResultState.Enter, entity = transformEntity });
+                entityManager.GetBuffer<PhysicsTriggerResults>(entity).Add(new PhysicsTriggerResults { state = state, entity = transformEntity });
             }
             else
             {
@@ -150,69 +149,22 @@ namespace RN.Network
                     $"\nthis={this}"
                     , other);
             }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (enterEnable == false) return;
+            onTrigger(other, TriggerResultState.Enter);
         }
         private void OnTriggerStay(Collider other)
         {
             if (stayEnable == false) return;
-            if (entityManager == null) return;
-            if (entityManager.Exists(entity) == false) return;
-
-            if (EntityBehaviour.getEntity(other.attachedRigidbody, out Entity transformEntity, entityManager.World))
-            {
-                entityManager.GetBuffer<PhysicsTriggerResults>(entity).Add(new PhysicsTriggerResults { state = TriggerResultState.Stay, entity = transformEntity });
-            }
-            else
-            {
-                var entityBehaviour = other.GetComponent<EntityBehaviour>();
-                if (entityBehaviour == null) return;
-
-                //别的world里的Collider 进入到这Trigger
-                if (world != entityBehaviour.world) return;
-
-                //if (entityManager.Exists(entityBehaviour.entity) == false) return;
-
-#if UNITY_EDITOR
-                var entityName = entityManager.GetName(entityBehaviour.entity);
-#else
-                var entityName = "";
-#endif
-                Debug.LogError($"EntityBehaviour.getEntity(other={other}, ...) == false" +
-                    $"\nentityBehaviour.entity={entityBehaviour.entity}  {entityName}  Exists={entityManager.Exists(entityBehaviour.entity)}" +
-                    $"\nentityBehaviour.world={entityBehaviour.world}  entityManager.World={entityManager.World}" +
-                    $"\nthis={this}"
-                    , other);
-            }
+            onTrigger(other, TriggerResultState.Stay);
         }
         private void OnTriggerExit(Collider other)
         {
             if (exitEnable == false) return;
-            if (entityManager == null) return;
-            if (entityManager.Exists(entity) == false) return;
-
-            if (EntityBehaviour.getEntity(other.attachedRigidbody, out Entity transformEntity, entityManager.World))
-            {
-                entityManager.GetBuffer<PhysicsTriggerResults>(entity).Add(new PhysicsTriggerResults { state = TriggerResultState.Exit, entity = transformEntity });
-            }
-            else
-            {
-                var entityBehaviour = other.GetComponent<EntityBehaviour>();
-                if (entityBehaviour == null) return;
-
-                //别的world里的Collider 进入到这Trigger
-                if (world != entityBehaviour.world) return;
-
-
-#if UNITY_EDITOR
-                var entityName = entityManager.GetName(entityBehaviour.entity);
-#else
-                var entityName = "";
-#endif
-                Debug.LogError($"EntityBehaviour.getEntity(other={other}, ...) == false" +
-                    $"\nentityBehaviour.entity={entityBehaviour.entity}  {entityName}  Exists={entityManager.Exists(entityBehaviour.entity)}" +
-                    $"\nentityBehaviour.world={entityBehaviour.world}  entityManager.World={entityManager.World}" +
-                    $"\nthis={this}"
-                    , other);
-            }
+            onTrigger(other, TriggerResultState.Exit);
         }
     }
 

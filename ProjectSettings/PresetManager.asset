@@ -22,3 +22,10 @@ PresetManager:
       m_ManagedTypeFallback: 
     defaultPresets:
     - m_Preset: {fileID: 0}
+  - type:
+      m_NativeTypeID: 82
+      m_ManagedTypePPtr: {fileID: 0}
+      m_ManagedTypeFallback: 
+    defaultPresets:
+    - m_Preset: {fileID: 2655988077585873504, guid: 4b374ee8a9b9b3e44a46587df6a435f8,
+        type: 2}

@@ -34,6 +34,10 @@ namespace RN.Network.SpaceWar.Fx
             if (lineRenderer != null)
             {
                 StartCoroutine(playDestroyFx());
+
+                var @as = GetComponent<AudioSource>();
+                if (@as != null && @as.isPlaying)
+                    StartCoroutine(@as.fadeOut());
             }
 
             //laser效果会自己删除

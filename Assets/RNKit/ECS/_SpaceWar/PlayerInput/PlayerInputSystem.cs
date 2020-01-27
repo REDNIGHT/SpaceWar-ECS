@@ -335,8 +335,7 @@ namespace RN.Network.SpaceWar
 
         Rewired.Player input;
         Rewired.Mouse mouseInput;
-        ParticleSystem mousePointPs;
-        float mousePointPsDuration = 1f;
+        IMouseFx mouseFx;
         protected new void OnInit(Transform root)
         {
             base.OnInit(root);
@@ -360,8 +359,7 @@ namespace RN.Network.SpaceWar
 
 
             //
-            mousePointPs = GameObject.Find("mousePoint").GetComponent<ParticleSystem>();
-            mousePointPsDuration = mousePointPs.main.duration;
+            mouseFx = GameObject.Find("mousePoint").GetComponent<IMouseFx>();
         }
 
         protected override void OnUpdate()
@@ -602,9 +600,7 @@ namespace RN.Network.SpaceWar
 
 
                                 //
-                                mousePointPs.transform.position = mouseSingleton.point;
-                                mousePointPs.Emit(1);
-                                mousePointPs.gameObject.SetActive(true);
+                                mouseFx.OnPlayFx(mouseSingleton.point);
                             }
                         }
                     });

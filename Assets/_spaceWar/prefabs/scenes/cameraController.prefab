@@ -135,7 +135,7 @@ MonoBehaviour:
   aimByMouseScale: 0.025
   aimByShipLinearScale: 1
   aimByShipLinearSmoothTime: 0.25
-  zoomScale: 0.05
+  zoomScale: -0.05
   zoomDampTime: 0.25
   mouseXScale: 0.2
   eulerAngleYSmoothTime: 0.1

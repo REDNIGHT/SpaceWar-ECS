@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace RN.Network.SpaceWar.Fx
 {
@@ -19,6 +20,12 @@ namespace RN.Network.SpaceWar.Fx
 
         public override void onDestroyFx(ShipSpawner actorSpawner)
         {
+            StartCoroutine(onDestroyFxE(actorSpawner));
+        }
+
+        IEnumerator onDestroyFxE(ShipSpawner actorSpawner)
+        {
+            yield return new WaitForSeconds(0.25f);
             var destroyFxT = transform.GetChild(ShipSpawner.DestroyFx_TransformIndex);
             var forceFxT = transform.GetChild(ShipSpawner.ForceFx_TransformIndex);
 
@@ -30,7 +37,6 @@ namespace RN.Network.SpaceWar.Fx
             //
             this.destroyGO();
         }
-
 
         private void OnValidate()
         {

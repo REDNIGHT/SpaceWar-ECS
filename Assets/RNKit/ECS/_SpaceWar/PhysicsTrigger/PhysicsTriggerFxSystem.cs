@@ -13,7 +13,7 @@ namespace RN.Network.SpaceWar
     public class PhysicsTriggerFxServerSystem : JobComponentSystem
     {
         EndCommandBufferSystem endBarrier;
-
+        public bool withoutBullet = true;
         protected void OnInit(Transform root)
         {
             endBarrier = World.GetExistingSystem<EndCommandBufferSystem>();
@@ -23,6 +23,7 @@ namespace RN.Network.SpaceWar
         //[RequireComponentTag(typeof())]
         struct PhysicsTriggerFxJob : IJobForEachWithEntity_EBCC<PhysicsTriggerResults, PhysicsTriggerFx, Actor>
         {
+            public bool withoutBullet;
             [ReadOnly] public ComponentDataFromEntity<Bullet> bulletFromEntity;
             [ReadOnly] public ComponentDataFromEntity<Translation> translationFromEntity;
 
@@ -37,7 +38,7 @@ namespace RN.Network.SpaceWar
 
                     var targetEntity = physicsTriggerResults[i].entity;
 
-                    if (bulletFromEntity.Exists(targetEntity))
+                    if (withoutBullet && bulletFromEntity.Exists(targetEntity))
                         continue;
 
                     var translation = translationFromEntity[targetEntity];
@@ -51,6 +52,7 @@ namespace RN.Network.SpaceWar
         {
             inputDeps = new PhysicsTriggerFxJob
             {
+                withoutBullet = withoutBullet,
                 bulletFromEntity = GetComponentDataFromEntity<Bullet>(true),
                 translationFromEntity = GetComponentDataFromEntity<Translation>(true),
 

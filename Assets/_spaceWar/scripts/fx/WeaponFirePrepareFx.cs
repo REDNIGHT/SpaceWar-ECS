@@ -7,6 +7,16 @@ namespace RN.Network.SpaceWar.Fx
 {
     public class WeaponFirePrepareFx : MonoBehaviour, IWeaponFirePrepareFx
     {
+        float volume = 1f;
+        private void Awake()
+        {
+            var @as = GetComponent<AudioSource>();
+            if (@as != null)
+            {
+                volume = @as.volume;
+            }
+        }
+
         public void OnPlayFx(Entity weaponEntity, in WeaponCreator weaponCreator, IActorSpawnerMap actorSpawnerMap, EntityManager entityManager)
         {
             var weaponActor = entityManager.GetComponentData<Actor>(weaponCreator.entity);
@@ -36,6 +46,14 @@ namespace RN.Network.SpaceWar.Fx
             main.duration = weaponSpawner.firePrepare;
 
             gameObject.SetActive(true);
+
+
+            var @as = GetComponent<AudioSource>();
+            if (@as != null && @as.isPlaying)
+            {
+                @as.volume = volume;
+                StartCoroutine(@as.fadeOut(0.5f, weaponSpawner.firePrepare));
+            }
         }
     }
 }

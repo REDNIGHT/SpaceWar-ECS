@@ -74,9 +74,9 @@ namespace RN.Network.SpaceWar
                 yield return (_S_D, typeof(Trigger),                      /**/ (e, m) => m.SetComponentData(e, new Trigger { includeResultState = triggerResultStateInclude, count = triggerCount }));
 
 
-            //yield return (SP, typeof(GOEntity),                       /**/ GOEntity._Init);
-            yield return (_S_P, typeof(OnTrigger),                        /**/ (e, m) => OnTrigger._initComponent(e, m, triggerFxResultStateInclude == TriggerResultState.Enter, true, triggerFxResultStateInclude == TriggerResultState.Exit, true));
-            yield return (C__P, typeof(OnTrigger),                        /**/ OnTrigger._removeComponent);
+            //yield return (SP, typeof(GOEntity),                         /**/ GOEntity._Init);
+            yield return (_S_P, typeof(OnTriggerWithoutInstalledWeapon),  /**/ (e, m) => OnTriggerWithoutInstalledWeapon._initComponent(e, m, triggerFxResultStateInclude == TriggerResultState.Enter, true, triggerFxResultStateInclude == TriggerResultState.Exit, true));
+            yield return (C__P, typeof(OnTriggerWithoutInstalledWeapon),  /**/ OnTriggerWithoutInstalledWeapon._removeComponent);
             yield return (_S_D, typeof(PhysicsTriggerResults),            /**/ null);
             yield return (_S_D, typeof(PhysicsResults),                   /**/ null);
 

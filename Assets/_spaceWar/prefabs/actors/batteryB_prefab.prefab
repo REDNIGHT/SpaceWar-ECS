@@ -2730,11 +2730,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: destroyFx
       objectReference: {fileID: 0}
-    - target: {fileID: 3700571156058861246, guid: e07959942fda4e74496454e1cc906d50,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5143042138044981611, guid: e07959942fda4e74496454e1cc906d50,
         type: 3}
       propertyPath: m_LocalPosition.x

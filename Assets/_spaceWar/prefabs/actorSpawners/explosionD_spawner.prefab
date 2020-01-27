@@ -56,5 +56,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 6356993
   force: -40
-  hpMinOffset: -5
-  hpMaxOffset: -10
+  hpMinOffset: 0
+  hpMaxOffset: 0

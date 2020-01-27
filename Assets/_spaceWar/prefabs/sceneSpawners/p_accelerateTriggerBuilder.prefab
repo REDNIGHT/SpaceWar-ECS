@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 2
-  interval: 2
+  interval: 1
   selectType: 1
   actorTypes:
   - actorType: 153

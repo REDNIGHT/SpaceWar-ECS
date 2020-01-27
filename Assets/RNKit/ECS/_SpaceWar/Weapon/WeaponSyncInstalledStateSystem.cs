@@ -19,12 +19,8 @@ namespace RN.Network.SpaceWar
 
     public interface IWeaponInstalledFx
     {
-        void OnPlay();
-    }
-
-    public interface IWeaponUninstalledFx
-    {
-        void OnPlay();
+        void OnPlayInstalledFx();
+        void OnPlayUninstalledFx();
     }
 
     public struct WeaponInstalledStateSerialize : NetworkSerializeUnsafe.ISerializer//在ActorSpawner.OnActorSerialize里调用
@@ -204,16 +200,11 @@ namespace RN.Network.SpaceWar
                         endCommandBuffer.RemoveComponent<OnWeaponInstallMessage>(weaponEntity);
 
 
-                        /*var fxT = weaponT.GetChild(WeaponSpawner.InstalledFx_TransformIndex);
-                        var fx = fxT.GetComponent<IWeaponInstalledFx>();
+                        var fx = weaponT.GetComponent<IWeaponInstalledFx>();
                         if (fx != null)
                         {
-                            fx.OnPlay();
+                            fx.OnPlayInstalledFx();
                         }
-                        else
-                        {
-                            fxT.gameObject.SetActive(true);
-                        }*/
                     }
                     else
                     {
@@ -223,16 +214,11 @@ namespace RN.Network.SpaceWar
                         endCommandBuffer.RemoveComponent<OnWeaponUninstallMessage>(weaponEntity);
 
 
-                        /*var fxT = weaponT.GetChild(WeaponSpawner.UninstallFx_TransformIndex);
-                        var fx = fxT.GetComponent<IWeaponUninstalledFx>();
+                        var fx = weaponT.GetComponent<IWeaponInstalledFx>();
                         if (fx != null)
                         {
-                            fx.OnPlay();
+                            fx.OnPlayUninstalledFx();
                         }
-                        else
-                        {
-                            fxT.gameObject.SetActive(true);
-                        }*/
                     }
 
 

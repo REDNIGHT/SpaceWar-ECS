@@ -57,4 +57,4 @@ MonoBehaviour:
   mode: 0
   drag: 0
   angularDrag: 0
-  triggerFxResultStateInclude: 1
+  triggerFxResultStateInclude: 3

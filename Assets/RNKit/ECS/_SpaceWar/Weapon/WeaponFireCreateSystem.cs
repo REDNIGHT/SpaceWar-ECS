@@ -56,12 +56,14 @@ namespace RN.Network.SpaceWar
                 EntityManager.SetComponentData(actorEntity, hpOffset);
             }
 
-            else if (EntityManager.HasComponent<RigidbodyVelocity>(actorEntity))
+            if (EntityManager.HasComponent<RigidbodyVelocity>(actorEntity))
             {
-                var weaponVelocity = EntityManager.GetComponentData<RigidbodyVelocity>(fireCreateData.weaponEntity);
+                //var weaponVelocity = EntityManager.GetComponentData<RigidbodyVelocity>(fireCreateData.weaponEntity);
+                var weaponVelocity = EntityManager.GetComponentData<RigidbodyVelocity>(fireCreateData.shipEntity);//weapon被锁住了 这里用ship的Velocity
 
                 var rigidbodyVelocity = EntityManager.GetComponentData<RigidbodyVelocity>(actorEntity);
                 rigidbodyVelocity.linear += weaponVelocity.linear;
+                //Debug.Log($"rigidbodyVelocity.linear={rigidbodyVelocity.linear}  linear={weaponVelocity.linear}");
                 EntityManager.SetComponentData(actorEntity, rigidbodyVelocity);
             }
         }
