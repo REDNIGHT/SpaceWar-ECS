@@ -151,16 +151,24 @@ namespace RN.Network.SpaceWar
     {
         List<(LineRenderer l, LineRenderer r, float angleLimit)> lines = new List<(LineRenderer, LineRenderer, float)>();
 
+        public AudioSource audioSource;
+
         private void Awake()
         {
             foreach (Transform c in transform.GetChild(ShipSpawner.Slots_TransformIndex))
             {
                 lines.Add((c.GetChild(0).GetComponent<LineRenderer>(), c.GetChild(1).GetComponent<LineRenderer>(), c.GetComponent<SlotInfo>().angleLimitMin));
             }
+
+            audioSource = transform.GetChild(ShipSpawner.Slots_TransformIndex).GetComponent<AudioSource>();
+            Debug.Assert(audioSource != null, "audioSource != null", this);
+            Debug.Assert(audioSource.playOnAwake == false, "audioSource.playOnAwake == false", audioSource);
         }
 
         public void begin()
         {
+            audioSource.Play();
+
             foreach (var line in lines)
             {
                 line.l.gameObject.SetActive(true);
