@@ -4988,7 +4988,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 2
+  MinDistance: 1
   MaxDistance: 64
   Pan2D: 0
   rolloffMode: 2
@@ -4999,46 +4999,55 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.03125
+      time: 0.015625
       value: 1
-      inSlope: -32.0128
-      outSlope: -32.0128
+      inSlope: -64.0256
+      outSlope: -64.0256
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.03125
+      value: 0.5
+      inSlope: -16.0064
+      outSlope: -16.0064
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 0.0625
-      value: 0.5
-      inSlope: -8.0032
-      outSlope: -8.0032
+      value: 0.25
+      inSlope: -4.0016
+      outSlope: -4.0016
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 0.125
-      value: 0.25
-      inSlope: -2.0008
-      outSlope: -2.0008
+      value: 0.125
+      inSlope: -1.0004
+      outSlope: -1.0004
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 0.25
-      value: 0.125
-      inSlope: -0.5002
-      outSlope: -0.5002
+      value: 0.0625
+      inSlope: -0.2501
+      outSlope: -0.2501
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 0.5
-      value: 0.0625
-      inSlope: -0.12505
-      outSlope: -0.12505
+      value: 0.03125
+      inSlope: -0.062525
+      outSlope: -0.062525
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -5046,8 +5055,8 @@ AudioSource:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.0312625
-      outSlope: -0.0312625
+      inSlope: -0.01563125
+      outSlope: -0.01563125
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
