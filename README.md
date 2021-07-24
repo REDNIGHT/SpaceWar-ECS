@@ -15,5 +15,3 @@
 
 # 截图
 ![](readme/s.png)
-
-![](readme/QQGroup.png)
